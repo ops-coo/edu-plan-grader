@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Link } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,9 +18,11 @@ import {
   ExternalLink,
   Star,
   Target,
+  Zap,
 } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { queryClient } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 import type { BusinessUnit } from "@shared/schema";
 
 type DashboardSummary = {
@@ -163,12 +165,40 @@ function BUCard({ bu }: { bu: BusinessUnit }) {
 }
 
 export default function Dashboard() {
+  const { toast } = useToast();
+  const [evalProgress, setEvalProgress] = useState<string | null>(null);
+
   const { data: summary, isLoading: summaryLoading } = useQuery<DashboardSummary>({
     queryKey: ["/api/dashboard-summary"],
   });
 
   const { data: units, isLoading: unitsLoading } = useQuery<BusinessUnit[]>({
     queryKey: ["/api/business-units"],
+  });
+
+  const evaluateAllMutation = useMutation({
+    mutationFn: async () => {
+      setEvalProgress("Starting batch evaluation...");
+      const res = await apiRequest("POST", "/api/evaluate-all?onlyPending=true");
+      return res.json();
+    },
+    onSuccess: (data) => {
+      setEvalProgress(null);
+      toast({
+        title: `Batch Evaluation Complete`,
+        description: `${data.succeeded} succeeded, ${data.failed} failed out of ${data.total}`,
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/dashboard-summary"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/business-units"] });
+    },
+    onError: (err: any) => {
+      setEvalProgress(null);
+      toast({
+        title: "Batch Evaluation Failed",
+        description: err.message || "Something went wrong",
+        variant: "destructive",
+      });
+    },
   });
 
   // Seed data on first load (run once)
@@ -200,6 +230,20 @@ export default function Dashboard() {
             <Badge variant="outline" className="text-xs">
               {summary?.evaluated || 0} / {summary?.totalUnits || 0} rated
             </Badge>
+            <Button
+              variant="default"
+              size="sm"
+              onClick={() => evaluateAllMutation.mutate()}
+              disabled={evaluateAllMutation.isPending}
+              data-testid="button-evaluate-all"
+            >
+              {evaluateAllMutation.isPending ? (
+                <Loader2 className="h-4 w-4 mr-1 animate-spin" />
+              ) : (
+                <Zap className="h-4 w-4 mr-1" />
+              )}
+              {evaluateAllMutation.isPending ? "Evaluating..." : "Evaluate All Pending"}
+            </Button>
           </div>
         </div>
       </header>

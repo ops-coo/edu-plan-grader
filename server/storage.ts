@@ -19,6 +19,56 @@ import {
 const sqlite = new Database("data.db");
 const db = drizzle(sqlite);
 
+// Create tables if they don't exist
+sqlite.exec(`
+  CREATE TABLE IF NOT EXISTS business_units (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    gm TEXT,
+    sector TEXT DEFAULT 'Education',
+    status TEXT NOT NULL DEFAULT 'pending_review',
+    overall_score REAL,
+    budget_doc_url TEXT,
+    budget_pnl_url TEXT,
+    brainlift_rating TEXT,
+    created_at TEXT,
+    updated_at TEXT
+  );
+  CREATE TABLE IF NOT EXISTS budget_documents (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    business_unit_id INTEGER NOT NULL,
+    document_type TEXT NOT NULL,
+    url TEXT NOT NULL,
+    quarter TEXT,
+    title TEXT,
+    created_at TEXT
+  );
+  CREATE TABLE IF NOT EXISTS evaluation_reports (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    business_unit_id INTEGER NOT NULL,
+    created_at TEXT NOT NULL,
+    recommendation TEXT NOT NULL,
+    overall_score REAL NOT NULL,
+    confidence_score INTEGER NOT NULL,
+    executive_summary TEXT NOT NULL,
+    key_findings TEXT NOT NULL,
+    critical_issues TEXT NOT NULL,
+    rubric_scores TEXT NOT NULL,
+    financial_summary TEXT,
+    report_url TEXT
+  );
+  CREATE TABLE IF NOT EXISTS rubric_criteria (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    evaluation_id INTEGER NOT NULL,
+    criterion_key TEXT NOT NULL,
+    criterion_label TEXT NOT NULL,
+    score REAL NOT NULL,
+    weight REAL NOT NULL,
+    justification TEXT NOT NULL,
+    evidence TEXT
+  );
+`);
+
 export interface IStorage {
   // Business Units
   getBusinessUnits(): BusinessUnit[];

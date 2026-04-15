@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import type { Server } from "http";
 import { storage } from "./storage";
+import { evaluateBusinessUnit } from "./evaluator";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -109,6 +110,51 @@ export async function registerRoutes(httpServer: Server, app: Express) {
       criticallyFlawed,
       notRated,
     });
+  });
+
+  // === Evaluation Endpoints ===
+
+  // Run evaluation for a single BU
+  app.post("/api/evaluate/:id", async (req, res) => {
+    const buId = parseInt(req.params.id);
+    const bu = storage.getBusinessUnit(buId);
+    if (!bu) return res.status(404).json({ error: "Business unit not found" });
+
+    try {
+      const result = await evaluateBusinessUnit(buId);
+      if (result.success) {
+        res.json(result);
+      } else {
+        res.status(400).json(result);
+      }
+    } catch (err: any) {
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // Batch evaluate all BUs (or subset)
+  app.post("/api/evaluate-all", async (req, res) => {
+    const units = storage.getBusinessUnits();
+    const results: any[] = [];
+    const onlyPending = req.query.onlyPending === "true";
+
+    const targets = onlyPending
+      ? units.filter((u) => u.status === "pending_review")
+      : units;
+
+    // Process sequentially to avoid rate limits
+    for (const bu of targets) {
+      try {
+        const result = await evaluateBusinessUnit(bu.id);
+        results.push({ buId: bu.id, name: bu.name, ...result });
+      } catch (err: any) {
+        results.push({ buId: bu.id, name: bu.name, success: false, error: err.message });
+      }
+    }
+
+    const succeeded = results.filter((r) => r.success).length;
+    const failed = results.filter((r) => !r.success).length;
+    res.json({ total: targets.length, succeeded, failed, results });
   });
 
   // Seed data endpoint — uses real BU data from JSON files

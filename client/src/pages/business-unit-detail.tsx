@@ -1,5 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 import { useRoute, Link } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +22,8 @@ import {
   ShoppingCart,
   Upload,
   FolderOpen,
+  Play,
+  RefreshCw,
 } from "lucide-react";
 import type { BusinessUnit, EvaluationReport, RubricCriteria, BudgetDocument } from "@shared/schema";
 
@@ -97,6 +100,31 @@ function BrainliftBadge({ rating }: { rating: string | null }) {
 export default function BusinessUnitDetail() {
   const [, params] = useRoute("/bu/:id");
   const buId = params?.id ? parseInt(params.id) : 0;
+  const { toast } = useToast();
+
+  const evaluateMutation = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest("POST", `/api/evaluate/${buId}`);
+      return res.json();
+    },
+    onSuccess: (data) => {
+      toast({
+        title: `Evaluation Complete: ${data.recommendation}`,
+        description: `Overall score: ${data.overallScore?.toFixed(1)}/10`,
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/business-units", buId] });
+      queryClient.invalidateQueries({ queryKey: ["/api/business-units", buId, "latest-evaluation"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/dashboard-summary"] });
+      queryClient.invalidateQueries({ queryKey: ["/api/business-units"] });
+    },
+    onError: (err: any) => {
+      toast({
+        title: "Evaluation Failed",
+        description: err.message || "Something went wrong",
+        variant: "destructive",
+      });
+    },
+  });
 
   const { data: bu, isLoading: buLoading } = useQuery<BusinessUnit>({
     queryKey: ["/api/business-units", buId],
@@ -168,6 +196,22 @@ export default function BusinessUnitDetail() {
             {bu.gm && <p className="text-xs text-muted-foreground">GM: {bu.gm}</p>}
           </div>
           {evaluation && <RecommendationBadge rec={evaluation.recommendation} />}
+          {evaluation && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => evaluateMutation.mutate()}
+              disabled={evaluateMutation.isPending}
+              data-testid="button-re-evaluate"
+            >
+              {evaluateMutation.isPending ? (
+                <Loader2 className="h-4 w-4 mr-1 animate-spin" />
+              ) : (
+                <RefreshCw className="h-4 w-4 mr-1" />
+              )}
+              Re-evaluate
+            </Button>
+          )}
         </div>
       </header>
 
@@ -421,12 +465,31 @@ export default function BusinessUnitDetail() {
         ) : (
           <Card>
             <CardContent className="pt-6 text-center py-12">
-              <Clock className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
-              <h3 className="font-semibold mb-1">No Evaluation Yet</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                This business unit has not been evaluated against Joe's rubric.
-              </p>
-              <Button data-testid="button-run-evaluation">Run Evaluation</Button>
+              {evaluateMutation.isPending ? (
+                <>
+                  <Loader2 className="h-12 w-12 text-primary mx-auto mb-3 animate-spin" />
+                  <h3 className="font-semibold mb-1">Evaluating Against Joe's Rubric...</h3>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Fetching business plan documents, scoring 24 criteria across 8 categories.
+                  </p>
+                  <p className="text-xs text-muted-foreground">This may take 30–60 seconds.</p>
+                </>
+              ) : (
+                <>
+                  <Clock className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
+                  <h3 className="font-semibold mb-1">No Evaluation Yet</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    This business unit has not been evaluated against Joe's rubric.
+                  </p>
+                  <Button
+                    data-testid="button-run-evaluation"
+                    onClick={() => evaluateMutation.mutate()}
+                    disabled={evaluateMutation.isPending}
+                  >
+                    <Play className="h-4 w-4 mr-1" /> Run AI Evaluation
+                  </Button>
+                </>
+              )}
             </CardContent>
           </Card>
         )}
