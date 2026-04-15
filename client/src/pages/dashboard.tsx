@@ -8,15 +8,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 import {
   GraduationCap,
   TrendingUp,
-  DollarSign,
-  Users,
+  BarChart3,
+  Building2,
   CheckCircle2,
   XCircle,
   AlertTriangle,
   Clock,
   Loader2,
-  BarChart3,
   ExternalLink,
+  Star,
+  Target,
 } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { queryClient } from "@/lib/queryClient";
@@ -24,16 +25,19 @@ import type { BusinessUnit } from "@shared/schema";
 
 type DashboardSummary = {
   totalUnits: number;
+  pendingReview: number;
+  evaluated: number;
+  inProgress: number;
+  onHold: number;
   approved: number;
   rejected: number;
   fixRequired: number;
-  pending: number;
-  evaluating: number;
-  totalBudget: number;
-  totalRevenue: number;
-  totalEnrollment: number;
   avgScore: number;
-  evaluationsCompleted: number;
+  exemplary: number;
+  promising: number;
+  developing: number;
+  criticallyFlawed: number;
+  notRated: number;
 };
 
 function StatusBadge({ status }: { status: string }) {
@@ -41,16 +45,33 @@ function StatusBadge({ status }: { status: string }) {
     approved: { label: "Approved", variant: "default", icon: CheckCircle2 },
     rejected: { label: "Rejected", variant: "destructive", icon: XCircle },
     fix_required: { label: "Fix Required", variant: "secondary", icon: AlertTriangle },
-    pending: { label: "Pending", variant: "outline", icon: Clock },
-    evaluating: { label: "Evaluating", variant: "outline", icon: Loader2 },
+    pending_review: { label: "Pending Review", variant: "outline", icon: Clock },
+    in_progress: { label: "In Progress", variant: "outline", icon: Loader2 },
+    evaluated: { label: "Evaluated", variant: "default", icon: CheckCircle2 },
+    on_hold: { label: "On Hold", variant: "secondary", icon: Clock },
   };
-  const c = config[status] || config.pending;
+  const c = config[status] || config.pending_review;
   const Icon = c.icon;
   return (
     <Badge variant={c.variant} className="gap-1" data-testid={`badge-status-${status}`}>
-      <Icon className={`h-3 w-3 ${status === "evaluating" ? "animate-spin" : ""}`} />
+      <Icon className={`h-3 w-3 ${status === "in_progress" ? "animate-spin" : ""}`} />
       {c.label}
     </Badge>
+  );
+}
+
+function BrainliftBadge({ rating }: { rating: string | null }) {
+  if (!rating) return null;
+  const config: Record<string, string> = {
+    "Exemplary": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
+    "Promising": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    "Developing": "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200",
+    "Critically Flawed": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+  };
+  return (
+    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${config[rating] || "bg-gray-100 text-gray-800"}`}>
+      {rating}
+    </span>
   );
 }
 
@@ -74,81 +95,65 @@ function KPICard({ title, value, subtitle, icon: Icon, color }: {
 }
 
 function BUCard({ bu }: { bu: BusinessUnit }) {
-  const categoryColors: Record<string, string> = {
-    physical_schools: "border-l-blue-500",
-    virtual: "border-l-emerald-500",
-    sports: "border-l-orange-500",
-    tech: "border-l-purple-500",
-    marketing: "border-l-pink-500",
-    other: "border-l-gray-400",
+  const ratingColors: Record<string, string> = {
+    "Exemplary": "border-l-emerald-500",
+    "Promising": "border-l-blue-500",
+    "Developing": "border-l-amber-500",
+    "Critically Flawed": "border-l-red-500",
   };
-  const categoryLabels: Record<string, string> = {
-    physical_schools: "Physical Schools",
-    virtual: "Virtual / DTC",
-    sports: "Sports Academies",
-    tech: "Tech / Platform",
-    marketing: "Marketing",
-    other: "Other",
-  };
+  const borderColor = bu.brainliftRating ? (ratingColors[bu.brainliftRating] || "border-l-gray-400") : "border-l-gray-300";
 
   return (
     <Link href={`/bu/${bu.id}`}>
       <Card
-        className={`cursor-pointer hover:shadow-md transition-shadow border-l-4 ${categoryColors[bu.category] || "border-l-gray-400"}`}
+        className={`cursor-pointer hover:shadow-md transition-shadow border-l-4 ${borderColor}`}
         data-testid={`card-bu-${bu.id}`}
       >
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-base">{bu.name}</CardTitle>
-              <p className="text-xs text-muted-foreground mt-1">{categoryLabels[bu.category]}</p>
+              {bu.gm && <p className="text-xs text-muted-foreground mt-1">GM: {bu.gm}</p>}
             </div>
             <StatusBadge status={bu.status} />
           </div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-3 gap-4 text-sm">
-            {bu.annualizedRevenue != null && (
-              <div>
-                <p className="text-muted-foreground text-xs">Revenue</p>
-                <p className="font-semibold">${bu.annualizedRevenue}M/yr</p>
-              </div>
-            )}
-            {bu.enrollmentCurrent != null && (
-              <div>
-                <p className="text-muted-foreground text-xs">Students</p>
-                <p className="font-semibold">
-                  {bu.enrollmentCurrent.toLocaleString()}
-                  {bu.enrollmentTarget ? (
-                    <span className="text-muted-foreground font-normal"> / {bu.enrollmentTarget.toLocaleString()}</span>
-                  ) : null}
-                </p>
-              </div>
-            )}
-            {bu.learningMultiplier != null && (
-              <div>
-                <p className="text-muted-foreground text-xs">Learning</p>
-                <p className="font-semibold text-emerald-600 dark:text-emerald-400">{bu.learningMultiplier}x</p>
-              </div>
-            )}
-            {bu.q2Budget != null && (
-              <div>
-                <p className="text-muted-foreground text-xs">Q2 Budget</p>
-                <p className="font-semibold">${bu.q2Budget}M</p>
-              </div>
+          <div className="flex items-center gap-3 flex-wrap mb-3">
+            <BrainliftBadge rating={bu.brainliftRating} />
+            {bu.overallScore != null && (
+              <span className="text-sm font-semibold">
+                Score: <span className={
+                  bu.overallScore >= 75 ? "text-emerald-600 dark:text-emerald-400" :
+                  bu.overallScore >= 50 ? "text-amber-600 dark:text-amber-400" : "text-red-600 dark:text-red-400"
+                }>{bu.overallScore}</span>/100
+              </span>
             )}
           </div>
-          {bu.budgetModelUrl && (
-            <div className="mt-3 pt-3 border-t">
-              <a
-                href={bu.budgetModelUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-primary hover:underline inline-flex items-center gap-1"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <ExternalLink className="h-3 w-3" /> Budget Model
-              </a>
+          {(bu.budgetDocUrl || bu.budgetPnlUrl) && (
+            <div className="flex gap-3 flex-wrap pt-2 border-t">
+              {bu.budgetDocUrl && (
+                <a
+                  href={bu.budgetDocUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-primary hover:underline inline-flex items-center gap-1"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <ExternalLink className="h-3 w-3" /> Budget Doc
+                </a>
+              )}
+              {bu.budgetPnlUrl && (
+                <a
+                  href={bu.budgetPnlUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-primary hover:underline inline-flex items-center gap-1"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <ExternalLink className="h-3 w-3" /> Budget P&L
+                </a>
+              )}
             </div>
           )}
         </CardContent>
@@ -193,7 +198,7 @@ export default function Dashboard() {
           </div>
           <div className="flex items-center gap-2">
             <Badge variant="outline" className="text-xs">
-              {summary?.evaluationsCompleted || 0} / {summary?.totalUnits || 0} evaluated
+              {summary?.evaluated || 0} / {summary?.totalUnits || 0} rated
             </Badge>
           </div>
         </div>
@@ -209,64 +214,64 @@ export default function Dashboard() {
           ) : (
             <>
               <KPICard
-                title="Total Revenue"
-                value={`$${(summary?.totalRevenue || 0).toFixed(1)}M/yr`}
-                subtitle="Annualized across all BUs"
-                icon={DollarSign}
+                title="Total BUs"
+                value={summary?.totalUnits || 0}
+                subtitle="Education business units"
+                icon={Building2}
+                color="bg-primary"
+              />
+              <KPICard
+                title="Evaluated"
+                value={summary?.evaluated || 0}
+                subtitle="With brainlift rating"
+                icon={Star}
                 color="bg-emerald-600"
               />
               <KPICard
-                title="Students Enrolled"
-                value={(summary?.totalEnrollment || 0).toLocaleString()}
-                subtitle="Current enrollment"
-                icon={Users}
-                color="bg-blue-600"
-              />
-              <KPICard
-                title="Q2 Budget"
-                value={`$${(summary?.totalBudget || 0).toFixed(1)}M`}
-                subtitle="Total Q2'26 investment"
-                icon={TrendingUp}
-                color="bg-orange-600"
-              />
-              <KPICard
-                title="Avg Score"
-                value={summary?.avgScore ? `${summary.avgScore.toFixed(1)}/10` : "—"}
-                subtitle={`${summary?.evaluationsCompleted || 0} evaluations completed`}
+                title="Average Score"
+                value={summary?.avgScore ? `${summary.avgScore.toFixed(0)}/100` : "—"}
+                subtitle="Across scored BUs"
                 icon={BarChart3}
                 color="bg-purple-600"
+              />
+              <KPICard
+                title="Pending Review"
+                value={summary?.pendingReview || 0}
+                subtitle="Awaiting evaluation"
+                icon={Target}
+                color="bg-orange-600"
               />
             </>
           )}
         </div>
 
-        {/* Status Overview */}
+        {/* Brainlift Rating Overview */}
         {summary && (
           <div className="flex gap-3 flex-wrap">
             <div className="flex items-center gap-1.5 text-sm">
-              <div className="h-2.5 w-2.5 rounded-full bg-green-500" />
-              <span className="font-medium">{summary.approved}</span>
-              <span className="text-muted-foreground">Approved</span>
+              <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+              <span className="font-medium">{summary.exemplary}</span>
+              <span className="text-muted-foreground">Exemplary</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-sm">
+              <div className="h-2.5 w-2.5 rounded-full bg-blue-500" />
+              <span className="font-medium">{summary.promising}</span>
+              <span className="text-muted-foreground">Promising</span>
             </div>
             <div className="flex items-center gap-1.5 text-sm">
               <div className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-              <span className="font-medium">{summary.fixRequired}</span>
-              <span className="text-muted-foreground">Fix Required</span>
+              <span className="font-medium">{summary.developing}</span>
+              <span className="text-muted-foreground">Developing</span>
             </div>
             <div className="flex items-center gap-1.5 text-sm">
               <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
-              <span className="font-medium">{summary.rejected}</span>
-              <span className="text-muted-foreground">Rejected</span>
+              <span className="font-medium">{summary.criticallyFlawed}</span>
+              <span className="text-muted-foreground">Critically Flawed</span>
             </div>
             <div className="flex items-center gap-1.5 text-sm">
               <div className="h-2.5 w-2.5 rounded-full bg-gray-400" />
-              <span className="font-medium">{summary.pending}</span>
-              <span className="text-muted-foreground">Pending</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-sm">
-              <div className="h-2.5 w-2.5 rounded-full bg-blue-400 animate-pulse" />
-              <span className="font-medium">{summary.evaluating}</span>
-              <span className="text-muted-foreground">Evaluating</span>
+              <span className="font-medium">{summary.notRated}</span>
+              <span className="text-muted-foreground">Not Rated</span>
             </div>
           </div>
         )}

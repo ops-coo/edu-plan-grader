@@ -15,8 +15,14 @@ import {
   Loader2,
   ExternalLink,
   FileText,
+  FileSpreadsheet,
+  Brain,
+  Lightbulb,
+  ShoppingCart,
+  Upload,
+  FolderOpen,
 } from "lucide-react";
-import type { BusinessUnit, EvaluationReport, RubricCriteria } from "@shared/schema";
+import type { BusinessUnit, EvaluationReport, RubricCriteria, BudgetDocument } from "@shared/schema";
 
 const rubricLabels: Record<string, string> = {
   mission_alignment: "Mission Alignment",
@@ -27,6 +33,16 @@ const rubricLabels: Record<string, string> = {
   financial_model: "Financial Model",
   talent_strategy: "Talent Strategy",
   access_funding: "Access & Funding Pathway",
+};
+
+const docTypeConfig: Record<string, { label: string; icon: any }> = {
+  business_plan: { label: "Business Plan", icon: FileText },
+  pnl_spreadsheet: { label: "P&L Spreadsheet", icon: FileSpreadsheet },
+  cf_orders: { label: "CF Orders", icon: ShoppingCart },
+  import_orders: { label: "Import Orders", icon: Upload },
+  brainlift: { label: "Brainlift", icon: Brain },
+  brainlift_insights: { label: "Brainlift Insights", icon: Lightbulb },
+  ephor_project: { label: "Ephor Project", icon: FolderOpen },
 };
 
 function ScoreBar({ label, score, weight }: { label: string; score: number; weight: number }) {
@@ -63,6 +79,21 @@ function RecommendationBadge({ rec }: { rec: string }) {
   );
 }
 
+function BrainliftBadge({ rating }: { rating: string | null }) {
+  if (!rating) return null;
+  const config: Record<string, string> = {
+    "Exemplary": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200",
+    "Promising": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    "Developing": "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200",
+    "Critically Flawed": "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+  };
+  return (
+    <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${config[rating] || "bg-gray-100 text-gray-800"}`}>
+      {rating}
+    </span>
+  );
+}
+
 export default function BusinessUnitDetail() {
   const [, params] = useRoute("/bu/:id");
   const buId = params?.id ? parseInt(params.id) : 0;
@@ -91,6 +122,12 @@ export default function BusinessUnitDetail() {
     queryKey: ["/api/evaluations", evaluation?.id, "rubric"],
     queryFn: () => apiRequest("GET", `/api/evaluations/${evaluation!.id}/rubric`).then((r) => r.json()),
     enabled: !!evaluation?.id,
+  });
+
+  const { data: documents } = useQuery<BudgetDocument[]>({
+    queryKey: ["/api/business-units", buId, "documents"],
+    queryFn: () => apiRequest("GET", `/api/business-units/${buId}/documents`).then((r) => r.json()),
+    enabled: buId > 0,
   });
 
   if (buLoading) {
@@ -128,6 +165,7 @@ export default function BusinessUnitDetail() {
           </Link>
           <div className="flex-1">
             <h1 className="text-lg font-bold">{bu.name}</h1>
+            {bu.gm && <p className="text-xs text-muted-foreground">GM: {bu.gm}</p>}
           </div>
           {evaluation && <RecommendationBadge rec={evaluation.recommendation} />}
         </div>
@@ -136,72 +174,109 @@ export default function BusinessUnitDetail() {
       <main className="max-w-5xl mx-auto px-6 py-6 space-y-6">
         {/* BU Summary Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {bu.annualizedRevenue != null && (
-            <Card>
-              <CardContent className="pt-4 pb-4">
-                <p className="text-xs text-muted-foreground">Annualized Revenue</p>
-                <p className="text-xl font-bold">${bu.annualizedRevenue}M</p>
-              </CardContent>
-            </Card>
+          <Card>
+            <CardContent className="pt-4 pb-4">
+              <p className="text-xs text-muted-foreground">Sector</p>
+              <p className="text-xl font-bold">{bu.sector || "Education"}</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-4 pb-4">
+              <p className="text-xs text-muted-foreground">Brainlift Rating</p>
+              <div className="mt-1">
+                {bu.brainliftRating ? (
+                  <BrainliftBadge rating={bu.brainliftRating} />
+                ) : (
+                  <p className="text-sm text-muted-foreground">Not yet rated</p>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-4 pb-4">
+              <p className="text-xs text-muted-foreground">Overall Score</p>
+              {bu.overallScore != null ? (
+                <p className={`text-xl font-bold ${
+                  bu.overallScore >= 75 ? "text-emerald-600 dark:text-emerald-400" :
+                  bu.overallScore >= 50 ? "text-amber-600 dark:text-amber-400" : "text-red-600 dark:text-red-400"
+                }`}>{bu.overallScore}/100</p>
+              ) : (
+                <p className="text-sm text-muted-foreground">—</p>
+              )}
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="pt-4 pb-4">
+              <p className="text-xs text-muted-foreground">Status</p>
+              <div className="mt-1">
+                <Badge variant={bu.status === "evaluated" ? "default" : bu.status === "on_hold" ? "secondary" : "outline"}>
+                  {bu.status.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* External Links */}
+        <div className="flex gap-3 flex-wrap">
+          {bu.budgetDocUrl && (
+            <a href={bu.budgetDocUrl} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm" data-testid="link-budget-doc">
+                <FileText className="h-4 w-4 mr-1" /> Budget Doc
+                <ExternalLink className="h-3 w-3 ml-1" />
+              </Button>
+            </a>
           )}
-          {bu.enrollmentCurrent != null && (
-            <Card>
-              <CardContent className="pt-4 pb-4">
-                <p className="text-xs text-muted-foreground">Students</p>
-                <p className="text-xl font-bold">
-                  {bu.enrollmentCurrent.toLocaleString()}
-                  {bu.enrollmentTarget && (
-                    <span className="text-sm font-normal text-muted-foreground"> / {bu.enrollmentTarget.toLocaleString()}</span>
-                  )}
-                </p>
-              </CardContent>
-            </Card>
-          )}
-          {bu.q2Budget != null && (
-            <Card>
-              <CardContent className="pt-4 pb-4">
-                <p className="text-xs text-muted-foreground">Q2 Budget</p>
-                <p className="text-xl font-bold">${bu.q2Budget}M</p>
-              </CardContent>
-            </Card>
-          )}
-          {bu.learningMultiplier != null && (
-            <Card>
-              <CardContent className="pt-4 pb-4">
-                <p className="text-xs text-muted-foreground">Learning Multiplier</p>
-                <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400">{bu.learningMultiplier}x</p>
-              </CardContent>
-            </Card>
+          {bu.budgetPnlUrl && (
+            <a href={bu.budgetPnlUrl} target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm" data-testid="link-budget-pnl">
+                <FileSpreadsheet className="h-4 w-4 mr-1" /> Budget P&L
+                <ExternalLink className="h-3 w-3 ml-1" />
+              </Button>
+            </a>
           )}
         </div>
 
-        {/* Links */}
-        <div className="flex gap-3 flex-wrap">
-          {bu.budgetPlanUrl && (
-            <a href={bu.budgetPlanUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm" data-testid="link-budget-plan">
-                <FileText className="h-4 w-4 mr-1" /> Budget Plan
-                <ExternalLink className="h-3 w-3 ml-1" />
-              </Button>
-            </a>
-          )}
-          {bu.budgetModelUrl && (
-            <a href={bu.budgetModelUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm" data-testid="link-budget-model">
-                <FileText className="h-4 w-4 mr-1" /> Budget Model
-                <ExternalLink className="h-3 w-3 ml-1" />
-              </Button>
-            </a>
-          )}
-          {bu.financialModelUrl && (
-            <a href={bu.financialModelUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm" data-testid="link-financial-model">
-                <FileText className="h-4 w-4 mr-1" /> Financial Model
-                <ExternalLink className="h-3 w-3 ml-1" />
-              </Button>
-            </a>
-          )}
-        </div>
+        {/* Linked Documents */}
+        {documents && documents.length > 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Linked Documents ({documents.length})</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                {documents.map((doc) => {
+                  const typeConf = docTypeConfig[doc.documentType] || { label: doc.documentType, icon: FileText };
+                  const DocIcon = typeConf.icon;
+                  return (
+                    <a
+                      key={doc.id}
+                      href={doc.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-2 rounded-md hover:bg-muted/50 transition-colors group"
+                    >
+                      <DocIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary shrink-0" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium truncate">{doc.title || typeConf.label}</p>
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                          <span>{typeConf.label}</span>
+                          {doc.quarter && (
+                            <>
+                              <span>·</span>
+                              <span>{doc.quarter}</span>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                      <ExternalLink className="h-3 w-3 text-muted-foreground group-hover:text-primary shrink-0" />
+                    </a>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Evaluation Report */}
         {evalLoading ? (

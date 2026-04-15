@@ -6,19 +6,26 @@ import { z } from "zod";
 export const businessUnits = sqliteTable("business_units", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   name: text("name").notNull(),
-  category: text("category").notNull(), // "physical_schools" | "virtual" | "sports" | "tech" | "marketing" | "other"
-  budgetPlanUrl: text("budget_plan_url"),
-  budgetModelUrl: text("budget_model_url"),
-  financialModelUrl: text("financial_model_url"),
-  q1Actual: real("q1_actual"),
-  q2Budget: real("q2_budget"),
-  syTotal: real("sy_total"),
-  ltdTotal: real("ltd_total"),
-  annualizedRevenue: real("annualized_revenue"),
-  enrollmentCurrent: integer("enrollment_current"),
-  enrollmentTarget: integer("enrollment_target"),
-  learningMultiplier: real("learning_multiplier"), // e.g. 5.3x
-  status: text("status").notNull().default("pending"), // "pending" | "evaluating" | "approved" | "rejected" | "fix_required"
+  gm: text("gm"), // General Manager name
+  sector: text("sector").default("Education"),
+  status: text("status").notNull().default("pending_review"), // "pending_review" | "in_progress" | "evaluated" | "on_hold" | "approved" | "rejected" | "fix_required"
+  overallScore: real("overall_score"), // 0-100 scale from brainlift rating
+  budgetDocUrl: text("budget_doc_url"), // Google Doc link to business plan
+  budgetPnlUrl: text("budget_pnl_url"), // Google Sheets link to P&L
+  brainliftRating: text("brainlift_rating"), // "Exemplary" | "Promising" | "Developing" | "Critically Flawed"
+  createdAt: text("created_at"),
+  updatedAt: text("updated_at"),
+});
+
+// Budget Documents linked to Business Units
+export const budgetDocuments = sqliteTable("budget_documents", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  businessUnitId: integer("business_unit_id").notNull(),
+  documentType: text("document_type").notNull(), // "business_plan" | "pnl_spreadsheet" | "cf_orders" | "import_orders" | "brainlift" | "brainlift_insights" | "ephor_project"
+  url: text("url").notNull(),
+  quarter: text("quarter"), // "Q1-26", "Q2-26"
+  title: text("title"),
+  createdAt: text("created_at"),
 });
 
 // Evaluation Reports (AI QC Reports)
@@ -50,11 +57,14 @@ export const rubricCriteria = sqliteTable("rubric_criteria", {
 });
 
 export const insertBusinessUnitSchema = createInsertSchema(businessUnits).omit({ id: true });
+export const insertBudgetDocumentSchema = createInsertSchema(budgetDocuments).omit({ id: true });
 export const insertEvaluationReportSchema = createInsertSchema(evaluationReports).omit({ id: true });
 export const insertRubricCriteriaSchema = createInsertSchema(rubricCriteria).omit({ id: true });
 
 export type BusinessUnit = typeof businessUnits.$inferSelect;
 export type InsertBusinessUnit = z.infer<typeof insertBusinessUnitSchema>;
+export type BudgetDocument = typeof budgetDocuments.$inferSelect;
+export type InsertBudgetDocument = z.infer<typeof insertBudgetDocumentSchema>;
 export type EvaluationReport = typeof evaluationReports.$inferSelect;
 export type InsertEvaluationReport = z.infer<typeof insertEvaluationReportSchema>;
 export type RubricCriteria = typeof rubricCriteria.$inferSelect;

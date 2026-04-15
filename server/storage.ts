@@ -3,10 +3,13 @@ import Database from "better-sqlite3";
 import { eq } from "drizzle-orm";
 import {
   businessUnits,
+  budgetDocuments,
   evaluationReports,
   rubricCriteria,
   type BusinessUnit,
   type InsertBusinessUnit,
+  type BudgetDocument,
+  type InsertBudgetDocument,
   type EvaluationReport,
   type InsertEvaluationReport,
   type RubricCriteria,
@@ -22,6 +25,10 @@ export interface IStorage {
   getBusinessUnit(id: number): BusinessUnit | undefined;
   createBusinessUnit(bu: InsertBusinessUnit): BusinessUnit;
   updateBusinessUnit(id: number, bu: Partial<InsertBusinessUnit>): BusinessUnit | undefined;
+
+  // Budget Documents
+  getBudgetDocuments(businessUnitId: number): BudgetDocument[];
+  createBudgetDocument(doc: InsertBudgetDocument): BudgetDocument;
 
   // Evaluation Reports
   getEvaluationReports(businessUnitId?: number): EvaluationReport[];
@@ -49,6 +56,14 @@ export class DatabaseStorage implements IStorage {
 
   updateBusinessUnit(id: number, bu: Partial<InsertBusinessUnit>): BusinessUnit | undefined {
     return db.update(businessUnits).set(bu).where(eq(businessUnits.id, id)).returning().get();
+  }
+
+  getBudgetDocuments(businessUnitId: number): BudgetDocument[] {
+    return db.select().from(budgetDocuments).where(eq(budgetDocuments.businessUnitId, businessUnitId)).all();
+  }
+
+  createBudgetDocument(doc: InsertBudgetDocument): BudgetDocument {
+    return db.insert(budgetDocuments).values(doc).returning().get();
   }
 
   getEvaluationReports(businessUnitId?: number): EvaluationReport[] {
