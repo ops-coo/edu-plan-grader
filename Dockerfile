@@ -17,6 +17,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY package.json ./
 COPY dist/ ./dist/
 COPY shared/ ./shared/
+COPY data/ ./data/
 
 # SQLite data is ephemeral in Cloud Run — BigQuery is the persistent backend
 ENV NODE_ENV=production

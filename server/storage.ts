@@ -1,6 +1,8 @@
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
 import { eq } from "drizzle-orm";
+import { readFileSync, existsSync } from "fs";
+import { resolve } from "path";
 import {
   businessUnits,
   budgetDocuments,
@@ -68,6 +70,49 @@ sqlite.exec(`
     evidence TEXT
   );
 `);
+
+// Auto-seed from bundled JSON if the database is empty (fresh Cloud Run container)
+function seedIfEmpty() {
+  const count = sqlite.prepare("SELECT count(*) as c FROM business_units").get() as { c: number };
+  if (count.c > 0) return; // Already has data
+
+  // Try multiple paths (dev vs production build layout)
+  const candidates = [
+    resolve(__dirname, "../data/seed.json"),
+    resolve(__dirname, "../../data/seed.json"),
+    resolve(process.cwd(), "data/seed.json"),
+  ];
+  const seedPath = candidates.find(p => existsSync(p));
+  if (!seedPath) {
+    console.log("[seed] No seed.json found — starting with empty database");
+    return;
+  }
+
+  console.log(`[seed] Empty database detected — loading seed data from ${seedPath}`);
+  const seed = JSON.parse(readFileSync(seedPath, "utf-8"));
+
+  const insertMany = (table: string, rows: Record<string, any>[]) => {
+    if (!rows || rows.length === 0) return;
+    const cols = Object.keys(rows[0]);
+    const placeholders = cols.map(() => "?").join(", ");
+    const stmt = sqlite.prepare(`INSERT OR IGNORE INTO ${table} (${cols.join(", ")}) VALUES (${placeholders})`);
+    const tx = sqlite.transaction((items: Record<string, any>[]) => {
+      for (const row of items) {
+        stmt.run(...cols.map(c => row[c] ?? null));
+      }
+    });
+    tx(rows);
+    console.log(`[seed] ${table}: ${rows.length} rows loaded`);
+  };
+
+  insertMany("business_units", seed.business_units);
+  insertMany("budget_documents", seed.budget_documents);
+  insertMany("evaluation_reports", seed.evaluation_reports);
+  insertMany("rubric_criteria", seed.rubric_criteria);
+  console.log("[seed] Database seeded successfully");
+}
+
+seedIfEmpty();
 
 export interface IStorage {
   // Business Units

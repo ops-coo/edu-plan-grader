@@ -1,0 +1,1249 @@
+{
+  "business_units": [
+    {
+      "id": 1,
+      "name": "Physical Private Schools",
+      "gm": "Stefanie B / Jan",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": 30,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/12jUkvwZVzj-_NQMSSPBO2NbpHTSNWpK-1TBN9eXMpL4/edit?gid=2087319596",
+      "brainlift_rating": "Critically Flawed",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 2,
+      "name": "2hr Evangelism / EDU Media",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": 85,
+      "budget_doc_url": null,
+      "budget_pnl_url": null,
+      "brainlift_rating": "Exemplary",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 3,
+      "name": "Core Education",
+      "gm": "Artie / Dave / Jan",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1k852NuNHo-E-1LMhzGideAo4-F1uF-kDz8UPZqZOcDM/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 4,
+      "name": "The Alpha Fund",
+      "gm": "Sonny / Jan",
+      "sector": "Education",
+      "status": "evaluated",
+      "overall_score": 70,
+      "budget_doc_url": "https://docs.google.com/document/d/1n22NnepM6OA6F1sR2Cz9TfpPuroTs4ExfiAvSN1RHdU/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1B8hvaV7BvWVQCUCw1FgeIxDp2lMU5JWeDybmAc5YKOA/edit?gid=866984114",
+      "brainlift_rating": "Promising",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 5,
+      "name": "Virtual Charter Schools",
+      "gm": "Ivy Xu / Jan",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": 85,
+      "budget_doc_url": "https://docs.google.com/document/d/1mH0plarEULHnlE9CjsnYRie8P4EyW_dkvgNamYQxdfw/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1NKl--xCSlq9dpIfxMkOK2ONez0p1_EwS5Nbz9jEZ2eM/edit?gid=866984114",
+      "brainlift_rating": "Exemplary",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 6,
+      "name": "Alpha AI Engineer Program",
+      "gm": "Jan",
+      "sector": "Education",
+      "status": "rejected",
+      "overall_score": null,
+      "budget_doc_url": "https://docs.google.com/document/d/1yvLet5e6v-foj4jKLhMa5TpA-H2oDINFW-CCkLf45xw/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1FimYVzRqYyuskxNkhSTlU03OUJzZh00C78HKRsdJmhQ/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:48:35.286Z"
+    },
+    {
+      "id": 7,
+      "name": "Homeschool/DTC Apps",
+      "gm": "Joe Marone / Jan",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": 85,
+      "budget_doc_url": "https://docs.google.com/document/d/1wy6FFfOUf9tuJ6dJvRdroOwMQX8JfHVJ5x7U4YqmMKE/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1XVY-ryWHaC31kzOHAFMav776n2Ta_RT5t_YaaZfWMWc/edit?gid=866984114",
+      "brainlift_rating": "Exemplary",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 8,
+      "name": "Public School SW Sales",
+      "gm": "Jenna / Jan",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": 85,
+      "budget_doc_url": "https://docs.google.com/document/d/12kwxoI-dKJBwJe21J908qUxwLx03PjRjeb3honhzTJg/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1jG1bPWTdwXc9amGzP50cJ9fjh1bUN4DKHvnSF1VIkuI/edit?gid=866984114",
+      "brainlift_rating": "Exemplary",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 9,
+      "name": "Private School SW Sales",
+      "gm": "Brittany / Jan",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": 85,
+      "budget_doc_url": "https://docs.google.com/document/d/1pl4CiaCDGa_bz4APARW7SNYPeo2PouZr6_XHvwG-vLk/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/166XvQEH1foAJyCCOS1hKaJGjDqVFDMF34zTyzhhZTNc/edit?gid=866984114",
+      "brainlift_rating": "Exemplary",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 10,
+      "name": "Marriott Education",
+      "gm": "Brian Holtz / Jan",
+      "sector": "Education",
+      "status": "evaluated",
+      "overall_score": 55,
+      "budget_doc_url": "https://docs.google.com/document/d/1btAV0QWw8AL0CM8fXjORUhMHo0n5_7OnbKv5jovHie4/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1h-s_Z_9ZOosvX7HsLZqakYB7plnwKLl4urUK1bw_h4w/edit?gid=866984114",
+      "brainlift_rating": "Developing",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 11,
+      "name": "Strata",
+      "gm": "Arpan / Jan",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": 85,
+      "budget_doc_url": "https://docs.google.com/document/d/1GV9lPpdMX5ItIDeYc6-57db0_mEYAijLRCNyESyQ2Qo/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1s_cyVE2RK0VGXTtFSFQ_nAJAk2Nh6f8mjfUlHb0NpD0/edit?gid=866984114",
+      "brainlift_rating": "Exemplary",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 12,
+      "name": "Alpha University",
+      "gm": "Roger / Jan",
+      "sector": "Education",
+      "status": "on_hold",
+      "overall_score": 85,
+      "budget_doc_url": "https://docs.google.com/document/d/1AmSrvUopxYdkzcmAWUTPHTBBZRj-cCQazUyel9ez9Ok/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1cagJYhpMNqpZ0e71SemKy8fIJDaU7U6rQCjPysvMLvQ/edit?gid=866984114",
+      "brainlift_rating": "Exemplary",
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 13,
+      "name": "GT Summer Program",
+      "gm": "Arvind / Jan",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": "https://docs.google.com/spreadsheets/d/1jEOB0E83u9U9NSWw-uY2XDaKpeb-uKqI/edit?gid=1752158331",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1XnWR66QbAmFeJy3eyaonoLJGutPCai_QTA8x_1DFcn8/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 14,
+      "name": "Alpha Summer Program",
+      "gm": "Christopher / Jan",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": "https://docs.google.com/spreadsheets/d/1HgQ3ST4xc-EnvtVTWl0-yY1LAQ1CaNDb/edit?gid=28921346",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/19UdfCnwD5yRTz9bOVffpCR44sN_hBm77m1hEJ8ue72s/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 15,
+      "name": "Learnwith.AI",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1MhIMseEugO6e0aZwSkfepnG39PVDxKtTjaPXk9Y6kOM/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 16,
+      "name": "Academics",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1vXdaWMFJgPcGkd3ozBy2GOgFr6eePPe6kdzIQmB1TV4/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 17,
+      "name": "2HR Learning",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1e48VUlD_JDWR_vSTa6wNwTWiEmPBwpKInlJ8Cd1KAf8/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 18,
+      "name": "Edupaid",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1nb-zQrL0VOht37XdgC8-gWN7q6HbwbxFQFh0zAM4P3A/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 19,
+      "name": "Ephor",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1G5BD4trHj-sTS4I4khp8u6yPWyFC2Dm84jMo7HLc5sY/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 20,
+      "name": "Tech Super Builders",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1pVYP2pO2k3F7cHAyO5XpucxfrrBOrd3D2FjiwQZc2kI/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 21,
+      "name": "GT",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": "https://docs.google.com/document/d/1-rC_NxAer9OnQT78DeGBoGmW339e_2IX4eu2zBkoOvE/edit?tab=t.0",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1vuorCtAuLWeEHFOhBrUhqr0DVGYqIVgUceTSYNiH8F4/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 22,
+      "name": "CrushAP",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": "https://docs.google.com/document/d/1vHrtq3swaTvPgcmcQD-tB5ZHQ34RpfL22LaNWce7pBs/edit?tab=t.egwl8db97yho",
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/15NbAVXEpNLGhp1_Ue7eXuPP14Wiqq8xjIJBs-lwyIng/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 23,
+      "name": "GT Camps",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/1XnWR66QbAmFeJy3eyaonoLJGutPCai_QTA8x_1DFcn8/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 24,
+      "name": "Alpha Camps",
+      "gm": "TBD",
+      "sector": "Education",
+      "status": "pending_review",
+      "overall_score": null,
+      "budget_doc_url": null,
+      "budget_pnl_url": "https://docs.google.com/spreadsheets/d/19UdfCnwD5yRTz9bOVffpCR44sN_hBm77m1hEJ8ue72s/edit?gid=866984114",
+      "brainlift_rating": null,
+      "created_at": "2026-04-15T22:20:48",
+      "updated_at": "2026-04-15T22:20:48"
+    }
+  ],
+  "budget_documents": [
+    {
+      "id": 1,
+      "business_unit_id": 1,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/12jUkvwZVzj-_NQMSSPBO2NbpHTSNWpK-1TBN9eXMpL4/edit?gid=2087319596",
+      "quarter": "Q1-26",
+      "title": "Physical Private Schools - Budget Pnl",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 2,
+      "business_unit_id": 1,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/1-physical-private-s/JLGJZVME23oWHn9d",
+      "quarter": "Q1-26",
+      "title": "Physical Private Schools - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 3,
+      "business_unit_id": 1,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/a7811356",
+      "quarter": "Q1-26",
+      "title": "Physical Private Schools - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 4,
+      "business_unit_id": 1,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/193PywBv5BC6P4nS9munhFbJXf2jtv3IjBDvT0X9-guM/edit?gid=2087319596",
+      "quarter": "Q2-26",
+      "title": "Physical Private Schools - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 5,
+      "business_unit_id": 2,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/9-evangelism-edumedi/D1scw9BkFVsABRqA",
+      "quarter": "Q1-26",
+      "title": "2hr Evangelism / EDU Media - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 6,
+      "business_unit_id": 2,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/603f2f76",
+      "quarter": "Q1-26",
+      "title": "2hr Evangelism / EDU Media - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 7,
+      "business_unit_id": 3,
+      "document_type": "cf_orders",
+      "url": "https://docs.google.com/document/d/1shAdguZLVzuD4xWQZaRHAXj5E4TIABfJ/edit?usp=drive_link&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "Core Education - Cf Orders Cf",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 8,
+      "business_unit_id": 3,
+      "document_type": "import_orders",
+      "url": "https://docs.google.com/spreadsheets/d/16U9_Gw22bg3pYis2oXiTToL8QmQBupdj/edit?gid=261201420",
+      "quarter": "Q2-26",
+      "title": "Core Education - Import Orders",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 9,
+      "business_unit_id": 3,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1k852NuNHo-E-1LMhzGideAo4-F1uF-kDz8UPZqZOcDM/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Core Education - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 10,
+      "business_unit_id": 4,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1WQRb3fu227RPJepO084dJ95F_egBtS3uClQIUWFNvZY/edit?tab=t.0",
+      "quarter": "Q1-26",
+      "title": "The Alpha Fund - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 11,
+      "business_unit_id": 4,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/12-alpha-fund-vc-fun/LRgrAjErLAPqrvUl",
+      "quarter": "Q1-26",
+      "title": "The Alpha Fund - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 12,
+      "business_unit_id": 4,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/fa56157e",
+      "quarter": "Q1-26",
+      "title": "The Alpha Fund - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 13,
+      "business_unit_id": 4,
+      "document_type": "cf_orders",
+      "url": "https://docs.google.com/document/d/19KsjVC54ys4nM7IQ7Fn0QyPFGBPBPixM/edit?usp=sharing&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "The Alpha Fund - Cf Orders Cf",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 14,
+      "business_unit_id": 4,
+      "document_type": "import_orders",
+      "url": "https://docs.google.com/spreadsheets/d/15Zr7Gf8XiRDe0c0D6lLNn5dhPL4eolJe/edit?usp=drive_link&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "The Alpha Fund - Import Orders",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 15,
+      "business_unit_id": 4,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1n22NnepM6OA6F1sR2Cz9TfpPuroTs4ExfiAvSN1RHdU/edit?tab=t.0",
+      "quarter": "Q2-26",
+      "title": "The Alpha Fund - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 16,
+      "business_unit_id": 4,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1B8hvaV7BvWVQCUCw1FgeIxDp2lMU5JWeDybmAc5YKOA/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "The Alpha Fund - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 17,
+      "business_unit_id": 5,
+      "document_type": "business_plan",
+      "url": "https://www.google.com/url?q=https://docs.google.com/document/d/1jNuRnEThV3Cy1b0DhHGGD3JzpziKem9P_U7Xq64bRUI/edit?tab%3Dt.0%23heading%3Dh.bgt2jz7h8eyr&sa=D&source=editors&ust=1765450837188675&usg=AOvVaw0NYO5jOaz4F073u-iu1rfx",
+      "quarter": "Q1-26",
+      "title": "Virtual Charter Schools - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 18,
+      "business_unit_id": 5,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/virtual-charteresa-s/bViFr2cfBrSeLYVN",
+      "quarter": "Q1-26",
+      "title": "Virtual Charter Schools - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 19,
+      "business_unit_id": 5,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/ec67e540",
+      "quarter": "Q1-26",
+      "title": "Virtual Charter Schools - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 20,
+      "business_unit_id": 5,
+      "document_type": "cf_orders",
+      "url": "https://docs.google.com/document/d/19wXXuZAMuw2MXkBfgiJgNaj6E51ch7n2/edit?usp=drive_link&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "Virtual Charter Schools - Cf Orders Cf",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 21,
+      "business_unit_id": 5,
+      "document_type": "import_orders",
+      "url": "https://docs.google.com/spreadsheets/d/1b-SZcADF2W1XDY0n887zACXecJi8Pvlb/edit?usp=sharing&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "Virtual Charter Schools - Import Orders",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 22,
+      "business_unit_id": 5,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1mH0plarEULHnlE9CjsnYRie8P4EyW_dkvgNamYQxdfw/edit?tab=t.0",
+      "quarter": "Q2-26",
+      "title": "Virtual Charter Schools - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 23,
+      "business_unit_id": 5,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1NKl--xCSlq9dpIfxMkOK2ONez0p1_EwS5Nbz9jEZ2eM/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Virtual Charter Schools - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 24,
+      "business_unit_id": 6,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1TUEpR2X71BMmXbJJTn6BtWJZ_UKat_BmJedw69aN_2g/edit?tab=t.0",
+      "quarter": "Q1-26",
+      "title": "Alpha AI Engineer Program - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 25,
+      "business_unit_id": 6,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/tu-s25-summer-brainl/XVBfkRlk2YNQZDGs",
+      "quarter": "Q1-26",
+      "title": "Alpha AI Engineer Program - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 26,
+      "business_unit_id": 6,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1yvLet5e6v-foj4jKLhMa5TpA-H2oDINFW-CCkLf45xw/edit?tab=t.0",
+      "quarter": "Q2-26",
+      "title": "Alpha AI Engineer Program - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 27,
+      "business_unit_id": 6,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1FimYVzRqYyuskxNkhSTlU03OUJzZh00C78HKRsdJmhQ/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Alpha AI Engineer Program - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 28,
+      "business_unit_id": 7,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1Hd52cTZtG3XBnz_kJq1sUV_fTC1jmVCdb-3ShX80d5I/edit?tab=t.0",
+      "quarter": "Q1-26",
+      "title": "Homeschool/DTC Apps - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 29,
+      "business_unit_id": 7,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/5-homeschool-dtc-app/gRjdNz3mOAYBArkJ",
+      "quarter": "Q1-26",
+      "title": "Homeschool/DTC Apps - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 30,
+      "business_unit_id": 7,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/d5d9bb3d",
+      "quarter": "Q1-26",
+      "title": "Homeschool/DTC Apps - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 31,
+      "business_unit_id": 7,
+      "document_type": "cf_orders",
+      "url": "https://docs.google.com/document/d/1-uq6s8PMhAgXv1uYrIgAGIoBAR4W9t8D/edit?usp=drive_link&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "Homeschool/DTC Apps - Cf Orders Cf",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 32,
+      "business_unit_id": 7,
+      "document_type": "import_orders",
+      "url": "https://docs.google.com/spreadsheets/d/1ENwqth9x_8C4TirEyDI_AFDf5hKBGLB_hI8udBrMoxI/edit?gid=2056169482",
+      "quarter": "Q2-26",
+      "title": "Homeschool/DTC Apps - Import Orders",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 33,
+      "business_unit_id": 7,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1wy6FFfOUf9tuJ6dJvRdroOwMQX8JfHVJ5x7U4YqmMKE/edit?tab=t.0",
+      "quarter": "Q2-26",
+      "title": "Homeschool/DTC Apps - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 34,
+      "business_unit_id": 7,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1XVY-ryWHaC31kzOHAFMav776n2Ta_RT5t_YaaZfWMWc/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Homeschool/DTC Apps - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 35,
+      "business_unit_id": 8,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1MPhgZbpyCYO70tPfZmkNcVNoLlYSLlhauel-YS4asRA/edit?tab=t.0",
+      "quarter": "Q1-26",
+      "title": "Public School SW Sales - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 36,
+      "business_unit_id": 8,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/3-district-sales-pub/rFpq4gognup5lozZ",
+      "quarter": "Q1-26",
+      "title": "Public School SW Sales - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 37,
+      "business_unit_id": 8,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/8ce51508",
+      "quarter": "Q1-26",
+      "title": "Public School SW Sales - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 38,
+      "business_unit_id": 8,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/12kwxoI-dKJBwJe21J908qUxwLx03PjRjeb3honhzTJg/edit?tab=t.0",
+      "quarter": "Q2-26",
+      "title": "Public School SW Sales - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 39,
+      "business_unit_id": 8,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1jG1bPWTdwXc9amGzP50cJ9fjh1bUN4DKHvnSF1VIkuI/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Public School SW Sales - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 40,
+      "business_unit_id": 9,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1rxlG52n5qZj_Xi5fhnFhWNQyfQcdwRzS8q8Zpsg9EHc/edit?tab=t.0",
+      "quarter": "Q1-26",
+      "title": "Private School SW Sales - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 41,
+      "business_unit_id": 9,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/4-private-school-sal/v4xdTVQVzCAVwxFk",
+      "quarter": "Q1-26",
+      "title": "Private School SW Sales - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 42,
+      "business_unit_id": 9,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/90e5c7c6",
+      "quarter": "Q1-26",
+      "title": "Private School SW Sales - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 43,
+      "business_unit_id": 9,
+      "document_type": "cf_orders",
+      "url": "https://docs.google.com/document/d/1rIiVsCVp970hjzAbOjKmeC9458WqHt-V/edit?usp=drive_link&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "Private School SW Sales - Cf Orders Cf",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 44,
+      "business_unit_id": 9,
+      "document_type": "import_orders",
+      "url": "https://docs.google.com/spreadsheets/d/1ZJrFyTJrTvia-w30vrLPMd3cmjkyXZXP/edit?gid=1520904817",
+      "quarter": "Q2-26",
+      "title": "Private School SW Sales - Import Orders",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 45,
+      "business_unit_id": 9,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1pl4CiaCDGa_bz4APARW7SNYPeo2PouZr6_XHvwG-vLk/edit?tab=t.0",
+      "quarter": "Q2-26",
+      "title": "Private School SW Sales - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 46,
+      "business_unit_id": 9,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/166XvQEH1foAJyCCOS1hKaJGjDqVFDMF34zTyzhhZTNc/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Private School SW Sales - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 47,
+      "business_unit_id": 10,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1pdPmBKZemxBAobpQ7YJbbmdPzLuQHU6SohQZjHGsWxs/edit?tab=t.0",
+      "quarter": "Q1-26",
+      "title": "Marriott Education - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 48,
+      "business_unit_id": 10,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/15-marriott-david-ca/8fWSN5gPxtPwJ3nf",
+      "quarter": "Q1-26",
+      "title": "Marriott Education - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 49,
+      "business_unit_id": 10,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/cc7f12ee",
+      "quarter": "Q1-26",
+      "title": "Marriott Education - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 50,
+      "business_unit_id": 10,
+      "document_type": "cf_orders",
+      "url": "https://docs.google.com/document/d/1FKrcXbQR-kEITphiII-mIoQGuEQXTOD5/edit?usp=drive_link&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "Marriott Education - Cf Orders Cf",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 51,
+      "business_unit_id": 10,
+      "document_type": "import_orders",
+      "url": "https://docs.google.com/spreadsheets/d/11FiWAPFAbMltvBhRhcgF9R6kir3fWuOr/edit?gid=1604148529",
+      "quarter": "Q2-26",
+      "title": "Marriott Education - Import Orders",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 52,
+      "business_unit_id": 10,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1btAV0QWw8AL0CM8fXjORUhMHo0n5_7OnbKv5jovHie4/edit?tab=t.0",
+      "quarter": "Q2-26",
+      "title": "Marriott Education - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 53,
+      "business_unit_id": 10,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1h-s_Z_9ZOosvX7HsLZqakYB7plnwKLl4urUK1bw_h4w/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Marriott Education - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 54,
+      "business_unit_id": 11,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/strata-school-texas/1Nrn0GWfqBGlrq29",
+      "quarter": "Q1-26",
+      "title": "Strata - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 55,
+      "business_unit_id": 11,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/5f4289ba",
+      "quarter": "Q1-26",
+      "title": "Strata - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 56,
+      "business_unit_id": 11,
+      "document_type": "cf_orders",
+      "url": "https://docs.google.com/document/d/1KoqA76c8uhxAiDy-dEgmHRJwM0WF5Ndo/edit?usp=drive_link&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "Strata - Cf Orders Cf",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 57,
+      "business_unit_id": 11,
+      "document_type": "import_orders",
+      "url": "https://docs.google.com/spreadsheets/d/1aGpIqKyPcK0-6LuqhHmfFRuN2Cid-7Wg/edit?usp=drive_link&ouid=114688064081760703759&rtpof=true&sd=true",
+      "quarter": "Q2-26",
+      "title": "Strata - Import Orders",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 58,
+      "business_unit_id": 11,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1GV9lPpdMX5ItIDeYc6-57db0_mEYAijLRCNyESyQ2Qo/edit?tab=t.0",
+      "quarter": "Q2-26",
+      "title": "Strata - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 59,
+      "business_unit_id": 11,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1s_cyVE2RK0VGXTtFSFQ_nAJAk2Nh6f8mjfUlHb0NpD0/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Strata - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 60,
+      "business_unit_id": 12,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1AmSrvUopxYdkzcmAWUTPHTBBZRj-cCQazUyel9ez9Ok/edit?tab=t.0",
+      "quarter": "Q1-26",
+      "title": "Alpha University - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 61,
+      "business_unit_id": 12,
+      "document_type": "brainlift",
+      "url": "https://workflowy.com/s/ludwitt-the-ai-first/cdpfiX3Gg7iKyxOX",
+      "quarter": "Q1-26",
+      "title": "Alpha University - Brainlift Workflowy",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 62,
+      "business_unit_id": 12,
+      "document_type": "brainlift_insights",
+      "url": "https://ephor.ai/join/6892fcf0",
+      "quarter": "Q1-26",
+      "title": "Alpha University - Brainlift Insights",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 63,
+      "business_unit_id": 12,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1cagJYhpMNqpZ0e71SemKy8fIJDaU7U6rQCjPysvMLvQ/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Alpha University - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 64,
+      "business_unit_id": 13,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1XnWR66QbAmFeJy3eyaonoLJGutPCai_QTA8x_1DFcn8/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "GT Summer Program - Budget Pnl",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 65,
+      "business_unit_id": 13,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/spreadsheets/d/1jEOB0E83u9U9NSWw-uY2XDaKpeb-uKqI/edit?gid=1752158331",
+      "quarter": "Q2-26",
+      "title": "GT Summer Program - Budget Doc",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 66,
+      "business_unit_id": 14,
+      "document_type": "cf_orders",
+      "url": "https://docs.google.com/spreadsheets/d/1HgQ3ST4xc-EnvtVTWl0-yY1LAQ1CaNDb/edit?gid=28921346",
+      "quarter": "Q2-26",
+      "title": "Alpha Summer Program - Cf Orders Cf",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 67,
+      "business_unit_id": 14,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/19UdfCnwD5yRTz9bOVffpCR44sN_hBm77m1hEJ8ue72s/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Alpha Summer Program - Budget Pnl",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 68,
+      "business_unit_id": 15,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1MhIMseEugO6e0aZwSkfepnG39PVDxKtTjaPXk9Y6kOM/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Learnwith.AI - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 69,
+      "business_unit_id": 16,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1vXdaWMFJgPcGkd3ozBy2GOgFr6eePPe6kdzIQmB1TV4/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Academics - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 70,
+      "business_unit_id": 17,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1e48VUlD_JDWR_vSTa6wNwTWiEmPBwpKInlJ8Cd1KAf8/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "2HR Learning - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 71,
+      "business_unit_id": 18,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1nb-zQrL0VOht37XdgC8-gWN7q6HbwbxFQFh0zAM4P3A/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Edupaid - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 72,
+      "business_unit_id": 19,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1G5BD4trHj-sTS4I4khp8u6yPWyFC2Dm84jMo7HLc5sY/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Ephor - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 73,
+      "business_unit_id": 20,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1pVYP2pO2k3F7cHAyO5XpucxfrrBOrd3D2FjiwQZc2kI/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Tech Super Builders - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 74,
+      "business_unit_id": 21,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1vuorCtAuLWeEHFOhBrUhqr0DVGYqIVgUceTSYNiH8F4/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "GT - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 75,
+      "business_unit_id": 22,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/15NbAVXEpNLGhp1_Ue7eXuPP14Wiqq8xjIJBs-lwyIng/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "CrushAP - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 76,
+      "business_unit_id": 23,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/1XnWR66QbAmFeJy3eyaonoLJGutPCai_QTA8x_1DFcn8/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "GT Camps - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 77,
+      "business_unit_id": 24,
+      "document_type": "pnl_spreadsheet",
+      "url": "https://docs.google.com/spreadsheets/d/19UdfCnwD5yRTz9bOVffpCR44sN_hBm77m1hEJ8ue72s/edit?gid=866984114",
+      "quarter": "Q2-26",
+      "title": "Alpha Camps - Budget P&L Spreadsheet",
+      "created_at": "2026-04-15T22:20:48"
+    },
+    {
+      "id": 78,
+      "business_unit_id": 21,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1-rC_NxAer9OnQT78DeGBoGmW339e_2IX4eu2zBkoOvE/edit?tab=t.0",
+      "quarter": "Q2-26",
+      "title": "GT Budget Plan Q2 2026",
+      "created_at": "2026-04-15 23:07:06"
+    },
+    {
+      "id": 79,
+      "business_unit_id": 22,
+      "document_type": "business_plan",
+      "url": "https://docs.google.com/document/d/1vHrtq3swaTvPgcmcQD-tB5ZHQ34RpfL22LaNWce7pBs/edit?tab=t.egwl8db97yho",
+      "quarter": "Q2-26",
+      "title": "Crush AP Business and Growth Plan",
+      "created_at": "2026-04-15 23:07:06"
+    }
+  ],
+  "evaluation_reports": [
+    {
+      "id": 1,
+      "business_unit_id": 7,
+      "created_at": "2026-04-15T22:47:35.917Z",
+      "recommendation": "APPROVE",
+      "overall_score": 8.2,
+      "confidence_score": 85,
+      "executive_summary": "Homeschool/DTC Apps demonstrates strong alignment with Joe's education vision. 5.3x learning multiplier exceeds the >2x threshold for marketing spend. Direct-to-parent GTM is validated. Unit economics are positive with clear path to scale. Recommend approval with marketing acceleration.",
+      "key_findings": "[\"5.3x learning multiplier — strongest academic results in the portfolio\",\"Strong enrollment growth, on track for accelerated targets\",\"Accelerated plan projects significant scale by Q2'27\",\"Positive margins in both base and accelerated scenarios\",\"Direct-to-parent GTM aligns with Joe's core values\"]",
+      "critical_issues": "[\"Marketing spend decision requires high confidence in CAC payback\",\"Scaling aggressively requires clear capacity plan\"]",
+      "rubric_scores": "{\"mission_alignment\":9,\"academic_excellence\":9.5,\"product_pricing\":7.5,\"gtm_community\":8,\"ai_scalability\":7,\"financial_model\":8.5,\"talent_strategy\":7.5,\"access_funding\":8}",
+      "financial_summary": "Exemplary brainlift rating (85/100). Strong unit economics with positive margin trajectory.",
+      "report_url": null
+    },
+    {
+      "id": 2,
+      "business_unit_id": 11,
+      "created_at": "2026-04-15T22:47:35.930Z",
+      "recommendation": "APPROVE_WITH_FIX",
+      "overall_score": 6.8,
+      "confidence_score": 72,
+      "executive_summary": "Strata has strong enrollment momentum and a compelling microschool/sports-education model. However, the financial model needs to tie out to sensitivity analysis. Marketing spend exceeded plan in Q1. Recommend approval contingent on budget realignment and model reconciliation.",
+      "key_findings": "[\"Strong enrollment demand signal\",\"Projecting solid student growth across segments\",\"Revenue target with EBITDA-positive trajectory\",\"Q1 marketing overspend linked to voucher program launch\",\"Financial model must reconcile with approved sensitivity analysis\"]",
+      "critical_issues": "[\"Model tie-out incomplete — financial projections not yet validated against agreed assumptions\",\"Q1 overspend vs plan — primarily marketing\",\"Multiple pricing tiers create complexity in financial modeling\"]",
+      "rubric_scores": "{\"mission_alignment\":7.5,\"academic_excellence\":6,\"product_pricing\":7,\"gtm_community\":7.5,\"ai_scalability\":5.5,\"financial_model\":6.5,\"talent_strategy\":7,\"access_funding\":7.5}",
+      "financial_summary": "Exemplary brainlift rating (85/100). EBITDA-positive trajectory. Budget reconciliation required.",
+      "report_url": null
+    },
+    {
+      "id": 3,
+      "business_unit_id": 1,
+      "created_at": "2026-04-15T22:47:35.932Z",
+      "recommendation": "REJECT",
+      "overall_score": 2.8,
+      "confidence_score": 90,
+      "executive_summary": "Physical Private Schools has a Critically Flawed brainlift rating (30/100). The business model needs fundamental restructuring. Finance recommends a complete review before additional investment.",
+      "key_findings": "[\"Critically Flawed brainlift rating — lowest in the portfolio\",\"Score of 30/100 indicates fundamental issues\",\"P&L spreadsheet available for detailed financial review\",\"Business plan structure needs significant improvement\"]",
+      "critical_issues": "[\"Critically Flawed brainlift assessment — fundamental business model concerns\",\"No clear path to profitability under current structure\",\"Violates Joe's 'High ROIC' and 'asset-light' principles\"]",
+      "rubric_scores": "{\"mission_alignment\":4,\"academic_excellence\":3,\"product_pricing\":2,\"gtm_community\":1.5,\"ai_scalability\":3.5,\"financial_model\":1,\"talent_strategy\":3,\"access_funding\":2}",
+      "financial_summary": "Critically Flawed (30/100). Fundamental restructuring needed before investment.",
+      "report_url": null
+    },
+    {
+      "id": 4,
+      "business_unit_id": 6,
+      "created_at": "2026-04-15T22:48:35.274Z",
+      "recommendation": "REJECT",
+      "overall_score": 2.1,
+      "confidence_score": 72,
+      "executive_summary": "The Alpha AI Engineer Program is a corporate internship initiative — not an education product — that bears almost no resemblance to the 2Hr Learning / Alpha Holdings education portfolio rubric. The business plan documents consist entirely of operational logistics and budget tracking for a summer internship program for 77-100 university students, with zero revenue, $6.1M in annual losses, no academic curriculum, no AI-powered learning systems, and no pathway to broad student access. The plan fails to meet the minimum threshold on nearly every evaluated category.",
+      "key_findings": "[\"Program recruits from top-tier universities (MIT, Stanford, UT), indicating some ambition around talent quality standards\",\"Structured 8-week program with defined logistics (housing, meals, transport, equipment) shows operational planning discipline\",\"Modest cost improvement of ~$189K achieved through HC-to-NHC reallocation, suggesting some financial governance awareness\",\"Go/no-go decision framework for Summer 2027 reflects basic programmatic accountability\",\"Recruitment pipeline uses structured assessment (CCAT, Coding Assessment, Interview, PCCAT) indicating quality filtering\"]",
+      "critical_issues": "[\"ZERO REVENUE: The plan explicitly shows $0 revenue across all four quarters of FY26 — this is not a viable education business model under any rubric criterion\",\"NOT AN EDUCATION PRODUCT: This is a corporate internship program for university students, not a K-12 or scalable consumer education product — it fundamentally misaligns with the 2Hr Learning portfolio mission\",\"NO MISSION ALIGNMENT: There is no mechanism to unlock potential for 'every kid' — the program serves a hyper-selective cohort of ~100 elite university students from MIT, Stanford, and UT only\",\"NO ACADEMIC FRAMEWORK: Zero mention of learning outcomes, MAP testing, standardized benchmarks, life skills development, or any academic measurement framework\",\"NO PRICING ARCHITECTURE: There is no product pricing at any tier ($150K/yr down to $1K/yr) — the program is an employer-funded internship with student stipends, not a consumer education offering\",\"NO AI-POWERED LEARNING: No AI feedback loops, adaptive learning systems, or technology-driven scalability mechanisms are described anywhere in the plan\",\"$6.1M NET LOSS WITH NO REVENUE PATH: FY26 total expenses of $6.1M against $0 revenue with no articulated monetization strategy represents a pure cost center with no return on invested capital\",\"NO ACCESS OR FUNDING PATHWAY: No ESA/voucher eligibility, no subsidized access model, no pathway to underserved populations — program is exclusively for elite university interns\",\"CAPACITY CAPPED AT 100 STUDENTS: Office space and Wi-Fi constraints already forced a reduction from 150 to 100 participants — the opposite of the 100K+ student scalability criterion\",\"INCOMPLETE BUDGET DOCUMENTATION: Key budget lines (transportation, gym passes, monitors, graduation ceremony) are explicitly flagged as unconfirmed; financial tables contain placeholder zeros and unresolved annotations\"]",
+      "rubric_scores": "{\"mission_alignment\":1,\"academic_excellence\":0,\"product_pricing\":0,\"gtm_community\":2,\"ai_scalability\":1,\"financial_model\":1,\"talent_strategy\":3,\"access_funding\":0}",
+      "financial_summary": "Total FY26 revenue: $0 across all quarters. Total FY26 expenses: ~$6.1M (HC: $235K, NHC: $5.8M, CF: $50K). Net loss: -$6.1M. Gross margin: undefined (no revenue). ROIC: incalculable — no revenue, no return. The program is a pure cost center. The only financial 'improvement' noted is a ~$189K net reduction vs. prior plan, driven by reclassifying Austin Allred's compensation from HC to NHC (Bloomtech vendor spend) — a structural reallocation, not a genuine efficiency gain. No retention metrics, no LTV, no unit economics are presented.",
+      "report_url": null
+    }
+  ],
+  "rubric_criteria": [
+    {
+      "id": 1,
+      "evaluation_id": 1,
+      "criterion_key": "mission_alignment",
+      "criterion_label": "Mission Alignment",
+      "score": 9,
+      "weight": 0.15,
+      "justification": "Directly serves Joe's vision of unlocking potential for EVERY kid through broad-access online education at varying price points.",
+      "evidence": "Strong enrollment growth across diverse demographics"
+    },
+    {
+      "id": 2,
+      "evaluation_id": 1,
+      "criterion_key": "academic_excellence",
+      "criterion_label": "Academic & Life Skills",
+      "score": 9.5,
+      "weight": 0.15,
+      "justification": "5.3x learning multiplier significantly exceeds the >2x threshold. Outstanding standardized test results.",
+      "evidence": "MAP results: 5.3x learning pace"
+    },
+    {
+      "id": 3,
+      "evaluation_id": 1,
+      "criterion_key": "product_pricing",
+      "criterion_label": "Product & Pricing Design",
+      "score": 7.5,
+      "weight": 0.15,
+      "justification": "Pricing exists but doesn't yet span the full $150K to $1K range Joe envisions. Product quality is strong.",
+      "evidence": "Current pricing structure under review"
+    },
+    {
+      "id": 4,
+      "evaluation_id": 1,
+      "criterion_key": "gtm_community",
+      "criterion_label": "GTM & Community",
+      "score": 8,
+      "weight": 0.1,
+      "justification": "Direct-to-parent marketing strategy aligns with Joe's mandate. Community building in progress.",
+      "evidence": "Marketing threshold met via MAP results"
+    },
+    {
+      "id": 5,
+      "evaluation_id": 1,
+      "criterion_key": "ai_scalability",
+      "criterion_label": "AI & Scalability",
+      "score": 7,
+      "weight": 0.15,
+      "justification": "AI-powered learning platform enables quality at scale. Flywheel dynamics emerging but not fully proven.",
+      "evidence": "AI tutoring system operational"
+    },
+    {
+      "id": 6,
+      "evaluation_id": 1,
+      "criterion_key": "financial_model",
+      "criterion_label": "Financial Model",
+      "score": 8.5,
+      "weight": 0.15,
+      "justification": "Strong unit economics. Positive margin in both base and accelerated scenarios. High ROIC potential.",
+      "evidence": "Asset-light model with positive margins"
+    },
+    {
+      "id": 7,
+      "evaluation_id": 1,
+      "criterion_key": "talent_strategy",
+      "criterion_label": "Talent Strategy",
+      "score": 7.5,
+      "weight": 0.05,
+      "justification": "Guide quality is high. Scaling requires clear recruitment pipeline.",
+      "evidence": "Current guide-to-student ratio adequate"
+    },
+    {
+      "id": 8,
+      "evaluation_id": 1,
+      "criterion_key": "access_funding",
+      "criterion_label": "Access & Funding Pathway",
+      "score": 8,
+      "weight": 0.1,
+      "justification": "Lower-price tiers provide sampling. Government funding pathway via ESA/voucher integration.",
+      "evidence": "EduPaid platform handles ESA collections"
+    },
+    {
+      "id": 9,
+      "evaluation_id": 4,
+      "criterion_key": "mission_alignment",
+      "criterion_label": "Mission Alignment",
+      "score": 1,
+      "weight": 0.15,
+      "justification": "The program serves approximately 100 pre-selected elite university students from MIT, Stanford, and UT — the polar opposite of 'unlocking potential for every kid.' There is no evidence of joy-centered learning design, high standards/high support pastoral care, or any educational mission alignment with 2Hr Learning's stated values. This is a corporate summer internship, not an education program.",
+      "evidence": "Program targets 100 interns from MIT, Stanford, UT only; recruitment requires passing CCAT, Coding Assessment, Interview, and PCCAT — highly exclusive filter; no mention of student wellbeing, joy, engagement, or academic mission"
+    },
+    {
+      "id": 10,
+      "evaluation_id": 4,
+      "criterion_key": "academic_excellence",
+      "criterion_label": "Academic & Life Skills",
+      "score": 0,
+      "weight": 0.15,
+      "justification": "There is zero mention of learning outcomes, academic pacing, MAP or equivalent testing, life skills benchmarks, or comparison to global academic standards. The program is described purely as a work experience internship, not an academic program. No curriculum, no pedagogy, no measurement framework exists in either document.",
+      "evidence": "Neither budget document references any academic content, learning objectives, standardized testing, or educational benchmarks; program described solely as 'hands-on work environment' internship"
+    },
+    {
+      "id": 11,
+      "evaluation_id": 4,
+      "criterion_key": "product_pricing",
+      "criterion_label": "Product & Pricing Design",
+      "score": 0,
+      "weight": 0.15,
+      "justification": "There is no product for sale and no pricing architecture whatsoever. The program pays students (stipends) rather than charging them. There is no premium tier, no broad-access tier, no product-market fit analysis, and no consumer-facing education offering described at any price point.",
+      "evidence": "Total Revenue = $0 across all quarters in both Q1 and Q2 budget documents; program provides student stipends, housing, meals, and equipment — it is an employer cost center, not a revenue-generating education product"
+    },
+    {
+      "id": 12,
+      "evaluation_id": 4,
+      "criterion_key": "gtm_community",
+      "criterion_label": "GTM & Community",
+      "score": 2,
+      "weight": 0.1,
+      "justification": "There is a direct recruitment strategy (Sofia traveling to campuses), but it targets employer-side university partnerships for intern recruitment — not a parent-facing consumer education GTM. No community flywheel, no parent referral mechanism, no word-of-mouth strategy, and no marketing tied to academic results are described. The score of 2 reflects that a structured campus recruitment pipeline does exist.",
+      "evidence": "Sofia recruiting at MIT, Stanford, UT since September 2025; 57 interns hired in Q4'25, 77 total by Q1'26; no mention of parent community, referral mechanics, or results-based marketing thresholds"
+    },
+    {
+      "id": 13,
+      "evaluation_id": 4,
+      "criterion_key": "ai_scalability",
+      "criterion_label": "AI & Scalability",
+      "score": 1,
+      "weight": 0.15,
+      "justification": "The program name includes 'AI Engineer' but the documents contain no AI-powered learning or feedback systems. There is no adaptive learning platform, no flywheel effect, and scalability is explicitly constrained (reduced from 150 to 100 due to office and Wi-Fi limits). A score of 1 is given only because AI engineering is the subject matter of the internship, implying tangential AI relevance.",
+      "evidence": "Program capped at 100 students due to 'office space and Wi-Fi capacity constraints'; no AI learning systems described; no platform architecture; no mention of network effects or scalable technology infrastructure"
+    },
+    {
+      "id": 14,
+      "evaluation_id": 4,
+      "criterion_key": "financial_model",
+      "criterion_label": "Financial Model",
+      "score": 1,
+      "weight": 0.15,
+      "justification": "The financial model is deeply problematic: $0 revenue, $6.1M in annual losses, no path to profitability, no unit economics, no retention metrics, and no ROIC framework. The only marginal positive is that expenses came in ~$189K below prior plan due to cost reclassification. The model is entirely asset-heavy for the value delivered (office space, dormitories, meals, transport, equipment for 100 students).",
+      "evidence": "FY26 Net Profit: -$6,105,765 (current plan); Total Revenue: $0; NHC spend of $5.8M includes large vendor/contractor costs; budget lines still unconfirmed per document notes; no monetization strategy present"
+    },
+    {
+      "id": 15,
+      "evaluation_id": 4,
+      "criterion_key": "talent_strategy",
+      "criterion_label": "Talent Strategy",
+      "score": 3,
+      "weight": 0.05,
+      "justification": "This is the program's relative strength. There is a structured talent pipeline (program director, on-site logistics coordinator, rotating mentors) and a rigorous multi-stage selection process for interns. However, the 'talent' here is the interns themselves as raw recruits — not the educator/guide talent strategy the rubric envisions. No AI-augmented coaching model, no educator compensation framework, and no scalable teaching talent pipeline are described.",
+      "evidence": "Multi-stage intern selection: CCAT + Coding Assessment + Interview + PCCAT; dedicated program director and logistics coordinator; rotating internal mentors; 8-week structured program at 1705 Guadalupe Austin office"
+    },
+    {
+      "id": 16,
+      "evaluation_id": 4,
+      "criterion_key": "access_funding",
+      "criterion_label": "Access & Funding Pathway",
+      "score": 0,
+      "weight": 0.1,
+      "justification": "There is no mention of ESA funding, vouchers, charter grants, or any government funding mechanism. The program has no pathway for underserved families — it exclusively targets elite university students at MIT, Stanford, and UT. No regulatory compliance framework for education funding eligibility is addressed. The program is 100% internally funded with no access equity component.",
+      "evidence": "No government funding references in either document; program exclusively recruits from MIT, Stanford, UT; no subsidized access model; no mention of underserved populations, income-based access, or regulatory education compliance"
+    }
+  ]
+}
