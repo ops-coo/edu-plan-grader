@@ -1,0 +1,8 @@
+node_modules
+data.db
+.git
+client
+server
+script
+*.ts
+!dist/**
