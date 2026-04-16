@@ -157,7 +157,102 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     res.json({ total: targets.length, succeeded, failed, results });
   });
 
-  // Seed data endpoint — uses real BU data from JSON files
+  // Budget document creation
+  app.post("/api/budget-documents", (req, res) => {
+    const doc = storage.createBudgetDocument(req.body);
+    res.status(201).json(doc);
+  });
+
+  // Bulk seed endpoint — accepts full seed JSON payload
+  app.post("/api/seed-bulk", (req, res) => {
+    const { business_units, budget_documents, evaluation_reports, rubric_criteria } = req.body;
+    const results: any = { business_units: 0, budget_documents: 0, evaluation_reports: 0, rubric_criteria: 0 };
+    const idMap: Record<number, number> = {};
+    const evalIdMap: Record<number, number> = {};
+
+    // 1. Business units
+    if (business_units) {
+      for (const bu of business_units) {
+        const oldId = bu.id;
+        const created = storage.createBusinessUnit({
+          name: bu.name,
+          gm: bu.gm || null,
+          sector: bu.sector || "Education",
+          status: bu.status || "pending_review",
+          overallScore: bu.overall_score ?? null,
+          budgetDocUrl: bu.budget_doc_url || null,
+          budgetPnlUrl: bu.budget_pnl_url || null,
+          brainliftRating: bu.brainlift_rating || null,
+          createdAt: bu.created_at || new Date().toISOString(),
+          updatedAt: bu.updated_at || new Date().toISOString(),
+        });
+        idMap[oldId] = created.id;
+        results.business_units++;
+      }
+    }
+
+    // 2. Budget documents
+    if (budget_documents) {
+      for (const doc of budget_documents) {
+        const newBuId = idMap[doc.business_unit_id];
+        if (!newBuId) continue;
+        storage.createBudgetDocument({
+          businessUnitId: newBuId,
+          documentType: doc.document_type,
+          url: doc.url,
+          quarter: doc.quarter || null,
+          title: doc.title || null,
+          createdAt: doc.created_at || new Date().toISOString(),
+        });
+        results.budget_documents++;
+      }
+    }
+
+    // 3. Evaluation reports
+    if (evaluation_reports) {
+      for (const ev of evaluation_reports) {
+        const newBuId = idMap[ev.business_unit_id];
+        if (!newBuId) continue;
+        const created = storage.createEvaluationReport({
+          businessUnitId: newBuId,
+          createdAt: ev.created_at,
+          recommendation: ev.recommendation,
+          overallScore: ev.overall_score,
+          confidenceScore: ev.confidence_score,
+          executiveSummary: ev.executive_summary,
+          keyFindings: ev.key_findings,
+          criticalIssues: ev.critical_issues,
+          rubricScores: ev.rubric_scores,
+          financialSummary: ev.financial_summary || null,
+          reportUrl: ev.report_url || null,
+        });
+        evalIdMap[ev.id] = created.id;
+        results.evaluation_reports++;
+      }
+    }
+
+    // 4. Rubric criteria
+    if (rubric_criteria) {
+      for (const rc of rubric_criteria) {
+        const newEvalId = evalIdMap[rc.evaluation_id];
+        if (!newEvalId) continue;
+        storage.createRubricCriteria({
+          evaluationId: newEvalId,
+          criterionKey: rc.criterion_key,
+          criterionLabel: rc.criterion_label,
+          score: rc.score,
+          weight: rc.weight,
+          justification: rc.justification,
+          evidence: rc.evidence || null,
+        });
+        results.rubric_criteria++;
+      }
+    }
+
+    res.json({ message: "Bulk seed complete", results });
+  });
+
+  // Legacy seed endpoint — uses real BU data from JSON files
   app.post("/api/seed", (_req, res) => {
     const existingUnits = storage.getBusinessUnits();
     if (existingUnits.length > 0) {
