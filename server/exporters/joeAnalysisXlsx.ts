@@ -149,7 +149,7 @@ function buildSummarySheet(
     ["Brainlift Rating", bu.brainliftRating ?? ""],
     ["BU Overall Score (/100)", bu.overallScore ?? ""],
     ["Recommendation", evaluation.recommendation],
-    ["Evaluation Overall Score (/10)", Number(evaluation.overallScore.toFixed(2))],
+    ["Evaluation Overall Score (/10)", evaluation.overallScore],
     ["Confidence (%)", evaluation.confidenceScore],
     ["Evaluation Date", formatDate(evaluation.createdAt)],
     ["Executive Summary", evaluation.executiveSummary],
@@ -209,8 +209,8 @@ function buildRubricScoresSheet(
   const totalRow = sheet.addRow({
     label: "Overall (weighted)",
     weight: 1,
-    score: Number(evaluation.overallScore.toFixed(2)),
-    weighted: Number(weightedSum.toFixed(2)),
+    score: evaluation.overallScore,
+    weighted: weightedSum,
   });
   totalRow.font = { bold: true };
   totalRow.getCell("weight").numFmt = "0%";
@@ -322,7 +322,7 @@ function buildOverviewSheet(workbook: ExcelJS.Workbook, rows: BudgetRow[]): void
       brainlift: bu.brainliftRating ?? "",
       status: bu.status,
       recommendation: evaluation?.recommendation ?? "",
-      overall: evaluation ? Number(evaluation.overallScore.toFixed(2)) : "",
+      overall: evaluation ? evaluation.overallScore : "",
       confidence: evaluation?.confidenceScore ?? "",
       evaluated: evaluation ? formatDate(evaluation.createdAt) : "",
     };

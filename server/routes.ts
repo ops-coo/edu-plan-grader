@@ -62,7 +62,8 @@ export async function registerRoutes(httpServer: Server, app: Express) {
       await workbook.xlsx.write(res);
       res.end();
     } catch (err: any) {
-      res.status(500).json({ error: err.message || "Failed to build workbook" });
+      console.error("Failed to build workbook:", err);
+      res.status(500).json({ error: "Failed to build workbook" });
     }
   });
 
@@ -111,7 +112,8 @@ export async function registerRoutes(httpServer: Server, app: Express) {
       await workbook.xlsx.write(res);
       res.end();
     } catch (err: any) {
-      res.status(500).json({ error: err.message || "Failed to build workbook" });
+      console.error("Failed to build workbook:", err);
+      res.status(500).json({ error: "Failed to build workbook" });
     }
   });
 
@@ -131,7 +133,8 @@ export async function registerRoutes(httpServer: Server, app: Express) {
       await workbook.xlsx.write(res);
       res.end();
     } catch (err: any) {
-      res.status(500).json({ error: err.message || "Failed to build workbook" });
+      console.error("Failed to build workbook:", err);
+      res.status(500).json({ error: "Failed to build workbook" });
     }
   });
 
