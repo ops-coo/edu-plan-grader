@@ -196,11 +196,11 @@ export async function evaluateBusinessUnit(buId: number): Promise<{
   overallScore?: number;
 }> {
   // 1. Get BU data
-  const bu = await storage.getBusinessUnit(buId);
+  const bu = storage.getBusinessUnit(buId);
   if (!bu) return { success: false, error: "Business unit not found" };
 
   // 2. Get linked documents
-  const docs = await storage.getBudgetDocuments(buId);
+  const docs = storage.getBudgetDocuments(buId);
   const businessPlanDocs = docs.filter((d) => d.documentType === "business_plan");
 
   if (businessPlanDocs.length === 0) {
@@ -284,7 +284,7 @@ export async function evaluateBusinessUnit(buId: number): Promise<{
   }
 
   // 7. Store evaluation report
-  const report = await storage.createEvaluationReport({
+  const report = storage.createEvaluationReport({
     businessUnitId: buId,
     createdAt: new Date().toISOString(),
     recommendation: evalResult.recommendation || "REJECT",
@@ -322,7 +322,7 @@ export async function evaluateBusinessUnit(buId: number): Promise<{
 
   for (const [key, val] of Object.entries(evalResult.category_scores || {})) {
     const v = val as any;
-    await storage.createRubricCriteria({
+    storage.createRubricCriteria({
       evaluationId: report.id,
       criterionKey: key,
       criterionLabel: rubricLabels[key] || key,
@@ -334,7 +334,7 @@ export async function evaluateBusinessUnit(buId: number): Promise<{
   }
 
   // 9. Update the BU status
-  await storage.updateBusinessUnit(buId, {
+  storage.updateBusinessUnit(buId, {
     status: evalResult.recommendation === "APPROVE"
       ? "approved"
       : evalResult.recommendation === "REJECT"
@@ -366,7 +366,7 @@ export async function evaluateWithContext(
   recommendation?: string;
   overallScore?: number;
 }> {
-  const bu = await storage.getBusinessUnit(buId);
+  const bu = storage.getBusinessUnit(buId);
   if (!bu) return { success: false, error: "Business unit not found" };
 
   if (contextSections.length === 0) {
@@ -413,7 +413,7 @@ export async function evaluateWithContext(
     rubricScores[key] = (val as any).score || 0;
   }
 
-  const report = await storage.createEvaluationReport({
+  const report = storage.createEvaluationReport({
     businessUnitId: buId,
     createdAt: new Date().toISOString(),
     recommendation: evalResult.recommendation || "REJECT",
@@ -440,7 +440,7 @@ export async function evaluateWithContext(
 
   for (const [key, val] of Object.entries(evalResult.category_scores || {})) {
     const v = val as any;
-    await storage.createRubricCriteria({
+    storage.createRubricCriteria({
       evaluationId: report.id,
       criterionKey: key,
       criterionLabel: rubricLabels[key] || key,
@@ -451,7 +451,7 @@ export async function evaluateWithContext(
     });
   }
 
-  await storage.updateBusinessUnit(buId, {
+  storage.updateBusinessUnit(buId, {
     status: evalResult.recommendation === "APPROVE"
       ? "approved"
       : evalResult.recommendation === "REJECT"
