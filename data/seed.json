@@ -1028,48 +1028,6 @@
   ],
   "evaluationReports": [
     {
-      "id": 1,
-      "business_unit_id": 7,
-      "created_at": "2026-04-15T22:47:35.917Z",
-      "recommendation": "APPROVE",
-      "overall_score": 8.2,
-      "confidence_score": 85,
-      "executive_summary": "Homeschool/DTC Apps demonstrates strong alignment with Joe's education vision. 5.3x learning multiplier exceeds the >2x threshold for marketing spend. Direct-to-parent GTM is validated. Unit economics are positive with clear path to scale. Recommend approval with marketing acceleration.",
-      "key_findings": "[\"5.3x learning multiplier \u2014 strongest academic results in the portfolio\",\"Strong enrollment growth, on track for accelerated targets\",\"Accelerated plan projects significant scale by Q2'27\",\"Positive margins in both base and accelerated scenarios\",\"Direct-to-parent GTM aligns with Joe's core values\"]",
-      "critical_issues": "[\"Marketing spend decision requires high confidence in CAC payback\",\"Scaling aggressively requires clear capacity plan\"]",
-      "rubric_scores": "{\"mission_alignment\":9,\"academic_excellence\":9.5,\"product_pricing\":7.5,\"gtm_community\":8,\"ai_scalability\":7,\"financial_model\":8.5,\"talent_strategy\":7.5,\"access_funding\":8}",
-      "financial_summary": "Exemplary brainlift rating (85/100). Strong unit economics with positive margin trajectory.",
-      "report_url": null
-    },
-    {
-      "id": 2,
-      "business_unit_id": 11,
-      "created_at": "2026-04-15T22:47:35.930Z",
-      "recommendation": "APPROVE_WITH_FIX",
-      "overall_score": 6.8,
-      "confidence_score": 72,
-      "executive_summary": "Strata has strong enrollment momentum and a compelling microschool/sports-education model. However, the financial model needs to tie out to sensitivity analysis. Marketing spend exceeded plan in Q1. Recommend approval contingent on budget realignment and model reconciliation.",
-      "key_findings": "[\"Strong enrollment demand signal\",\"Projecting solid student growth across segments\",\"Revenue target with EBITDA-positive trajectory\",\"Q1 marketing overspend linked to voucher program launch\",\"Financial model must reconcile with approved sensitivity analysis\"]",
-      "critical_issues": "[\"Model tie-out incomplete \u2014 financial projections not yet validated against agreed assumptions\",\"Q1 overspend vs plan \u2014 primarily marketing\",\"Multiple pricing tiers create complexity in financial modeling\"]",
-      "rubric_scores": "{\"mission_alignment\":7.5,\"academic_excellence\":6,\"product_pricing\":7,\"gtm_community\":7.5,\"ai_scalability\":5.5,\"financial_model\":6.5,\"talent_strategy\":7,\"access_funding\":7.5}",
-      "financial_summary": "Exemplary brainlift rating (85/100). EBITDA-positive trajectory. Budget reconciliation required.",
-      "report_url": null
-    },
-    {
-      "id": 3,
-      "business_unit_id": 1,
-      "created_at": "2026-04-15T22:47:35.932Z",
-      "recommendation": "REJECT",
-      "overall_score": 2.8,
-      "confidence_score": 90,
-      "executive_summary": "Physical Private Schools has a Critically Flawed brainlift rating (30/100). The business model needs fundamental restructuring. Finance recommends a complete review before additional investment.",
-      "key_findings": "[\"Critically Flawed brainlift rating \u2014 lowest in the portfolio\",\"Score of 30/100 indicates fundamental issues\",\"P&L spreadsheet available for detailed financial review\",\"Business plan structure needs significant improvement\"]",
-      "critical_issues": "[\"Critically Flawed brainlift assessment \u2014 fundamental business model concerns\",\"No clear path to profitability under current structure\",\"Violates Joe's 'High ROIC' and 'asset-light' principles\"]",
-      "rubric_scores": "{\"mission_alignment\":4,\"academic_excellence\":3,\"product_pricing\":2,\"gtm_community\":1.5,\"ai_scalability\":3.5,\"financial_model\":1,\"talent_strategy\":3,\"access_funding\":2}",
-      "financial_summary": "Critically Flawed (30/100). Fundamental restructuring needed before investment.",
-      "report_url": null
-    },
-    {
       "id": 4,
       "business_unit_id": 6,
       "created_at": "2026-04-15T22:48:35.274Z",
@@ -1224,20 +1182,6 @@
       "report_url": null
     },
     {
-      "id": 15,
-      "business_unit_id": 15,
-      "created_at": "2026-04-16T02:09:37.296Z",
-      "recommendation": "REJECT",
-      "overall_score": 1.9,
-      "confidence_score": 18,
-      "executive_summary": "[Synthesized from: P&L Spreadsheet] This evaluation is based solely on a P&L spreadsheet \u2014 no formal business plan was submitted for Learnwith.AI. The financial data reveals a deeply concerning picture: near-zero revenue (negative $27K recurring, likely a reversal/credit), against a projected FY'26 net loss of approximately $19.7M, with zero evidence of product-market fit, academic outcomes, GTM strategy, or mission articulation. Across nearly all rubric categories, there is insufficient data to score meaningfully, and the financial model as presented represents an extreme capital burn with no credible revenue ramp in sight.",
-      "key_findings": "[\"The business unit name 'Learnwith.AI' suggests an AI-native educational product, which is directionally aligned with the portfolio's emphasis on AI-powered scalability \u2014 though no supporting evidence exists in the data.\",\"Headcount COGS and HC Expenses are present and structured across all four quarters, suggesting an operational team is in place and work is actively underway.\",\"CF (Cost Function / Contracted/Fixed) expenses are the largest cost driver at ~$10.2M FY'26, which could indicate platform or technology investment \u2014 potentially asset-building \u2014 though this is speculative without a plan document.\"]",
-      "critical_issues": "[\"No formal business plan document submitted \u2014 this is a critical evaluation gap affecting all 24 rubric criteria.\",\"Revenue is effectively zero or negative for the entire FY'26 projection ($-27,313 total recurring revenue, $0 in Q2-Q4), indicating no meaningful commercialization pathway is modeled.\",\"Projected FY'26 net loss of $19,710,563 against near-zero revenue represents an unsustainable burn rate with no visible path to breakeven or positive unit economics.\",\"Gross profit is deeply negative every single quarter (FY'26: -$2,869,376), meaning even direct costs are not covered by revenue \u2014 COGS alone exceed revenue by orders of magnitude.\",\"Gross margin percentages in the spreadsheet (e.g., 2102%, 10506%) are nonsensical/erroneous, indicating potential data integrity issues or placeholder budgeting, further undermining confidence in any financial projections.\",\"Total FY'26 expenses of $16.8M with $0 planned revenue in Q2-Q4 suggests this unit is in pure investment/pre-revenue mode with no defined commercialization trigger or milestone.\",\"No evidence of student enrollment, learning outcomes, MAP scores, retention metrics, pricing tiers, GTM strategy, talent pipeline, or access/funding pathway \u2014 zero data across 7 of 8 rubric categories.\"]",
-      "rubric_scores": "{\"mission_alignment\":2,\"academic_excellence\":1,\"product_pricing\":1,\"gtm_community\":1,\"ai_scalability\":2,\"financial_model\":1,\"talent_strategy\":2,\"access_funding\":1}",
-      "financial_summary": "FY'26 total revenue: -$27,313 (negative recurring revenue in Q1, interpreted as a reversal or credit; zero planned revenue in Q2-Q4). Total COGS: $2,842,063 (dominated by CF COGS of $2,623,295 and HC COGS of $218,768). Gross profit: -$2,869,376. Total operating expenses: $16,841,187 (HC Expenses $5,942,705; CF Expenses $10,189,250; NHC Expenses $709,232). Net loss FY'26: -$19,710,563. Net margin is meaningless given near-zero revenue. ROIC cannot be computed \u2014 no capital base or return data provided. The unit is in extreme pre-revenue burn with no modeled revenue ramp, representing a severe financial risk without a supporting investment thesis or business plan.",
-      "report_url": null
-    },
-    {
       "id": 16,
       "business_unit_id": 16,
       "created_at": "2026-04-16T02:10:18.899Z",
@@ -1263,20 +1207,6 @@
       "critical_issues": "[\"No formal business plan document submitted \u2014 evaluating on synthesized P&L data only\",\"Zero revenue across all four quarters of FY'26 with no revenue line items (recurring or non-recurring) populated whatsoever\",\"Projected FY'26 net loss of $69,777,424 with 0% gross margin and 0% net margin \u2014 no path to profitability visible in available data\",\"NHC Expenses spike to $23.2M in Q1'26 alone before dropping to ~$8.5M/quarter \u2014 a highly anomalous pattern with no explanation available without a formal plan\",\"No evidence of any academic outcomes, student metrics, enrollment figures, or product design in available data\",\"No evidence of GTM strategy, AI/scalability model, talent strategy, or access/funding pathway\",\"ROIC is deeply negative with no capital return mechanism visible; the model as presented is destroying value with no revenue offset\"]",
       "rubric_scores": "{\"mission_alignment\":2,\"academic_excellence\":1,\"product_pricing\":1,\"gtm_community\":1,\"ai_scalability\":2,\"financial_model\":1,\"talent_strategy\":2,\"access_funding\":1}",
       "financial_summary": "FY'26 projected total revenue: $0 (all revenue lines \u2014 recurring and non-recurring \u2014 are $0 across all quarters). Total COGS: $445,873 (entirely CF COGS). Total operating expenses: $69,331,551 (HC: $20,410,957; NHC: $48,870,594; CF: $50,000). Net loss FY'26: $(69,777,424). Gross margin: 0%. Net margin: 0%. There is no ROIC to calculate \u2014 the business unit is entirely pre-revenue and burning capital at an extremely high rate. The Q1'26 NHC spike of $23.2M (vs. ~$8.5M in subsequent quarters) is unexplained and alarming. No retention, pricing, or unit economics data is available.",
-      "report_url": null
-    },
-    {
-      "id": 18,
-      "business_unit_id": 18,
-      "created_at": "2026-04-16T02:12:28.627Z",
-      "recommendation": "REJECT",
-      "overall_score": 1.8,
-      "confidence_score": 18,
-      "executive_summary": "[Synthesized from: P&L Spreadsheet] This evaluation is based solely on a P&L spreadsheet with zero revenue across all periods and no formal business plan document submitted. Edupaid shows $872,350 in projected FY'26 losses against $0 in revenue, with no evidence of a product, student outcomes strategy, go-to-market approach, or mission articulation. Without a formal plan, nearly all rubric criteria cannot be assessed, and the financial data itself signals a pre-revenue entity burning capital with no visible path to commercialization.",
-      "key_findings": "[\"CF Expenses drop significantly from ~$212,500/quarter (Q1-Q2) to $12,500/quarter (Q3-Q4), suggesting a planned reduction in capital/campaign spend that could indicate a phase transition or cost discipline\",\"HC spend stabilizes at $70,200/quarter from Q2 onward after a higher Q1 ($110,115), suggesting some payroll normalization or team rightsizing\",\"Total expense base is relatively modest (~$870K FY'26), meaning the capital required to sustain operations through the year is not catastrophically large for a portfolio-level entity\"]",
-      "critical_issues": "[\"No formal business plan document submitted \u2014 this is a critical disqualifying gap\",\"Zero revenue across all quarters (Q1\u2013Q4 FY'26) with no revenue forecast whatsoever \u2014 not even a nominal projection \u2014 raises fundamental questions about viability and readiness\",\"No product description, pricing tiers, or student-facing offering is described or inferable from the available data\",\"No evidence of mission alignment, academic outcomes framework, or student-centered design\",\"No GTM strategy, customer acquisition plan, or community flywheel is documented\",\"No AI or scalability architecture described or inferable\",\"No talent strategy, educator model, or instructional design evidence\",\"No access/funding pathway (ESA, vouchers, subsidized tiers) articulated\",\"Gross profit is negative for all periods (COGS exist with zero revenue), confirming pre-revenue status with no near-term commercialization signal\",\"Net margin reported as 0% despite clear net losses \u2014 this may indicate a data formatting or classification issue in the spreadsheet, reducing confidence in financial data integrity\"]",
-      "rubric_scores": "{\"mission_alignment\":1,\"academic_excellence\":1,\"product_pricing\":1,\"gtm_community\":1,\"ai_scalability\":1,\"financial_model\":1,\"talent_strategy\":1,\"access_funding\":1}",
-      "financial_summary": "Edupaid projects $0 in both recurring and non-recurring revenue across all four quarters of FY'26. Total COGS are minimal ($2,580 FY'26, entirely CF COGS), but total operating expenses reach $869,770 for the year, driven by HC spend ($320,715), CF expenses ($450,000 \u2014 heavily front-loaded in H1), and NHC expenses ($99,055). This produces a net loss of $872,350 for FY'26. Gross margin and net margin are both reported as 0% in the spreadsheet despite clear losses, suggesting a formatting anomaly. ROIC cannot be calculated \u2014 there is no revenue, no gross profit, and no capital deployment data. The business is entirely pre-revenue with no financial model evidence.",
       "report_url": null
     },
     {
@@ -1350,101 +1280,91 @@
       "report_url": null
     },
     {
-      "id": 24,
+      "id": 25,
+      "business_unit_id": 18,
+      "created_at": "2026-04-16T03:11:09.441025+00:00",
+      "recommendation": "APPROVE",
+      "overall_score": 8.12,
+      "confidence_score": 85,
+      "executive_summary": "[Synthesized from: Ephor Project Insights, Q3 2025 EduPaid Assessment Report (90/100), BrainLift QC Mar18 (90/100), SMART Initiative Chat Assessment (61/100), Q2'26 Quarterly Assessment (87/100), Q1'26 Quarterly Assessment (88/100)] EduPaid is the accountability enforcement layer for ESA-funded education, tying 100% of payments to verified mastery tokens and achieving 90%+ margins \u2014 a unique and high-value infrastructure play. The Ephor Q3 assessment scored it 90/100 (Excellent) and it holds strong JL SPOV alignment at 100% in that cycle, with Q4'25 stretch revenue goals hit and $150K/month targeted for Q2'26. The primary risk is deep dependency on TimeBack for mastery verification, combined with incomplete Q1 goal compliance (57%) and an as-yet-thin provider pipeline beyond two partners.",
+      "key_findings": "[\"Q3'25 Ephor assessment scored 90/100 (Excellent, Approved) with 100% JL SPOV alignment \\u2014 highest quality signal across all BUs reviewed\", \"90%+ gross margins on platform-sourced funding \\u2014 best-in-class unit economics for any BU in the portfolio\", \"Q4'25 $100K/month revenue stretch goal achieved, validating payment infrastructure viability\", \"9-step Minimum Auditable Product for Arizona ESA audit compliance (A.R.S. \\u00a715-2403) \\u2014 enterprise-grade regulatory readiness\", \"Anti-fraud risk scoring engine with banking-level immutable QLDB ledger (daily SHA-256 blockchain anchoring) provides durable competitive moat\", \"Money-back guarantee tied to verified mastery creates differentiated premium positioning unique in market\", \"~$100/student/subject/grade unit economics enable broad access at scale targeting 250,000 virtual private students\", \"1-hour developer API integration and sub-10-minute parent onboarding demonstrate exceptional product execution\", \"BrainLift QC scored 90/100 (Strong), confirming deep strategic knowledge foundation with 100% SPOV quality\"]",
+      "critical_issues": "[\"TimeBack dependency: Multiple Q2'26 goals are blocked without TimeBack migration resolution \\u2014 single point of failure for mastery token verification\", \"Provider pipeline thin: Only Alpha Anywhere and Novatio (currently blocked) as educational providers; target of 3+ providers for Q2'26 unmet\", \"SMART Initiative BrainLift scored only 61/100 with Q1 goals focused on EduBench/BrainLifts rather than EduPaid's core funding marketplace mission \\u2014 goal drift risk\"]",
+      "rubric_scores": "{\"mission_alignment\": 8.0, \"academic_excellence\": 7.5, \"product_pricing\": 8.0, \"gtm_community\": 7.5, \"ai_scalability\": 8.5, \"financial_model\": 8.5, \"talent_strategy\": 7.0, \"access_funding\": 9.5}",
+      "financial_summary": null,
+      "report_url": null
+    },
+    {
+      "id": 26,
+      "business_unit_id": 1,
+      "created_at": "2026-04-16T03:11:09.441242+00:00",
+      "recommendation": "APPROVE_WITH_FIX",
+      "overall_score": 7.25,
+      "confidence_score": 78,
+      "executive_summary": "[Synthesized from: Ephor Project Insights, School Onboarding Ephor Project (Funding Justification Dec 2025), Alpha Schools Workflowy BrainLift, Catholic School Business Model BrainLift (Ephor), Physical Schools Budget Q1'25] Alpha Schools delivers genuinely world-class academic outcomes \u2014 3.6x MAP growth, 4.8/5 guide satisfaction, zero students rating guides below 4/5 \u2014 justifying a premium $40\u201350K tuition and making it the rubric's academic gold standard. The land-and-expand B2B SaaS model (Year 1 $200K pilot \u2192 Year 2 $1M+) with a $75M pipeline is credible. However, the BU is deeply loss-making ($14M loss in 2025 with $30M total investment), Q1'25 new enrollment goals were achieved at only 37%, and ESports/GT/Sports Academy Q1'25 goals were all not achieved \u2014 the financial model scores below 5.0, triggering an APPROVE_WITH_FIX despite a strong overall weighted score.",
+      "key_findings": "[\"3.6x MAP growth is the strongest independently verified academic result across all 6 BUs \\u2014 far exceeds rubric's >2x threshold\", \"4.8/5 guide satisfaction with zero sub-4/5 ratings across multiple schools confirms exceptional delivery quality\", \"Land-and-expand B2B SaaS model (Year 1 $200K \\u2192 Year 2 $1M+) with $75M pipeline is credible and de-risks investor commitment\", \"2HL delivers $30K/year private school transformation at $10K/2hr-day \\u2014 compelling value proposition for B2B school licensing\", \"Catholic school 'Vatican-in-a-Box' diocese governance strategy identified as potential winner-take-all play for 1.7M US Catholic students\", \"Micro-school model with D1 Training facility partnerships reduces capital cost from $500K (full build) to lean formats\", \"Bastrop charter model with Musk entity backing ($5K/student contribution) provides credible path to scale in Giga corridor\", \"Pipeline of $75M in B2B school licensing potential \\u2014 2025 reframed successfully as de-risking/R&D phase (Cohort One positioning)\"]",
+      "critical_issues": "[\"FY2025 losses of $14M across operational schools with 9 schools all under-enrolled \\u2014 financial_model score below 5.0; path to $10K/student profit requires enrollment execution not yet demonstrated\", \"Q1'25 new enrollment goal achieved at only 37%; ESports, GT School, and Sports Academy Q1'25 enrollment goals all 'Not Achieved' \\u2014 systemic enrollment weakness across multiple school types\", \"TX Prep losing charter status due to 3 prior strikes before Alpha involvement \\u2014 reputational risk in public/charter segment\"]",
+      "rubric_scores": "{\"mission_alignment\": 9.0, \"academic_excellence\": 9.5, \"product_pricing\": 7.5, \"gtm_community\": 6.5, \"ai_scalability\": 7.0, \"financial_model\": 4.5, \"talent_strategy\": 7.5, \"access_funding\": 6.0}",
+      "financial_summary": null,
+      "report_url": null
+    },
+    {
+      "id": 27,
       "business_unit_id": 24,
-      "created_at": "2026-04-16T02:16:26.629Z",
-      "recommendation": "REJECT",
-      "overall_score": 3.1,
-      "confidence_score": 22,
-      "executive_summary": "[Synthesized from: P&L Spreadsheet] This evaluation is based solely on a P&L spreadsheet with no formal business plan submitted, making it a highly synthesized assessment with very limited evidentiary basis. The financial data shows a $6.4M revenue business with a consistent 7% net margin and a projected growth path to $14.6M combined across two plan scenarios, but virtually no operational, pedagogical, or strategic detail is available to evaluate against Joe's rubric. Across 7 of 8 scoring categories, there is insufficient data to score above baseline, resulting in an overall score that mandates rejection pending submission of a formal business plan.",
-      "key_findings": "[\"Revenue scale is meaningful: $6.4M in recurring revenue (current plan) with a prior plan projecting $8.2M, suggesting an established camp operation with real market traction.\",\"Consistent 7% net margin across both current and prior plan scenarios suggests financial discipline and predictable unit economics.\",\"100% gross margin reported (no COGS recorded) implies either a highly asset-light or contractor-driven staffing model, which could be a scalability positive if confirmed.\",\"Projected combined revenue of $14.6M (current + prior plan aggregated) indicates meaningful organizational scale within the Alpha Holdings portfolio.\",\"Recurring revenue classification (vs. non-recurring = $0) suggests repeat enrollment behavior, which is a positive retention signal even without explicit retention rate data.\"]",
-      "critical_issues": "[\"No formal business plan document submitted \u2014 this is the most critical gap; scores across all non-financial categories are floored due to absence of evidence.\",\"Zero headcount (HC) COGS and zero HC expenses recorded is anomalous for a camp business and raises serious data integrity concerns \u2014 either staff costs are misclassified, absorbed elsewhere, or the P&L is incomplete.\",\"No evidence of any academic outcomes, learning metrics, MAP scores, or life skills benchmarks \u2014 core to Joe's rubric and entirely absent.\",\"No AI, technology, or scalability strategy documented anywhere in available data.\",\"No pricing tiers, product range, or access/equity pathway described \u2014 impossible to evaluate against the $150K-to-$1K product spectrum requirement.\",\"No GTM strategy, community flywheel, or parent referral mechanism described.\",\"No talent strategy, compensation model, or staffing pipeline documented.\",\"No government funding, ESA/voucher leverage, or regulatory compliance pathway addressed.\",\"7% net margin, while consistent, is modest and provides no evidence of high ROIC without capital expenditure and asset data.\",\"The P&L structure with all expenses classified as NHC and CF (no HC spend) cannot be reconciled without a business plan explanation \u2014 this undermines confidence in financial model assessment.\"]",
-      "rubric_scores": "{\"mission_alignment\":3,\"academic_excellence\":1,\"product_pricing\":2,\"gtm_community\":3,\"ai_scalability\":1,\"financial_model\":4,\"talent_strategy\":2,\"access_funding\":2}",
-      "financial_summary": "Alpha Camps reports $6,403,500 in total recurring revenue for the current plan period with zero COGS, yielding a reported 100% gross margin. Total operating expenses are $5,953,719 (split between NHC expenses of $4,673,019 and CF expenses of $1,280,700), producing a net profit of $449,781 at a 7% net margin. A prior plan scenario shows $8,237,000 in revenue at the same 7% margin ($543,541 net profit), and a combined view totals $14,640,500 in revenue with $993,322 net profit. Critically, all headcount (HC) cost lines show $0, which is anomalous for a camp business and may indicate misclassification or an incomplete P&L. No capital expenditure, balance sheet, or ROIC data is available, making a full financial model assessment impossible. The 7% margin is thin relative to a high-ROIC threshold, and without capex data, asset-lightness cannot be confirmed.",
+      "created_at": "2026-04-16T03:11:09.441381+00:00",
+      "recommendation": "APPROVE_WITH_FIX",
+      "overall_score": 6.1,
+      "confidence_score": 62,
+      "executive_summary": "[Synthesized from: Ephor Project Insights, Alpha Summer Camp Multi-Market Pricing Doctrine BrainLift (6 SPOVs), EDU Pillar 4 Finance Ops BrainLift (91/100)] Alpha Camps shows sophisticated strategic thinking about brand architecture \u2014 the multi-market pricing doctrine (school tuition tier as camp price anchor, no demographic discounting, no temporary pricing) is a mature framework that protects brand coherence across 19+ markets. However, the Ephor project is in early setup with no chat history or executed conversations, meaning the pricing doctrine exists primarily as a BrainLift document rather than proven operational reality. Critical gaps in academic outcome data and a missing financial model, plus an access_funding score below 5.0, prevent APPROVE status.",
+      "key_findings": "[\"Six-SPOV unified pricing doctrine is the most sophisticated brand architecture framework across any BU evaluated \\u2014 protects multi-market brand coherence at 19+ locations\", \"School tuition tier as camp price anchor correctly identifies camp as brand/funnel vehicle rather than standalone revenue center\", \"Explicit Marriott problem SPOV (brand dilution from price inconsistency across tiers) shows mature awareness of premium brand risk\", \"Pricing doctrine correctly identifies discounting in expansion markets as creating permanent, irreversible price anchors \\u2014 important risk mitigation\", \"Camp-to-school enrollment funnel design aligns with broader Alpha ecosystem strategy and provides a low-commitment first touchpoint for prospective families\"]",
+      "critical_issues": "[\"Ephor project in setup stage with zero chat history or execution data \\u2014 pricing doctrine exists as BrainLift document only, no operational validation\", \"No academic outcome data (MAP scores, benchmarks) for camp program \\u2014 access_funding score below 5.0 due to absent lower-tier/ESA access pathway\", \"Financial model entirely absent \\u2014 no P&L, ROIC, retention, or cost-per-student data available for investment decisions\"]",
+      "rubric_scores": "{\"mission_alignment\": 7.0, \"academic_excellence\": 5.0, \"product_pricing\": 8.0, \"gtm_community\": 7.0, \"ai_scalability\": 5.5, \"financial_model\": 5.5, \"talent_strategy\": 6.0, \"access_funding\": 4.5}",
+      "financial_summary": null,
+      "report_url": null
+    },
+    {
+      "id": 28,
+      "business_unit_id": 15,
+      "created_at": "2026-04-16T03:11:09.441506+00:00",
+      "recommendation": "APPROVE_WITH_FIX",
+      "overall_score": 6.97,
+      "confidence_score": 70,
+      "executive_summary": "[Synthesized from: Ephor Project Insights, Incept (Athena Content) Q2'26 Assessment (82/100), Incept Q1'26 Assessment (42/100 Critical Concern), EduBench InceptBench Assessment (88/100), EduBench Q3'25 Assessment (95/100), Vaidik Edu Content Replacement (87/100), AlphaTest Q2'26 Assessment (81/100)] Learnwith.AI encompasses two distinct sub-products (Incept/Athena Content and EduBench/InceptBench) both showing strong AI-native content generation and benchmarking capabilities, with EduBench scoring 88\u201395/100 across Ephor assessments and 12-13/13 SPOV quality scores. The critical vulnerability is execution consistency \u2014 Q1'26 Incept scored 42/100 (Critical Concern) with 0/3 educational outcome goals compliant, exposing material volatility between quarters. The lack of a documented DTC pricing ladder and weak GTM community strategy prevent APPROVE status despite strong AI infrastructure.",
+      "key_findings": "[\"EduBench Q3'25 scored 95/100 (Excellent) with 13/13 SPOV quality \\u2014 best AI content benchmarking system in the portfolio\", \"AlphaTest unit economics of $80/student/year ($200K/quarter at 10K+ students) with serverless AWS represent best-in-class cost structure\", \"AlphaWrite Q2'26 scored 81/100 with 88/100 JL SPOV alignment and 6/6 SPOV quality \\u2014 strong trend after Q3'25's 72/100\", \"STAAR-based testing architecture (assigned throughout year, not one-time) enables more dynamic and responsive outcome measurement\", \"Arizona and Louisiana ESA states live for AlphaWrite \\u2014 regulatory compliance validated in market\", \"AI grading reducing test attempts from 2.8\\u21921.8 directly reduces guide FTE and improves school-level profit margins\", \"12/12 SPOV quality on InceptBench assessment reflects deep domain expertise in AI content generation and benchmarking\"]",
+      "critical_issues": "[\"Incept Q1'26 scored 42/100 (Critical Concern) with 0/3 educational outcome goals compliant \\u2014 material execution volatility that puts financial projections at risk\", \"No direct-to-parent/consumer pricing ladder documented \\u2014 product operates as internal infrastructure rather than market-facing BU with defined tiers\", \"School Choice SPOV alignment rated Weak across multiple AlphaWrite quarters \\u2014 structural misalignment with broader ESA/voucher/homeschool mission\"]",
+      "rubric_scores": "{\"mission_alignment\": 7.5, \"academic_excellence\": 8.0, \"product_pricing\": 5.5, \"gtm_community\": 5.5, \"ai_scalability\": 9.0, \"financial_model\": 6.0, \"talent_strategy\": 7.5, \"access_funding\": 6.5}",
+      "financial_summary": null,
+      "report_url": null
+    },
+    {
+      "id": 29,
+      "business_unit_id": 7,
+      "created_at": "2026-04-16T03:11:09.441635+00:00",
+      "recommendation": "APPROVE",
+      "overall_score": 7.85,
+      "confidence_score": 80,
+      "executive_summary": "[Synthesized from: Ephor Project Insights, AlphaWrite Q2'26 Assessment (81/100), AlphaWrite Q4'25 Assessment (87/100), AlphaTest Q2'26 Assessment (81/100), AlphaTest Q1'26 Assessment (85/100), Vaidik Edu Content Replacement (87/100), EDU Pillar 4 Finance Ops BrainLift (91/100)] The Homeschool/DTC Apps BU \u2014 anchored by AlphaWrite and AlphaTest/MasteryTrack \u2014 demonstrates consistent improvement across multiple Ephor assessment cycles, with Q2'26 scores of 81/100 for both products, 88/100 JL SPOV alignment for AlphaWrite, and an 87/100 for the Vaidik IXL Replacement. Arizona and Louisiana ESA live deployments validate the regulatory model, and Q1'26 5x student growth with 15x submission growth confirms viral adoption dynamics. No category falls below 5.0 and the weighted score of 7.85 clears the APPROVE threshold. TimeBack dependency and the gap between 350 current students and 10,000+ target are the primary execution risks to manage.",
+      "key_findings": "[\"Q1'26 5x student growth and 15x submission growth for AlphaWrite confirms viral adoption dynamics in homeschool/DTC channel \\u2014 strongest growth signal in the BU portfolio\", \"AlphaTest under-budget in consecutive quarters while meeting all deliverables \\u2014 rare combination of cost discipline and output quality\", \"$80/student/year AlphaTest cost structure enables government-funded access while maintaining strong unit economics at scale\", \"Arizona and Louisiana ESA live deployments validate the regulatory compliance model for nationwide DTC expansion\", \"AlphaWrite Q2'26 JL SPOV alignment at 88/100 (Excellent) with 6/6 SPOV quality \\u2014 strongest founder vision alignment in the tech BU set\", \"Vaidik IXL Replacement at 87/100 with $50K guide savings per 500-student school strengthens overall DTC cost economics\", \"Multi-agent AI generators with curriculum-standard alignment prevent hallucinations \\u2014 critical for ESA-funded credibility with regulators\", \"Khanmigo explicitly identified and positioned against \\u2014 clear competitive awareness\"]",
+      "critical_issues": "[\"TimeBack dependency for AlphaWrite diagnostic curriculum (Goal 3 tagged as DEPENDENCY RISK) \\u2014 without TimeBack migration, the diagnostic-driven personalization core is blocked\", \"Current scale of ~350 students vs. 10,000+ target represents a 28x gap requiring detailed execution plan not yet documented in Ephor data\", \"School Choice SPOV alignment rated Weak across multiple quarters \\u2014 must be explicitly addressed to credibly lead the ESA/homeschool market\"]",
+      "rubric_scores": "{\"mission_alignment\": 8.0, \"academic_excellence\": 8.5, \"product_pricing\": 7.0, \"gtm_community\": 7.5, \"ai_scalability\": 9.0, \"financial_model\": 7.5, \"talent_strategy\": 8.0, \"access_funding\": 7.0}",
+      "financial_summary": null,
+      "report_url": null
+    },
+    {
+      "id": 30,
+      "business_unit_id": 11,
+      "created_at": "2026-04-16T03:11:09.441729+00:00",
+      "recommendation": "APPROVE_WITH_FIX",
+      "overall_score": 6.65,
+      "confidence_score": 68,
+      "executive_summary": "[Synthesized from: Ephor Project Insights, Strata Budget Q1'26 Google Sheet, Strata Workflowy BrainLift (Texas Sports Academy), TAS Strata Ephor Project, Project Sparkle UAE Education Project] Strata (Texas Sports Academy) has a genuinely differentiated and capital-efficient model: converting existing youth sports academies into 2 Hour Learning microschools by targeting coaches rather than teachers, leveraging existing real estate, student bases, and community trust for 2\u20133 month fill rates vs. the industry norm. The $15K tuition at 39\u201350% operator margins and TX voucher integration ($10,800/student in 2026) are compelling. The financial picture is stark \u2014 Q1'26 budget shows a $(3.28M) net loss on $866K revenue (negative 378% margin) with NHC expenses ballooning 1,623% quarter-over-quarter \u2014 but the per-school model is sound and profitability is projected from Q3'26 once showcase schools scale.",
+      "key_findings": "[\"'Corporate Raider' SPOV \\u2014 converting existing youth sports academies \\u2014 is the most capital-efficient and differentiated GTM approach across all 6 BUs reviewed\", \"Coach-as-operator model eliminates traditional teacher hiring barriers and leverages existing community trust and established student bases\", \"TX voucher program integration ($10,800/student, 2026) is explicitly built into funding model with $1M bridge scholarship fund \\u2014 one of the most concrete ESA pathways in the set\", \"'No sports until academics are finished' motivational model elegantly ties the student's intrinsic motivation directly to academic completion\", \"NIL (Name, Image, Likeness) incentive for Texas high school athletes creates powerful word-of-mouth and enrollment driver unique to this BU\", \"BY-RIGHT building targeting enables 2-month school launch vs. 18+ months for CUP/SUP permits \\u2014 critical speed advantage for Q4'25/Q1'26 showcase goals\", \"39\\u201350% operator margins at rural schools make the model attractive for coach-operators without Alpha Holdings carrying the full P&L\"]",
+      "critical_issues": "[\"Q1'26 budget: $(3.28M) net loss at negative 378% net margin \\u2014 NHC expenses ballooned 1,623% quarter-over-quarter with no documented justification; financial_model score 3.5 (below 5.0 threshold)\", \"FY'25 actual revenue was only $25\\u201350K total \\u2014 the business is pre-revenue at meaningful scale despite over $1.3M in Q4'25 spend\", \"Ephor project contains no chat history or executed strategy conversations \\u2014 indicates limited strategic accountability process relative to more mature BUs in the portfolio\"]",
+      "rubric_scores": "{\"mission_alignment\": 7.5, \"academic_excellence\": 7.0, \"product_pricing\": 7.0, \"gtm_community\": 8.0, \"ai_scalability\": 6.5, \"financial_model\": 3.5, \"talent_strategy\": 7.5, \"access_funding\": 7.5}",
+      "financial_summary": null,
       "report_url": null
     }
   ],
   "rubricCriteria": [
-    {
-      "id": 1,
-      "evaluation_id": 1,
-      "criterion_key": "mission_alignment",
-      "criterion_label": "Mission Alignment",
-      "score": 9.0,
-      "weight": 0.15,
-      "justification": "Directly serves Joe's vision of unlocking potential for EVERY kid through broad-access online education at varying price points.",
-      "evidence": "Strong enrollment growth across diverse demographics"
-    },
-    {
-      "id": 2,
-      "evaluation_id": 1,
-      "criterion_key": "academic_excellence",
-      "criterion_label": "Academic & Life Skills",
-      "score": 9.5,
-      "weight": 0.15,
-      "justification": "5.3x learning multiplier significantly exceeds the >2x threshold. Outstanding standardized test results.",
-      "evidence": "MAP results: 5.3x learning pace"
-    },
-    {
-      "id": 3,
-      "evaluation_id": 1,
-      "criterion_key": "product_pricing",
-      "criterion_label": "Product & Pricing Design",
-      "score": 7.5,
-      "weight": 0.15,
-      "justification": "Pricing exists but doesn't yet span the full $150K to $1K range Joe envisions. Product quality is strong.",
-      "evidence": "Current pricing structure under review"
-    },
-    {
-      "id": 4,
-      "evaluation_id": 1,
-      "criterion_key": "gtm_community",
-      "criterion_label": "GTM & Community",
-      "score": 8.0,
-      "weight": 0.1,
-      "justification": "Direct-to-parent marketing strategy aligns with Joe's mandate. Community building in progress.",
-      "evidence": "Marketing threshold met via MAP results"
-    },
-    {
-      "id": 5,
-      "evaluation_id": 1,
-      "criterion_key": "ai_scalability",
-      "criterion_label": "AI & Scalability",
-      "score": 7.0,
-      "weight": 0.15,
-      "justification": "AI-powered learning platform enables quality at scale. Flywheel dynamics emerging but not fully proven.",
-      "evidence": "AI tutoring system operational"
-    },
-    {
-      "id": 6,
-      "evaluation_id": 1,
-      "criterion_key": "financial_model",
-      "criterion_label": "Financial Model",
-      "score": 8.5,
-      "weight": 0.15,
-      "justification": "Strong unit economics. Positive margin in both base and accelerated scenarios. High ROIC potential.",
-      "evidence": "Asset-light model with positive margins"
-    },
-    {
-      "id": 7,
-      "evaluation_id": 1,
-      "criterion_key": "talent_strategy",
-      "criterion_label": "Talent Strategy",
-      "score": 7.5,
-      "weight": 0.05,
-      "justification": "Guide quality is high. Scaling requires clear recruitment pipeline.",
-      "evidence": "Current guide-to-student ratio adequate"
-    },
-    {
-      "id": 8,
-      "evaluation_id": 1,
-      "criterion_key": "access_funding",
-      "criterion_label": "Access & Funding Pathway",
-      "score": 8.0,
-      "weight": 0.1,
-      "justification": "Lower-price tiers provide sampling. Government funding pathway via ESA/voucher integration.",
-      "evidence": "EduPaid platform handles ESA collections"
-    },
     {
       "id": 9,
       "evaluation_id": 4,
@@ -2326,86 +2246,6 @@
       "evidence": "No evidence in any accessible data source."
     },
     {
-      "id": 97,
-      "evaluation_id": 15,
-      "criterion_key": "mission_alignment",
-      "criterion_label": "Mission Alignment",
-      "score": 2.0,
-      "weight": 0.15,
-      "justification": "No mission statement, student population description, joy/engagement design, or high standards framework is present in any available data. The business unit name implies AI-assisted learning but provides zero evidence of inclusive access, student experience design, or academic rigor. Score of 2 (rather than 3) reflects that even the name 'Learnwith.AI' is the only directional signal, but it is insufficient to score any of the three MA criteria.",
-      "evidence": "Business unit name only: 'Learnwith.AI'. No P&L data addresses MA-1 (universal access), MA-2 (student joy/engagement), or MA-3 (high standards/high support)."
-    },
-    {
-      "id": 98,
-      "evaluation_id": 15,
-      "criterion_key": "academic_excellence",
-      "criterion_label": "Academic & Life Skills",
-      "score": 1.0,
-      "weight": 0.15,
-      "justification": "Insufficient data \u2014 no formal plan addresses this criterion. There are zero references to MAP scores, learning pace targets, life skills benchmarks, or global academic comparisons anywhere in the P&L data. This is the most evidence-free category in the rubric.",
-      "evidence": "No data exists in the P&L spreadsheet for AE-1 (2x learning pace), AE-2 (3rd-party life skills benchmarks), or AE-3 (global benchmarking). Score reflects near-total absence of evidence."
-    },
-    {
-      "id": 99,
-      "evaluation_id": 15,
-      "criterion_key": "product_pricing",
-      "criterion_label": "Product & Pricing Design",
-      "score": 1.0,
-      "weight": 0.15,
-      "justification": "Insufficient data \u2014 no formal plan addresses this criterion. No product tiers, pricing architecture, or quality descriptors are present. Revenue of -$27,313 in Q1 (a negative figure, likely a refund or reversal) and $0 planned thereafter provides no insight into pricing design, product range, or funnel strategy.",
-      "evidence": "P&L shows total FY'26 revenue of -$27,313 with zero non-recurring revenue. No product SKUs, price points ($150K premium to $1K access ladder), or sampling funnel logic are described anywhere in available data."
-    },
-    {
-      "id": 100,
-      "evaluation_id": 15,
-      "criterion_key": "gtm_community",
-      "criterion_label": "GTM & Community",
-      "score": 1.0,
-      "weight": 0.1,
-      "justification": "Insufficient data \u2014 no formal plan addresses this criterion. There is no GTM strategy, customer acquisition model, direct-to-parent channel description, community flywheel, or marketing spend data in the P&L. NHC (Non-Headcount) Expenses of $709K FY'26 could theoretically include marketing, but no breakdown or intent is provided.",
-      "evidence": "NHC Expenses: $709,232 FY'26 \u2014 no line-item detail available. No data on GC-1 (direct-to-parent), GC-2 (community flywheel), or GC-3 (marketing tied to MAP results)."
-    },
-    {
-      "id": 101,
-      "evaluation_id": 15,
-      "criterion_key": "ai_scalability",
-      "criterion_label": "AI & Scalability",
-      "score": 2.0,
-      "weight": 0.15,
-      "justification": "The business unit name 'Learnwith.AI' implies AI-native architecture, and the CF (likely platform/technology) cost structure dominates expenses ($10.2M FY'26 CF Expenses), potentially representing platform build investment. However, there is zero documentation of AI feedback loops, network effects, or scalability architecture. The cost structure does not obviously demonstrate asset-light scaling \u2014 costs are flat/increasing with zero revenue.",
-      "evidence": "CF Expenses FY'26: $10,189,250 \u2014 largest single cost category, potentially platform-related. Business unit name implies AI focus. No evidence for AS-1 (AI feedback loops), AS-2 (network effects), or AS-3 (100K+ student scalability)."
-    },
-    {
-      "id": 102,
-      "evaluation_id": 15,
-      "criterion_key": "financial_model",
-      "criterion_label": "Financial Model",
-      "score": 1.0,
-      "weight": 0.15,
-      "justification": "The financial model as presented is the single most disqualifying element of this evaluation. FY'26 net loss of -$19.7M against -$27K revenue indicates zero commercial traction or planned near-term revenue. ROIC is negative and incalculable. Retention cannot be assessed with no customers. The model is not asset-light \u2014 $2.8M in COGS and $16.8M in total expenses with no revenue is capital-intensive by any measure. Gross margin figures (2102%, 10506%) in the spreadsheet are clearly erroneous, raising data integrity concerns.",
-      "evidence": "FY'26: Revenue -$27,313; Total COGS $2,842,063; Gross Profit -$2,869,376; Net Loss -$19,710,563; Total HC Spend $6,161,473. Q2-Q4 revenue budgeted at $0. Gross margin percentages are nonsensical (2102%-10506%), indicating spreadsheet errors."
-    },
-    {
-      "id": 103,
-      "evaluation_id": 15,
-      "criterion_key": "talent_strategy",
-      "criterion_label": "Talent Strategy",
-      "score": 2.0,
-      "weight": 0.05,
-      "justification": "Headcount data exists and shows meaningful investment: Total HC Spend FY'26 of $6,161,473 across COGS ($218,768) and Expenses ($5,942,705), suggesting a substantial team. However, there is no information on team composition, educator pipeline, compensation philosophy, AI-augmented coaching models, or how talent scales with student volume. The existence of real HC spend is the only positive signal.",
-      "evidence": "HC Expenses FY'26: $5,942,705; HC COGS FY'26: $218,768; Total HC Spend FY'26: $6,161,473. No data on TS-1 (talent pipeline), TS-2 (compensation model), or TS-3 (AI-augmented coaching)."
-    },
-    {
-      "id": 104,
-      "evaluation_id": 15,
-      "criterion_key": "access_funding",
-      "criterion_label": "Access & Funding Pathway",
-      "score": 1.0,
-      "weight": 0.1,
-      "justification": "Insufficient data \u2014 no formal plan addresses this criterion. There is no reference to ESA/voucher programs, subsidized access pathways, regulatory compliance, or funding eligibility anywhere in the P&L data. With zero revenue and no product description, the access and funding pathway is entirely unaddressed.",
-      "evidence": "No data exists in the P&L for AF-1 (government funding/ESA), AF-2 (premium-to-subsidized pathway), or AF-3 (regulatory requirements). Revenue line is negative/zero throughout FY'26."
-    },
-    {
       "id": 105,
       "evaluation_id": 16,
       "criterion_key": "mission_alignment",
@@ -2564,86 +2404,6 @@
       "weight": 0.1,
       "justification": "Insufficient data \u2014 no formal plan addresses this criterion. No ESA/voucher/charter funding strategy, subsidized access pathway, or regulatory compliance framework is referenced anywhere in the available data. Zero revenue also means no funding diversification is currently in place.",
       "evidence": "No government funding references, access pathway descriptions, or regulatory compliance information present in P&L spreadsheet. Revenue: $0."
-    },
-    {
-      "id": 121,
-      "evaluation_id": 18,
-      "criterion_key": "mission_alignment",
-      "criterion_label": "Mission Alignment",
-      "score": 1.0,
-      "weight": 0.15,
-      "justification": "No mission statement, student philosophy, or equity/access framework is present in any available data. The business name 'Edupaid' offers a faint signal of an education-payments or tuition-financing concept, but this is speculative inference, not evidence. None of MA-1 (universal access), MA-2 (student joy/engagement), or MA-3 (high standards/high support) can be assessed.",
-      "evidence": "No data available beyond business unit name. P&L contains no narrative, mission language, or program description."
-    },
-    {
-      "id": 122,
-      "evaluation_id": 18,
-      "criterion_key": "academic_excellence",
-      "criterion_label": "Academic & Life Skills",
-      "score": 1.0,
-      "weight": 0.15,
-      "justification": "No academic outcomes data, MAP score targets, life skills benchmarks, or global school comparisons are present. AE-1 (2x learning pace), AE-2 (3rd-party life skills benchmarks), and AE-3 (global benchmarking) are entirely unaddressed. Score of 1 rather than 0 only because the business has not been shown to contradict these criteria \u2014 they simply cannot be evaluated.",
-      "evidence": "Insufficient data \u2014 no formal plan addresses this criterion. P&L spreadsheet contains no academic program information."
-    },
-    {
-      "id": 123,
-      "evaluation_id": 18,
-      "criterion_key": "product_pricing",
-      "criterion_label": "Product & Pricing Design",
-      "score": 1.0,
-      "weight": 0.15,
-      "justification": "No product is described. No pricing tiers exist in the data. No evidence of a $150K\u2013$1K product range (PP-1), no funnel/sampling strategy (PP-2), and no quality benchmarks at any price point (PP-3). Zero revenue further confirms no product has been sold or priced.",
-      "evidence": "Insufficient data \u2014 no formal plan addresses this criterion. Revenue lines are $0 across all periods with no product or pricing structure documented."
-    },
-    {
-      "id": 124,
-      "evaluation_id": 18,
-      "criterion_key": "gtm_community",
-      "criterion_label": "GTM & Community",
-      "score": 1.0,
-      "weight": 0.1,
-      "justification": "No GTM strategy is documented. No direct-to-parent channel (GC-1), community referral flywheel (GC-2), or MAP-score-gated marketing threshold (GC-3) is described or inferable. CF Expenses of $450K (heavily front-loaded) could theoretically represent campaign/marketing spend, but without a plan there is no way to confirm this or evaluate its design.",
-      "evidence": "Insufficient data \u2014 no formal plan addresses this criterion. CF Expenses ($212,500 in Q1, $212,500 in Q2, dropping to $12,500 in Q3-Q4) are the only potentially GTM-relevant data point, but their nature is unspecified."
-    },
-    {
-      "id": 125,
-      "evaluation_id": 18,
-      "criterion_key": "ai_scalability",
-      "criterion_label": "AI & Scalability",
-      "score": 1.0,
-      "weight": 0.15,
-      "justification": "No AI architecture, feedback loop design, network effect mechanism, or scalability model is present. AS-1 (AI feedback loops), AS-2 (network effects), and AS-3 (100K+ student scalability) are entirely unaddressed. The cost structure shows no technology infrastructure spend that would suggest platform investment.",
-      "evidence": "Insufficient data \u2014 no formal plan addresses this criterion. NHC expenses of ~$25K/quarter and NHC COGS of $0 provide no meaningful signal about technology investment."
-    },
-    {
-      "id": 126,
-      "evaluation_id": 18,
-      "criterion_key": "financial_model",
-      "criterion_label": "Financial Model",
-      "score": 1.0,
-      "weight": 0.15,
-      "justification": "The financial model as presented is deeply concerning. ROIC (FM-1) cannot be calculated \u2014 there is zero revenue and no capital return. Customer retention (FM-2) is inapplicable with zero customers. Asset-lightness (FM-3) cannot be assessed without a product model. The projected $872K annual loss on $0 revenue with no revenue trajectory is a fundamental failure of financial model viability at this stage of evaluation.",
-      "evidence": "FY'26 Total Revenue: $0. FY'26 Net Loss: ($872,350). COGS: $2,580. Total Expenses: $869,770. HC Spend: $320,715. CF Expenses: $450,000. NHC Expenses: $99,055. Gross Margin: 0%. Net Margin: 0% (reported, though economically incorrect)."
-    },
-    {
-      "id": 127,
-      "evaluation_id": 18,
-      "criterion_key": "talent_strategy",
-      "criterion_label": "Talent Strategy",
-      "score": 1.0,
-      "weight": 0.05,
-      "justification": "No talent strategy, educator model, or AI-augmented coaching framework is documented. HC spend of $320,715 FY'26 confirms people are employed, but their roles, qualifications, compensation philosophy, or alignment to TS-1/TS-2/TS-3 criteria are entirely unknown.",
-      "evidence": "Insufficient data \u2014 no formal plan addresses this criterion. HC Expenses: $320,715 FY'26 (Q1: $110,115, Q2-Q4: $70,200/quarter each). No role descriptions or compensation rationale provided."
-    },
-    {
-      "id": 128,
-      "evaluation_id": 18,
-      "criterion_key": "access_funding",
-      "criterion_label": "Access & Funding Pathway",
-      "score": 1.0,
-      "weight": 0.1,
-      "justification": "No ESA/voucher strategy, subsidized access pathway, or regulatory compliance framework is described. AF-1 (government funding leverage), AF-2 (premium-to-subsidized pathway), and AF-3 (regulatory eligibility) are entirely unaddressed. The business name could imply a tuition-financing model that might intersect with access themes, but this is speculative and unsupported.",
-      "evidence": "Insufficient data \u2014 no formal plan addresses this criterion. P&L contains no funding pathway, grant revenue, or regulatory compliance information."
     },
     {
       "id": 129,
@@ -3046,84 +2806,484 @@
       "evidence": "No funding pathway, government program integration, or access strategy data available in the P&L spreadsheet."
     },
     {
-      "id": 169,
-      "evaluation_id": 24,
+      "id": 177,
+      "evaluation_id": 25,
       "criterion_key": "mission_alignment",
       "criterion_label": "Mission Alignment",
-      "score": 3.0,
+      "score": 8.0,
       "weight": 0.15,
-      "justification": "Insufficient data \u2014 no formal plan addresses this criterion. A camp business could plausibly serve broad youth populations (MA-1), and camps are generally associated with joy and engagement (MA-2), but there is zero documented evidence of mission, pedagogical philosophy, or High Standards/High Support framework in the available data. Scored at baseline 3 rather than lower only because the camp format generically aligns with youth engagement.",
-      "evidence": "No mission statement, program description, or pedagogical framework present in P&L data. Only financial line items available."
+      "justification": "EduPaid directly enforces outcomes-for-funding: 100% of outbound payments tied to mastery tokens and 1.25x\u20132x student growth, with a money-back guarantee for non-mastery. This strongly aligns with high-standards / high-support ethos and unlocks ESA access for families broadly. Joy is indirect (it enables the apps that deliver it), tempering a perfect score.",
+      "evidence": null
     },
     {
-      "id": 170,
-      "evaluation_id": 24,
+      "id": 178,
+      "evaluation_id": 25,
       "criterion_key": "academic_excellence",
       "criterion_label": "Academic & Life Skills",
-      "score": 1.0,
+      "score": 7.5,
       "weight": 0.15,
-      "justification": "No academic outcomes data of any kind is present. There is no reference to MAP scores, learning pace targets, life skills benchmarks, or comparison to global academic standards. For a camp business, academic rigor is not a default assumption. This is the most critical gap relative to Joe's rubric and scores near zero due to complete absence of evidence.",
-      "evidence": "P&L spreadsheet contains no academic metrics, assessment data, curriculum references, or third-party benchmarking whatsoever."
+      "justification": "EduPaid's 2x Growth Token is tied directly to NWEA MAP results \u2014 the rubric's preferred benchmark. The mastery token system certifies academic achievement and StudyReel certifies time-on-topic with anti-cheating. Life-skills benchmarking is absent at the infrastructure layer; EduPaid measures what it can (mastery/growth) but does not itself generate 3rd-party life-skills data.",
+      "evidence": null
     },
     {
-      "id": 171,
-      "evaluation_id": 24,
+      "id": 179,
+      "evaluation_id": 25,
       "criterion_key": "product_pricing",
       "criterion_label": "Product & Pricing Design",
-      "score": 2.0,
+      "score": 8.0,
       "weight": 0.15,
-      "justification": "Insufficient data \u2014 no formal plan addresses this criterion. Revenue of $6.4M is documented but no breakdown by product tier, price point, or program type is available. It is impossible to evaluate whether a $150K-to-$1K product spectrum exists, whether lower tiers funnel to higher-value offerings, or whether product quality is world-class at any tier. Scored slightly above floor because the revenue figure implies some product exists at some price point.",
-      "evidence": "Total recurring revenue of $6,403,500 with no product breakdown, SKU detail, enrollment counts, or per-student pricing data available."
+      "justification": "Unit economics of ~$100/student/subject/grade are extremely accessible and position EduPaid as a broad-access enabler (funnel from premium schools down to ESA-funded virtual students). The platform supports the full spectrum from high-end private school reimbursement to subsidized ESA access. Developer integration at 1-hour via API and sub-10-minute parent onboarding demonstrate world-class product quality at the infrastructure tier.",
+      "evidence": null
     },
     {
-      "id": 172,
-      "evaluation_id": 24,
+      "id": 180,
+      "evaluation_id": 25,
       "criterion_key": "gtm_community",
       "criterion_label": "GTM & Community",
-      "score": 3.0,
+      "score": 7.5,
       "weight": 0.1,
-      "justification": "Insufficient data \u2014 no formal plan addresses this criterion. No GTM strategy, marketing spend breakdown, community flywheel description, or parent referral mechanism is documented. CF Expenses of $1,280,700 (~20% of revenue) could include marketing spend but cannot be confirmed without a plan. Camps often rely on direct-to-parent marketing by nature, which is a marginal positive assumption, but no evidence supports scoring above baseline.",
-      "evidence": "CF Expenses of $1,280,700 noted but category composition unknown. No GTM documentation, customer acquisition strategy, or community engagement data present."
+      "justification": "GTM is B2B2C (app developers / ESA administrators as channel, parents as end users), which is somewhat indirect but appropriate for an infrastructure platform. Multi-state ESA processing confirms regulatory positioning. The 250,000 virtual private student target implies a marketplace flywheel. Marketing spend threshold tied to mastery outcome data is explicitly part of the SPOVs. Not a pure DTC parent model, hence modest discount.",
+      "evidence": null
     },
     {
-      "id": 173,
-      "evaluation_id": 24,
+      "id": 181,
+      "evaluation_id": 25,
       "criterion_key": "ai_scalability",
       "criterion_label": "AI & Scalability",
-      "score": 1.0,
+      "score": 8.5,
       "weight": 0.15,
-      "justification": "No evidence of AI, technology infrastructure, feedback loops, or network effects anywhere in the available data. For a camp business with no documented technology strategy, there is no basis to assume AI-powered quality maintenance, flywheel effects, or a path to 100K+ students. This is a near-zero score reflecting the complete absence of any relevant evidence.",
-      "evidence": "P&L spreadsheet contains no technology, AI, platform, or scalability-related line items or references."
+      "justification": "Platform architecture is genuinely asset-light: automated ESA processing, immutable QLDB ledger, AI-driven OCR receipt validation with 70% confidence threshold, and risk-scoring engine. More students = more data = better fraud detection (network effect). Target of 250,000 students without proportional cost increase is explicitly modeled. 1-hour developer API integration confirms scalable onboarding. This is one of the strongest categories.",
+      "evidence": null
     },
     {
-      "id": 174,
-      "evaluation_id": 24,
+      "id": 182,
+      "evaluation_id": 25,
       "criterion_key": "financial_model",
       "criterion_label": "Financial Model",
-      "score": 4.0,
+      "score": 8.5,
       "weight": 0.15,
-      "justification": "This is the only category with direct evidence. Positive signals include consistent 7% net margin across planning scenarios, $6.4M+ in recurring revenue, and a 100% gross margin (if accurate). However, the zero HC cost anomaly raises data integrity concerns, 7% net margin is modest against a high-ROIC requirement, and no capital expenditure or ROIC data is available. Customer retention cannot be assessed beyond the recurring revenue classification. Scored at 4 \u2014 above baseline due to real financial data, but penalized for anomalies and missing ROIC/retention metrics.",
-      "evidence": "Net profit $449,781 on $6,403,500 revenue (7% margin); 100% gross margin; NHC expenses $4,673,019; CF expenses $1,280,700; HC spend = $0 (anomalous); prior plan shows same 7% margin at $8.2M revenue confirming consistency."
+      "justification": "90%+ gross margins on platform-sourced funding are best-in-class. Q4'25 $100K/month stretch goal achieved. Q2'26 $150K/month target is on-track at 87/100. Customer retention for the ESA marketplace is structurally high (switching costs in compliance infrastructure). The model is asset-light by design. Minor deduction for Novatio integration blockage (impacting revenue diversification) and incomplete margin formalization recommended by assessors.",
+      "evidence": null
     },
     {
-      "id": 175,
-      "evaluation_id": 24,
+      "id": 183,
+      "evaluation_id": 25,
       "criterion_key": "talent_strategy",
       "criterion_label": "Talent Strategy",
-      "score": 2.0,
+      "score": 7.0,
       "weight": 0.05,
-      "justification": "Insufficient data \u2014 no formal plan addresses this criterion. The $0 HC spend across all lines is deeply anomalous for a camp business that would normally employ counselors, instructors, and program staff. This either indicates misclassification into NHC or CF categories, or a contractor-only model \u2014 neither of which is explained. No talent pipeline, compensation philosophy, or AI-augmented coaching model is documented.",
-      "evidence": "Total HC Spend = $0 across all periods, which is inconsistent with operating a physical camp program. No staffing documentation present."
+      "justification": "EduPaid is infrastructure-focused, meaning talent is engineering and compliance-heavy rather than educator-heavy. The 6+ team and clear DRI (Rahul Subramaniam) with multiple owners indicate solid organizational design. The platform itself IS the AI-augmented layer that amplifies other human educators. Slightly below top score due to thin pipeline documentation and no AI-augmented coaching model at this layer.",
+      "evidence": null
     },
     {
-      "id": 176,
-      "evaluation_id": 24,
+      "id": 184,
+      "evaluation_id": 25,
       "criterion_key": "access_funding",
-      "criterion_label": "Access & Funding Pathway",
-      "score": 2.0,
+      "criterion_label": "Access & Funding",
+      "score": 9.5,
       "weight": 0.1,
-      "justification": "Insufficient data \u2014 no formal plan addresses this criterion. There is no reference to ESA programs, vouchers, charter grants, subsidized access pathways, or regulatory compliance for funding eligibility. A private camp business does not typically access government education funding without intentional design, and there is no evidence of such design here. Scored slightly above floor because the business's existence implies some baseline operational compliance.",
-      "evidence": "No government funding references, equity pathways, or regulatory documentation present in P&L data."
+      "justification": "This is EduPaid's primary purpose: automating ESA application/processing across multiple US states, with a target of 10+ states by Q2'26. The Arizona statutory compliance (A.R.S. \u00a715-2403) is fully mapped including a 9-step Minimum Auditable Product. The path from ESA automation to broad access for underserved families is the core business model, not an afterthought. Highest score of any category across all BUs.",
+      "evidence": null
+    },
+    {
+      "id": 185,
+      "evaluation_id": 26,
+      "criterion_key": "mission_alignment",
+      "criterion_label": "Mission Alignment",
+      "score": 9.0,
+      "weight": 0.15,
+      "justification": "Alpha Schools is the flagship mission embodiment: top 1% academic outcomes in 2 hours/day, leaving time for life skills. Student quotes ('I want to finish two grades in every subject', 'ACCELERATE IS AWESOME!!!') and zero sub-4/5 guide ratings confirm kids love it. The model serves both premium ($40\u201350K) and a potential Catholic/faith-based variant. High standards + high support is the explicit design philosophy and the marketing centerpiece.",
+      "evidence": null
+    },
+    {
+      "id": 186,
+      "evaluation_id": 26,
+      "criterion_key": "academic_excellence",
+      "criterion_label": "Academic & Life Skills",
+      "score": 9.5,
+      "weight": 0.15,
+      "justification": "3.6x MAP growth is the strongest third-party academic benchmark in the entire BU portfolio \u2014 far exceeding the rubric's >2x threshold. 4.8/5 guide satisfaction across multiple schools. Students complete two grades per subject per year. These are the rubric's gold-standard metrics. Minimal deduction because life-skills 3rd-party benchmarking is mentioned but not fully formalized in available Ephor data.",
+      "evidence": null
+    },
+    {
+      "id": 187,
+      "evaluation_id": 26,
+      "criterion_key": "product_pricing",
+      "criterion_label": "Product & Pricing Design",
+      "score": 7.5,
+      "weight": 0.15,
+      "justification": "Clear premium tier at $40\u201350K/year and the 2HL B2B licensing tier at $10K/year (vs. competing $30K schools) provide a two-tier range. Catholic school angle and Bastrop/charter model would add $13\u201314K tiers. Product quality is genuinely world-class at each price point. However, the rubric's $1K/year lower tier for broad access remains aspirational \u2014 ESA/voucher pathway exists but is not yet a primary revenue channel.",
+      "evidence": null
+    },
+    {
+      "id": 188,
+      "evaluation_id": 26,
+      "criterion_key": "gtm_community",
+      "criterion_label": "GTM & Community",
+      "score": 6.5,
+      "weight": 0.1,
+      "justification": "GTM is well-designed: direct-to-parent Info Sessions (50 events \u00d7 80 people each) with 50% funnel conversion targets, plus B2B school licensing. The Dean of Parents and Head of School roles show commitment to community. However, Q1'25 enrollment goals were significantly missed (37% of new enrollment target achieved) and marketing KPIs are still being calibrated. The $20K/student marketing CAC is high until a community flywheel develops.",
+      "evidence": null
+    },
+    {
+      "id": 189,
+      "evaluation_id": 26,
+      "criterion_key": "ai_scalability",
+      "criterion_label": "AI & Scalability",
+      "score": 7.0,
+      "weight": 0.15,
+      "justification": "The 2 Hour Learning model is inherently AI-dependent (2HL platform, TimeBack, AlphaTest, AlphaWrite), but physical schools are asset-heavy by nature. The B2B SaaS licensing model for existing private schools is more scalable. Land-and-expand from $200K pilots to $1M+ expansions implies controlled scaling. 150-student full schools are not easily replicable to 100K+ students without the virtual/DTC layer. Catholic school diocese strategy could be a 1.7M-student scale vector.",
+      "evidence": null
+    },
+    {
+      "id": 190,
+      "evaluation_id": 26,
+      "criterion_key": "financial_model",
+      "criterion_label": "Financial Model",
+      "score": 4.5,
+      "weight": 0.15,
+      "justification": "Current reality is deeply challenged: $14M loss in 2025 across operational schools (down from $16M run-rate), $30M total 2025 investment, and 9 schools all losing money. Q1'25 new enrollment goal achieved at 37%; ESports, GT School, and Sports Academy goals all Not Achieved. Target unit economics of $10K profit/student at 150 students/school = $1.5M annual profit per site is credible \u2014 but only after full enrollment, which is not yet demonstrated. Path to 20-25% margins exists but requires enrollment execution not yet proven.",
+      "evidence": null
+    },
+    {
+      "id": 191,
+      "evaluation_id": 26,
+      "criterion_key": "talent_strategy",
+      "criterion_label": "Talent Strategy",
+      "score": 7.5,
+      "weight": 0.05,
+      "justification": "Guide satisfaction of 4.8/5 confirms the talent model works at operated schools. Named leadership (Dean of Parents, Head of School, Guide network) is structured. The microschool model with D1 Training facility partnerships reduces infrastructure costs. However, the dependency on hiring 25 heads of school for microschools (only 6 appointed in Q1'25 vs. target of 25) indicates a talent pipeline bottleneck at scale.",
+      "evidence": null
+    },
+    {
+      "id": 192,
+      "evaluation_id": 26,
+      "criterion_key": "access_funding",
+      "criterion_label": "Access & Funding",
+      "score": 6.0,
+      "weight": 0.1,
+      "justification": "ESA/voucher participation is referenced (Bastrop/Valenta for SpaceX families with $5K/student Musk contribution, TX Prep charter model) but the core business remains premium-tuition focused. Catholic school strategy targets 1.7M US students and 1.3B global Catholics \u2014 a large potential access vector. A clear, proven pathway from $40\u201350K premium to subsidized access for underserved families is not yet operational \u2014 it's a stated goal.",
+      "evidence": null
+    },
+    {
+      "id": 193,
+      "evaluation_id": 27,
+      "criterion_key": "mission_alignment",
+      "criterion_label": "Mission Alignment",
+      "score": 7.0,
+      "weight": 0.15,
+      "justification": "Alpha Camps serves as a funnel and brand touchpoint for the full Alpha school ecosystem. The premium experience design ('premium experience must match premium price') signals commitment to joy and engagement. SPOV 4 explicitly warns against budget cuts that convert a premium experience into a commodity ('product sabotage'). However, camps are primarily a marketing/brand vehicle, not the core academic product \u2014 mission alignment is supportive but indirect.",
+      "evidence": null
+    },
+    {
+      "id": 194,
+      "evaluation_id": 27,
+      "criterion_key": "academic_excellence",
+      "criterion_label": "Academic & Life Skills",
+      "score": 5.0,
+      "weight": 0.15,
+      "justification": "No academic outcome data (MAP scores, benchmarks, life-skills metrics) is present in the Ephor data for Alpha Camps. Camps are positioned as brand/experience vehicles rather than academic acceleration programs. The rubric's AE criteria (>2x learning pace, 3rd-party life-skills benchmarks, global benchmarking) cannot be evaluated. If camps do not claim >2x learning pace, a different rubric dimension or explicit outcome framework is needed.",
+      "evidence": null
+    },
+    {
+      "id": 195,
+      "evaluation_id": 27,
+      "criterion_key": "product_pricing",
+      "criterion_label": "Product & Pricing Design",
+      "score": 8.0,
+      "weight": 0.15,
+      "justification": "The multi-market pricing doctrine is a standout strength: camp price anchored to school tuition tier, brand coherence protected across 19+ markets, Hamptons-level Veblen pricing for premium markets covered separately. The '6 SPOVs as one argument' framework is sophisticated brand architecture. The Marriott problem SPOV (risk of brand dilution from price inconsistency) shows awareness of the key pricing risk. Deduction for absence of a lower-tier access price point in the documented scope.",
+      "evidence": null
+    },
+    {
+      "id": 196,
+      "evaluation_id": 27,
+      "criterion_key": "gtm_community",
+      "criterion_label": "GTM & Community",
+      "score": 7.0,
+      "weight": 0.1,
+      "justification": "Camps are explicitly positioned as a sampling/funnel mechanism for school enrollment \u2014 pricing directly tied to school tuition tier reinforces this school-to-camp-to-enrollment flywheel. Expansion to 19+ markets implies a national direct-to-parent community strategy. However, with no chat history or execution data in Ephor, the community flywheel remains theoretical. Marketing spend tied to academic results is not explicitly documented for the camp product.",
+      "evidence": null
+    },
+    {
+      "id": 197,
+      "evaluation_id": 27,
+      "criterion_key": "ai_scalability",
+      "criterion_label": "AI & Scalability",
+      "score": 5.5,
+      "weight": 0.15,
+      "justification": "Camps are inherently more asset-intensive than virtual products \u2014 physical facilities, guides, housing. The pricing doctrine deliberately avoids venue-cost-based pricing (SPOV 6: Herm\u00e8s analogy), which helps brand consistency but doesn't address the unit economics of scaling physical camps. No AI feedback loops or scalability architecture is described in camp-specific Ephor data. The 19+ market goal implies physical replication, not digital scale.",
+      "evidence": null
+    },
+    {
+      "id": 198,
+      "evaluation_id": 27,
+      "criterion_key": "financial_model",
+      "criterion_label": "Financial Model",
+      "score": 5.5,
+      "weight": 0.15,
+      "justification": "No P&L or financial model data is present in the Alpha Camps Ephor project \u2014 the project is in setup stage. The pricing doctrine implies premium economics (school-tuition-anchored pricing = $40K+/year equivalent), but the financial model for camps as a standalone BU is undocumented. Revenue contribution to Alpha Holdings, ROIC, and retention data are entirely absent. This is a significant gap for a BU evaluation.",
+      "evidence": null
+    },
+    {
+      "id": 199,
+      "evaluation_id": 27,
+      "criterion_key": "talent_strategy",
+      "criterion_label": "Talent Strategy",
+      "score": 6.0,
+      "weight": 0.05,
+      "justification": "SPOV 4 explicitly warns that cutting guide accommodation budgets converts a premium experience into a commodity \u2014 this shows awareness of the talent quality imperative. The guide quality model from Alpha Schools presumably applies. However, no camp-specific talent pipeline, compensation model, or AI augmentation data is available. Seasonal camp staffing at 19+ markets would require substantial talent infrastructure not documented in Ephor data.",
+      "evidence": null
+    },
+    {
+      "id": 200,
+      "evaluation_id": 27,
+      "criterion_key": "access_funding",
+      "criterion_label": "Access & Funding",
+      "score": 4.5,
+      "weight": 0.1,
+      "justification": "Full scholarship/financial aid policy is explicitly out of scope in the Alpha Camps BrainLift. The pricing doctrine focuses on premium brand protection, not access expansion. No ESA/voucher integration or government funding pathway is described for camps. At $40K+/year tuition-equivalent pricing, camps are positioned as premium experiences without a lower-tier access pathway \u2014 a structural misalignment with rubric AF criteria that drops this score below 5.0.",
+      "evidence": null
+    },
+    {
+      "id": 201,
+      "evaluation_id": 28,
+      "criterion_key": "mission_alignment",
+      "criterion_label": "Mission Alignment",
+      "score": 7.5,
+      "weight": 0.15,
+      "justification": "Direct Instruction prioritized over Socratic methods (core EduBench SPOV), strict curriculum alignment to prevent hallucinations, and student-outcomes-centered benchmarking all reflect high-standards alignment. STAAR-based testing with 90%+ student pass rate targets and the Vaidik untimed assessment design (reducing anxiety) reflect high support. Minor deduction for absence of explicit 'joy/engagement' as a first-class design principle in the AI content layer.",
+      "evidence": null
+    },
+    {
+      "id": 202,
+      "evaluation_id": 28,
+      "criterion_key": "academic_excellence",
+      "criterion_label": "Academic & Life Skills",
+      "score": 8.0,
+      "weight": 0.15,
+      "justification": "EduBench's core purpose is the best-in-class benchmarking system for AI-generated educational content \u2014 meta-academic infrastructure. 95/100 Q3'25 EduBench score confirms strong third-party alignment. STAAR-aligned curriculum with 90%+ pass rate targets, AP World History content with video design principles, and mastery-based STAAR assignment throughout the year represent above-average academic rigor. AlphaTest 31\u219236% pass rate improvement goal shows realistic continuous improvement.",
+      "evidence": null
+    },
+    {
+      "id": 203,
+      "evaluation_id": 28,
+      "criterion_key": "product_pricing",
+      "criterion_label": "Product & Pricing Design",
+      "score": 5.5,
+      "weight": 0.15,
+      "justification": "$300K budget for Incept content creation suggests meaningful internal investment, but consumer-facing pricing tiers from premium to $1K/year are not documented. The platform operates primarily as internal/B2B infrastructure rather than a DTC product with a defined pricing ladder. IXL Replacement targets guide intervention savings of ~$50K/year per 500-student school, implying B2B SaaS value framing. World-class quality at the content layer is apparent, but consumer access tiers are a structural gap.",
+      "evidence": null
+    },
+    {
+      "id": 204,
+      "evaluation_id": 28,
+      "criterion_key": "gtm_community",
+      "criterion_label": "GTM & Community",
+      "score": 5.5,
+      "weight": 0.1,
+      "justification": "GTM for Learnwith.AI is primarily internal (feeds Alpha schools and 2HL platform) or B2B (school districts, educators). No direct-to-parent community flywheel is documented. Marketing connection is a handoff note to the enrollment team, not an executed strategy. School Choice alignment is rated Weak in Q2'26 JL SPOV analysis for AlphaWrite. The platform is not designed as a DTC consumer product with community dynamics. Arizona/Louisiana ESA live deployments partially address this but without documented parent-facing channel.",
+      "evidence": null
+    },
+    {
+      "id": 205,
+      "evaluation_id": 28,
+      "criterion_key": "ai_scalability",
+      "criterion_label": "AI & Scalability",
+      "score": 9.0,
+      "weight": 0.15,
+      "justification": "This is the strongest category: multi-agent generators, curriculum-aligned AI to prevent hallucinations, AI-powered automated test assembly (ATA), AI Gap Analyzer with autonomous remediation, item variant generation, $80/student/year cost structure at 10K+ students, and serverless AWS architecture. EduBench achieves 100% SPOV quality scores on transdisciplinary AI thinking. AlphaWrite targets 10,000+ students from 350 current \u2014 28x scale with fixed platform cost. Genuine flywheel: more content \u2192 better benchmarks \u2192 better content.",
+      "evidence": null
+    },
+    {
+      "id": 206,
+      "evaluation_id": 28,
+      "criterion_key": "financial_model",
+      "criterion_label": "Financial Model",
+      "score": 6.0,
+      "weight": 0.15,
+      "justification": "AlphaTest demonstrates exceptional unit economics at $80/student/year ($200K/quarter for 10,000+ students). $300K Incept content budget is a fixed investment with unlimited theoretical reuse. Guide intervention savings of $50K/year at 500-student schools directly improve school-level profit margins. However, Q1'26 Incept scored 42/100 (Critical Concern) with 0/3 educational outcome goals compliant \u2014 execution volatility creates financial projection risk. No standalone P&L or ROIC documentation for the BU as a whole.",
+      "evidence": null
+    },
+    {
+      "id": 207,
+      "evaluation_id": 28,
+      "criterion_key": "talent_strategy",
+      "criterion_label": "Talent Strategy",
+      "score": 7.5,
+      "weight": 0.05,
+      "justification": "AI coaching model is explicitly designed to build skills (not replace teachers) \u2014 AlphaWrite SPOV 3. AI grading reduces guide FTE requirements with strong JL SPOV alignment. The 'Experts write, AI assembles' SPOV for AlphaTest creates a talent model pairing human expert quality with AI scale efficiency. Eigen Consulting as code owner for AlphaWrite and BeyondAI as vendor for AlphaTest provide external talent partnerships. Pipeline functional but not deeply documented.",
+      "evidence": null
+    },
+    {
+      "id": 208,
+      "evaluation_id": 28,
+      "criterion_key": "access_funding",
+      "criterion_label": "Access & Funding",
+      "score": 6.5,
+      "weight": 0.1,
+      "justification": "Arizona and Louisiana ESA states are live for AlphaWrite, providing actual government funding deployment. The Vaidik IXL Replacement targets 75% retention in a 50-student pilot scaling to 500-student schools \u2014 implying accessible pricing. However, explicit voucher integration strategy, pathway from premium to subsidized/free access for underserved families, and ESA-compliant parent dashboards are in progress (Q2'26 deliverable) rather than fully operational.",
+      "evidence": null
+    },
+    {
+      "id": 209,
+      "evaluation_id": 29,
+      "criterion_key": "mission_alignment",
+      "criterion_label": "Mission Alignment",
+      "score": 8.0,
+      "weight": 0.15,
+      "justification": "DTC/homeschool apps are purpose-built to reach kids outside traditional school structures, directly serving the school choice population. AlphaWrite's interest-based prompts that increase completion rates, XP gamification, and mastery-based progression place student engagement and joy at the center. The IXL Replacement's 'untimed assessment reduces anxiety' design reflects high support. All four core AlphaWrite SPOVs are validated at 100% quality \u2014 strong mission coherence across the product line.",
+      "evidence": null
+    },
+    {
+      "id": 210,
+      "evaluation_id": 29,
+      "criterion_key": "academic_excellence",
+      "criterion_label": "Academic & Life Skills",
+      "score": 8.5,
+      "weight": 0.15,
+      "justification": "STAAR-aligned curriculum, NWEA MAP-adjacent assessment (AlphaTest), 31\u219236% pass rate improvement target with weekly tracking, AI Gap Analyzer for autonomous remediation, and Vaidik curriculum with 95% acceptance rate in four-tiered validation. TWR (Teaching Writing Right) methodology backing for AlphaWrite provides peer-reviewed academic grounding. Q1'26 AlphaTest: 5/5 goals 100% compliant. JL SPOV on differentiated premium product consistently rated Strong.",
+      "evidence": null
+    },
+    {
+      "id": 211,
+      "evaluation_id": 29,
+      "criterion_key": "product_pricing",
+      "criterion_label": "Product & Pricing Design",
+      "score": 7.0,
+      "weight": 0.15,
+      "justification": "Cost-per-student target of <$1,000/year for AlphaWrite and $80/year for AlphaTest places DTC apps squarely in the accessible tier. Arizona/Louisiana ESA deployments mean families can use government funding. The rubric asks for a product range from $150K/year to $1K/year \u2014 these apps hit the $1K/year lower end well. The upper-tier premium connection (to physical schools at $40\u201350K) is less explicit in the DTC/homeschool channel. World-class quality at the price point is supported by Ephor scores.",
+      "evidence": null
+    },
+    {
+      "id": 212,
+      "evaluation_id": 29,
+      "criterion_key": "gtm_community",
+      "criterion_label": "GTM & Community",
+      "score": 7.5,
+      "weight": 0.1,
+      "justification": "Direct-to-parent ESA channel is live in two states. AlphaWrite targets 10,000+ students (from 350) through ESA-compliant dashboards. Q1'26 5x student growth and 15x submission growth confirm viral/word-of-mouth dynamics emerging. Marketing connection to academic results is present (AlphaTest outcome data drives upper funnel). Standardized 6-Month School Launch Kit planned for rapid adoption. Community flywheel is building but not yet at critical mass.",
+      "evidence": null
+    },
+    {
+      "id": 213,
+      "evaluation_id": 29,
+      "criterion_key": "ai_scalability",
+      "criterion_label": "AI & Scalability",
+      "score": 9.0,
+      "weight": 0.15,
+      "justification": "AlphaWrite targets 10,000+ students with a fixed ~$1.12M/quarter platform cost \u2014 clear scalability beyond proportional cost increase. AlphaTest at $80/student/year for 10K+ students is extreme unit efficiency. Multi-agent content generators, AI-powered test assembly, AI Gap Analyzer with autonomous remediation, and item variant generation create genuine AI feedback loops. Q1'26 15x submission growth managed within budget confirms the platform handles real volume. Both products demonstrate classic SaaS network effects.",
+      "evidence": null
+    },
+    {
+      "id": 214,
+      "evaluation_id": 29,
+      "criterion_key": "financial_model",
+      "criterion_label": "Financial Model",
+      "score": 7.5,
+      "weight": 0.15,
+      "justification": "AlphaTest under-budget in Q3'25 ($0.16M vs $0.2M planned) and Q4'25 \u2014 consistent cost discipline. $80/student/year cost structure at 10K students enables strong margins. AlphaWrite Q2'26 $1.12M quarterly budget for 10,000+ students implies <$450/student/year fully loaded \u2014 healthy ROIC at scale. Guide FTE savings of ~$50K/year per 500-student school directly improve school-level profitability. TimeBack dependency (blocking diagnostic curriculum goal) is the main financial risk item.",
+      "evidence": null
+    },
+    {
+      "id": 215,
+      "evaluation_id": 29,
+      "criterion_key": "talent_strategy",
+      "criterion_label": "Talent Strategy",
+      "score": 8.0,
+      "weight": 0.05,
+      "justification": "9+ team members on AlphaWrite with Eigen Consulting as code owner; BeyondAI vendor for AlphaTest. AI grading reduces guide time requirements (stated strong JL SPOV alignment). Reducing test attempts from 2.8\u21921.8 through AI coaching is AI-augmented talent amplification in action. Q2'26 scored strong on Non-Scalable Components SPOV, reflecting mature thinking about where human talent is essential vs. where AI can substitute. Under-budget delivery in multiple quarters shows operational discipline.",
+      "evidence": null
+    },
+    {
+      "id": 216,
+      "evaluation_id": 29,
+      "criterion_key": "access_funding",
+      "criterion_label": "Access & Funding",
+      "score": 7.0,
+      "weight": 0.1,
+      "justification": "Arizona and Louisiana ESA states live \u2014 actual government funding pathway operational. <$1,000/year cost target per student makes ESA/voucher-funded access to underserved families feasible. ESA-compliant dashboard is a Q2'26 deliverable in progress. School Choice impact rated Weak in quarterly SPOV alignment \u2014 this is a known gap the team needs to explicitly address. The path is visible and being executed, but not yet fully realized.",
+      "evidence": null
+    },
+    {
+      "id": 217,
+      "evaluation_id": 30,
+      "criterion_key": "mission_alignment",
+      "criterion_label": "Mission Alignment",
+      "score": 7.5,
+      "weight": 0.15,
+      "justification": "SPOV: 'No sports until academics are finished' leverages existing student obsession with athletics as a motivational model \u2014 elegant alignment of joy (sports) with academic standards. The 2x MAP growth norm target is explicit. Target $100\u2013150K household income (more accessible than core Alpha) broadens mission reach. Partners with elite training centers (WOGA, Texas Dreams examples) positions Strata at the intersection of aspiration and academics. High standards + high support is structurally built into the sports/academics split model.",
+      "evidence": null
+    },
+    {
+      "id": 218,
+      "evaluation_id": 30,
+      "criterion_key": "academic_excellence",
+      "criterion_label": "Academic & Life Skills",
+      "score": 7.0,
+      "weight": 0.15,
+      "justification": "Q4'25 goal: 'Ensure every student hits 120 XP for 2x MAPS growth' \u2014 explicit MAP target. Collects 'love of school' data for engagement benchmarking. 2 Hour Learning academic foundation provides the academic rigor layer. However, Strata is early-stage: actual MAP results are not yet documented in Ephor data, and the product borrows academic credibility from 2HL (3.6x MAP) rather than having independent validation at sports academy sites.",
+      "evidence": null
+    },
+    {
+      "id": 219,
+      "evaluation_id": 30,
+      "criterion_key": "product_pricing",
+      "criterion_label": "Product & Pricing Design",
+      "score": 7.0,
+      "weight": 0.15,
+      "justification": "$15K tuition per student is well-positioned between premium Alpha ($40\u201350K) and charter/public ($0). Rural model generates 39\u201350% operator margins \u2014 attractive for coach-operators. Strata captures $4K base + $3K referral fee per student per school ($80\u2013140K/school). The pricing model is coherent and positions correctly as accessible-premium for the $100\u2013150K income demographic. TX vouchers ($10,800) launching 2026 add a meaningful subsidy pathway.",
+      "evidence": null
+    },
+    {
+      "id": 220,
+      "evaluation_id": 30,
+      "criterion_key": "gtm_community",
+      "criterion_label": "GTM & Community",
+      "score": 8.0,
+      "weight": 0.1,
+      "justification": "The 'Corporate Raider' SPOV (targeting existing youth sports academies rather than greenfield builds) is the single most differentiated and capital-efficient GTM insight across all 6 BUs. Existing community trust, student base, and real estate dramatically lower CAC. NIL incentives for Texas high school athletes create natural word-of-mouth. Q4'25 goal to perfect parent pitch at 50% conversion per event. CAC target reduction from $100+ to under $25 per lead through centralized platform and shared marketing is ambitious but structurally credible.",
+      "evidence": null
+    },
+    {
+      "id": 221,
+      "evaluation_id": 30,
+      "criterion_key": "ai_scalability",
+      "criterion_label": "AI & Scalability",
+      "score": 6.5,
+      "weight": 0.15,
+      "justification": "Centralized Strata platform for administrative automation, shared marketing and procurement, and the 2 Hour Learning AI layer provide scalability infrastructure. The 60-day launch onboarding process is a replicable playbook across academy conversions. However, physical sports academies are inherently asset-intensive and require per-location coaching talent \u2014 true AI-driven scale beyond proportional cost increase is limited. No dedicated AI feature set specific to Strata (beyond 2HL) is documented.",
+      "evidence": null
+    },
+    {
+      "id": 222,
+      "evaluation_id": 30,
+      "criterion_key": "financial_model",
+      "criterion_label": "Financial Model",
+      "score": 3.5,
+      "weight": 0.15,
+      "justification": "Q1'26 budget is deeply concerning: $(3.28M) net loss on $866K revenue = negative 378% net margin. NHC expenses of $2.8M vs $162K in Q4'25 (1,623% quarter-over-quarter increase) with no documented justification in available Ephor data. Total Q4'25 net spend of $1.3M is substantial for a 4\u20135 showcase school stage. FY'25 actual revenue was only $25\u201350K total. The per-school model (39\u201350% operator margins at $15K tuition) is financially sound, but Strata's corporate P&L shows an investment-heavy posture that requires urgent financial governance. Profitability not projected until Q3'26.",
+      "evidence": null
+    },
+    {
+      "id": 223,
+      "evaluation_id": 30,
+      "criterion_key": "talent_strategy",
+      "criterion_label": "Talent Strategy",
+      "score": 7.5,
+      "weight": 0.05,
+      "justification": "SPOV 1: 'Only coaches, not traditional teachers, start schools' \u2014 contrarian and operationally elegant. Coaches have existing student relationships, community trust, and sports facilities. Founding team is strong: Arpan Gupta (newsletter to 70K+ subscribers), Lamar Cannon (licensed RE broker + college athlete network), Malekai Mischke (startup scaling + athlete). The 60-day coach onboarding playbook is scalable. Risk: coaches are excellent at sports talent, less proven at academic program management at scale.",
+      "evidence": null
+    },
+    {
+      "id": 224,
+      "evaluation_id": 30,
+      "criterion_key": "access_funding",
+      "criterion_label": "Access & Funding",
+      "score": 7.5,
+      "weight": 0.1,
+      "justification": "Texas voucher program ($10,800/student, launching 2026) is explicitly central to the funding strategy \u2014 requesting 100 x $10K student vouchers for showcase schools with $1M scholarship bridge funding until vouchers launch. Target demographic of $100\u2013150K households is deliberately more accessible than core Alpha. BY-RIGHT building targeting (avoiding CUP/SUP permits that take 18+ months) shows regulatory sophistication for rapid deployment. This is among the better-documented access pathways across the BU set.",
+      "evidence": null
     }
   ]
 }
