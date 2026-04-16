@@ -198,16 +198,16 @@ export default function BusinessUnitDetail() {
           </div>
           {evaluation && <RecommendationBadge rec={evaluation.recommendation} />}
           {evaluation && (
-            <a
-              href={`/api/evaluations/${evaluation.id}/export.xlsx`}
-              download
-              data-testid="link-export-xlsx"
-            >
-              <Button variant="outline" size="sm">
+            <Button asChild variant="outline" size="sm">
+              <a
+                href={`/api/evaluations/${evaluation.id}/export.xlsx`}
+                download
+                data-testid="link-export-xlsx"
+              >
                 <Download className="h-4 w-4 mr-1" />
                 Export XLSX
-              </Button>
-            </a>
+              </a>
+            </Button>
           )}
           {evaluation && (
             <Button

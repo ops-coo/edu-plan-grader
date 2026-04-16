@@ -162,6 +162,7 @@ function buildSummarySheet(
   }
   sheet.getColumn("value").alignment = { wrapText: true, vertical: "top" };
   sheet.views = [{ state: "frozen", ySplit: 1 }];
+  sheet.autoFilter = { from: { row: 1, column: 1 }, to: { row: 1, column: 2 } };
   autoWidthColumns(sheet, 14, 100);
 }
 
@@ -218,6 +219,7 @@ function buildRubricScoresSheet(
   totalRow.getCell("weighted").numFmt = "0.00";
 
   sheet.views = [{ state: "frozen", ySplit: 1 }];
+  sheet.autoFilter = { from: { row: 1, column: 1 }, to: { row: 1, column: 4 } };
 }
 
 function buildFindingsSheet(
@@ -237,6 +239,7 @@ function buildFindingsSheet(
   });
   sheet.getColumn("text").alignment = { wrapText: true, vertical: "top" };
   sheet.views = [{ state: "frozen", ySplit: 1 }];
+  sheet.autoFilter = { from: { row: 1, column: 1 }, to: { row: 1, column: 2 } };
   autoWidthColumns(sheet, 20, 100);
 }
 
@@ -283,6 +286,7 @@ function buildDetailedCriteriaSheet(
   }
 
   sheet.views = [{ state: "frozen", ySplit: 1 }];
+  sheet.autoFilter = { from: { row: 1, column: 1 }, to: { row: 1, column: 5 } };
 }
 
 // ---------- All-BUs sheet builders ----------
@@ -387,6 +391,7 @@ function buildFindingsAndIssuesSheet(
     row.alignment = { wrapText: true, vertical: "top" };
   }
   sheet.views = [{ state: "frozen", ySplit: 1, xSplit: 1 }];
+  sheet.autoFilter = { from: { row: 1, column: 1 }, to: { row: 1, column: 5 } };
 }
 
 function buildAllDetailedCriteriaSheet(

@@ -231,16 +231,16 @@ export default function Dashboard() {
             <Badge variant="outline" className="text-xs">
               {summary?.evaluated || 0} / {summary?.totalUnits || 0} rated
             </Badge>
-            <a
-              href="/api/evaluations/export-all.xlsx"
-              download
-              data-testid="link-export-all-xlsx"
-            >
-              <Button variant="outline" size="sm">
+            <Button asChild variant="outline" size="sm">
+              <a
+                href="/api/evaluations/export-all.xlsx"
+                download
+                data-testid="link-export-all-xlsx"
+              >
                 <Download className="h-4 w-4 mr-1" />
                 Export All (XLSX)
-              </Button>
-            </a>
+              </a>
+            </Button>
             <Button
               variant="default"
               size="sm"

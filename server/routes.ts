@@ -56,11 +56,11 @@ export async function registerRoutes(httpServer: Server, app: Express) {
   app.get("/api/evaluations/export-all.xlsx", async (_req, res) => {
     try {
       const workbook = await buildAllBudgetsWorkbook();
+      const buffer = await workbook.xlsx.writeBuffer();
       const filename = `joe-analysis-all-budgets-${isoDateStamp()}.xlsx`;
       res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
       res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
-      await workbook.xlsx.write(res);
-      res.end();
+      res.send(buffer);
     } catch (err: any) {
       console.error("Failed to build workbook:", err);
       res.status(500).json({ error: "Failed to build workbook" });
@@ -106,11 +106,11 @@ export async function registerRoutes(httpServer: Server, app: Express) {
 
     try {
       const workbook = await buildSingleEvaluationWorkbook(evaluationId);
+      const buffer = await workbook.xlsx.writeBuffer();
       const filename = `joe-analysis-${slugifyBuName(bu?.name ?? "bu")}-${isoDateStamp()}.xlsx`;
       res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
       res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
-      await workbook.xlsx.write(res);
-      res.end();
+      res.send(buffer);
     } catch (err: any) {
       console.error("Failed to build workbook:", err);
       res.status(500).json({ error: "Failed to build workbook" });
@@ -127,11 +127,11 @@ export async function registerRoutes(httpServer: Server, app: Express) {
 
     try {
       const workbook = await buildSingleEvaluationWorkbook(latest.id);
+      const buffer = await workbook.xlsx.writeBuffer();
       const filename = `joe-analysis-${slugifyBuName(bu.name)}-${isoDateStamp()}.xlsx`;
       res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
       res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
-      await workbook.xlsx.write(res);
-      res.end();
+      res.send(buffer);
     } catch (err: any) {
       console.error("Failed to build workbook:", err);
       res.status(500).json({ error: "Failed to build workbook" });

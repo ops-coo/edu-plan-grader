@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { readFileSync, existsSync } from "fs";
 import { resolve } from "path";
 import {
@@ -173,12 +173,13 @@ export class DatabaseStorage implements IStorage {
   }
 
   getLatestEvaluation(businessUnitId: number): EvaluationReport | undefined {
-    const results = db
+    return db
       .select()
       .from(evaluationReports)
       .where(eq(evaluationReports.businessUnitId, businessUnitId))
-      .all();
-    return results.length > 0 ? results[results.length - 1] : undefined;
+      .orderBy(desc(evaluationReports.id))
+      .limit(1)
+      .get();
   }
 
   createEvaluationReport(report: InsertEvaluationReport): EvaluationReport {
