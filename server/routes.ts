@@ -7,72 +7,72 @@ import * as path from "path";
 
 export async function registerRoutes(httpServer: Server, app: Express) {
   // Business Units
-  app.get("/api/business-units", (_req, res) => {
-    const units = storage.getBusinessUnits();
+  app.get("/api/business-units", async (_req, res) => {
+    const units = await storage.getBusinessUnits();
     res.json(units);
   });
 
-  app.get("/api/business-units/:id", (req, res) => {
-    const unit = storage.getBusinessUnit(parseInt(req.params.id));
+  app.get("/api/business-units/:id", async (req, res) => {
+    const unit = await storage.getBusinessUnit(parseInt(req.params.id));
     if (!unit) return res.status(404).json({ error: "Not found" });
     res.json(unit);
   });
 
-  app.post("/api/business-units", (req, res) => {
-    const unit = storage.createBusinessUnit(req.body);
+  app.post("/api/business-units", async (req, res) => {
+    const unit = await storage.createBusinessUnit(req.body);
     res.status(201).json(unit);
   });
 
-  app.patch("/api/business-units/:id", (req, res) => {
-    const unit = storage.updateBusinessUnit(parseInt(req.params.id), req.body);
+  app.patch("/api/business-units/:id", async (req, res) => {
+    const unit = await storage.updateBusinessUnit(parseInt(req.params.id), req.body);
     if (!unit) return res.status(404).json({ error: "Not found" });
     res.json(unit);
   });
 
   // Budget Documents
-  app.get("/api/business-units/:id/documents", (req, res) => {
-    const docs = storage.getBudgetDocuments(parseInt(req.params.id));
+  app.get("/api/business-units/:id/documents", async (req, res) => {
+    const docs = await storage.getBudgetDocuments(parseInt(req.params.id));
     res.json(docs);
   });
 
   // Evaluation Reports
-  app.get("/api/evaluations", (req, res) => {
+  app.get("/api/evaluations", async (req, res) => {
     const buId = req.query.businessUnitId ? parseInt(req.query.businessUnitId as string) : undefined;
-    const reports = storage.getEvaluationReports(buId);
+    const reports = await storage.getEvaluationReports(buId);
     res.json(reports);
   });
 
-  app.get("/api/evaluations/:id", (req, res) => {
-    const report = storage.getEvaluationReport(parseInt(req.params.id));
+  app.get("/api/evaluations/:id", async (req, res) => {
+    const report = await storage.getEvaluationReport(parseInt(req.params.id));
     if (!report) return res.status(404).json({ error: "Not found" });
     res.json(report);
   });
 
-  app.get("/api/business-units/:id/latest-evaluation", (req, res) => {
-    const report = storage.getLatestEvaluation(parseInt(req.params.id));
+  app.get("/api/business-units/:id/latest-evaluation", async (req, res) => {
+    const report = await storage.getLatestEvaluation(parseInt(req.params.id));
     if (!report) return res.status(404).json({ error: "No evaluation found" });
     res.json(report);
   });
 
-  app.post("/api/evaluations", (req, res) => {
-    const report = storage.createEvaluationReport(req.body);
+  app.post("/api/evaluations", async (req, res) => {
+    const report = await storage.createEvaluationReport(req.body);
     res.status(201).json(report);
   });
 
   // Rubric Criteria
-  app.get("/api/evaluations/:id/rubric", (req, res) => {
-    const criteria = storage.getRubricCriteria(parseInt(req.params.id));
+  app.get("/api/evaluations/:id/rubric", async (req, res) => {
+    const criteria = await storage.getRubricCriteria(parseInt(req.params.id));
     res.json(criteria);
   });
 
-  app.post("/api/rubric-criteria", (req, res) => {
-    const criteria = storage.createRubricCriteria(req.body);
+  app.post("/api/rubric-criteria", async (req, res) => {
+    const criteria = await storage.createRubricCriteria(req.body);
     res.status(201).json(criteria);
   });
 
   // Dashboard summary endpoint
-  app.get("/api/dashboard-summary", (_req, res) => {
-    const units = storage.getBusinessUnits();
+  app.get("/api/dashboard-summary", async (_req, res) => {
+    const units = await storage.getBusinessUnits();
 
     const totalUnits = units.length;
     const pendingReview = units.filter((u) => u.status === "pending_review").length;
@@ -117,7 +117,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
   // Run evaluation for a single BU
   app.post("/api/evaluate/:id", async (req, res) => {
     const buId = parseInt(req.params.id);
-    const bu = storage.getBusinessUnit(buId);
+    const bu = await storage.getBusinessUnit(buId);
     if (!bu) return res.status(404).json({ error: "Business unit not found" });
 
     try {
@@ -134,7 +134,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
 
   // Batch evaluate all BUs (or subset)
   app.post("/api/evaluate-all", async (req, res) => {
-    const units = storage.getBusinessUnits();
+    const units = await storage.getBusinessUnits();
     const results: any[] = [];
     const onlyPending = req.query.onlyPending === "true";
 
@@ -160,7 +160,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
   // === Synthesized Evaluation Endpoint (multi-source, no plan doc) ===
   app.post("/api/evaluate-synthesized/:id", async (req, res) => {
     const buId = parseInt(req.params.id);
-    const bu = storage.getBusinessUnit(buId);
+    const bu = await storage.getBusinessUnit(buId);
     if (!bu) return res.status(404).json({ error: "Business unit not found" });
 
     const { contextSections, dataSources } = req.body;
@@ -192,7 +192,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
 
     const results: any[] = [];
     for (const item of evaluations) {
-      const bu = storage.getBusinessUnit(item.buId);
+      const bu = await storage.getBusinessUnit(item.buId);
       if (!bu) {
         results.push({ buId: item.buId, success: false, error: "BU not found" });
         continue;
@@ -211,13 +211,13 @@ export async function registerRoutes(httpServer: Server, app: Express) {
   });
 
   // Budget document creation
-  app.post("/api/budget-documents", (req, res) => {
-    const doc = storage.createBudgetDocument(req.body);
+  app.post("/api/budget-documents", async (req, res) => {
+    const doc = await storage.createBudgetDocument(req.body);
     res.status(201).json(doc);
   });
 
   // Bulk seed endpoint — accepts full seed JSON payload
-  app.post("/api/seed-bulk", (req, res) => {
+  app.post("/api/seed-bulk", async (req, res) => {
     const { business_units, budget_documents, evaluation_reports, rubric_criteria } = req.body;
     const results: any = { business_units: 0, budget_documents: 0, evaluation_reports: 0, rubric_criteria: 0 };
     const idMap: Record<number, number> = {};
@@ -227,7 +227,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     if (business_units) {
       for (const bu of business_units) {
         const oldId = bu.id;
-        const created = storage.createBusinessUnit({
+        const created = await storage.createBusinessUnit({
           name: bu.name,
           gm: bu.gm || null,
           sector: bu.sector || "Education",
@@ -249,7 +249,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
       for (const doc of budget_documents) {
         const newBuId = idMap[doc.business_unit_id];
         if (!newBuId) continue;
-        storage.createBudgetDocument({
+        await storage.createBudgetDocument({
           businessUnitId: newBuId,
           documentType: doc.document_type,
           url: doc.url,
@@ -266,7 +266,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
       for (const ev of evaluation_reports) {
         const newBuId = idMap[ev.business_unit_id];
         if (!newBuId) continue;
-        const created = storage.createEvaluationReport({
+        const created = await storage.createEvaluationReport({
           businessUnitId: newBuId,
           createdAt: ev.created_at,
           recommendation: ev.recommendation,
@@ -289,7 +289,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
       for (const rc of rubric_criteria) {
         const newEvalId = evalIdMap[rc.evaluation_id];
         if (!newEvalId) continue;
-        storage.createRubricCriteria({
+        await storage.createRubricCriteria({
           evaluationId: newEvalId,
           criterionKey: rc.criterion_key,
           criterionLabel: rc.criterion_label,
@@ -306,8 +306,8 @@ export async function registerRoutes(httpServer: Server, app: Express) {
   });
 
   // Legacy seed endpoint — uses real BU data from JSON files
-  app.post("/api/seed", (_req, res) => {
-    const existingUnits = storage.getBusinessUnits();
+  app.post("/api/seed", async (_req, res) => {
+    const existingUnits = await storage.getBusinessUnits();
     if (existingUnits.length > 0) {
       return res.json({ message: "Already seeded", count: existingUnits.length });
     }
@@ -331,7 +331,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     const created: any[] = [];
 
     for (const rec of buRecords) {
-      const bu = storage.createBusinessUnit({
+      const bu = await storage.createBusinessUnit({
         name: rec.name,
         gm: rec.gm || null,
         sector: rec.sector || "Education",
@@ -352,7 +352,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     for (const doc of docRecords) {
       const newBuId = idMap[doc.business_unit_id];
       if (newBuId) {
-        storage.createBudgetDocument({
+        await storage.createBudgetDocument({
           businessUnitId: newBuId,
           documentType: doc.document_type,
           url: doc.url,
@@ -365,14 +365,12 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     }
 
     // Create sample evaluations for BUs that match known names
-    // Find the new IDs for: "Homeschool/DTC Apps" (was Alpha Anywhere in old seed),
-    // "Strata" (was TSA Virtual), "Physical Private Schools" (was Prequel-like reject)
     const homeschoolBu = created.find((u) => u.name === "Homeschool/DTC Apps");
     const strataBu = created.find((u) => u.name === "Strata");
     const physicalBu = created.find((u) => u.name === "Physical Private Schools");
 
     if (homeschoolBu) {
-      const aaEval = storage.createEvaluationReport({
+      const aaEval = await storage.createEvaluationReport({
         businessUnitId: homeschoolBu.id,
         createdAt: new Date().toISOString(),
         recommendation: "APPROVE",
@@ -413,11 +411,13 @@ export async function registerRoutes(httpServer: Server, app: Express) {
         { evaluationId: aaEval.id, criterionKey: "talent_strategy", criterionLabel: "Talent Strategy", score: 7.5, weight: 0.05, justification: "Guide quality is high. Scaling requires clear recruitment pipeline.", evidence: "Current guide-to-student ratio adequate" },
         { evaluationId: aaEval.id, criterionKey: "access_funding", criterionLabel: "Access & Funding Pathway", score: 8.0, weight: 0.10, justification: "Lower-price tiers provide sampling. Government funding pathway via ESA/voucher integration.", evidence: "EduPaid platform handles ESA collections" },
       ];
-      aaCriteria.forEach((c) => storage.createRubricCriteria(c));
+      for (const c of aaCriteria) {
+        await storage.createRubricCriteria(c);
+      }
     }
 
     if (strataBu) {
-      const tsaEval = storage.createEvaluationReport({
+      await storage.createEvaluationReport({
         businessUnitId: strataBu.id,
         createdAt: new Date().toISOString(),
         recommendation: "APPROVE_WITH_FIX",
@@ -451,7 +451,7 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     }
 
     if (physicalBu) {
-      const preqEval = storage.createEvaluationReport({
+      await storage.createEvaluationReport({
         businessUnitId: physicalBu.id,
         createdAt: new Date().toISOString(),
         recommendation: "REJECT",
