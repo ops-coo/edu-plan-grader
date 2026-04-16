@@ -103,11 +103,12 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     const evaluation = storage.getEvaluationReport(evaluationId);
     if (!evaluation) return res.status(404).json({ error: "Evaluation not found" });
     const bu = storage.getBusinessUnit(evaluation.businessUnitId);
+    if (!bu) return res.status(404).json({ error: "Business unit not found" });
 
     try {
       const workbook = await buildSingleEvaluationWorkbook(evaluationId);
       const buffer = await workbook.xlsx.writeBuffer();
-      const filename = `joe-analysis-${slugifyBuName(bu?.name ?? "bu")}-${isoDateStamp()}.xlsx`;
+      const filename = `joe-analysis-${slugifyBuName(bu.name)}-${isoDateStamp()}.xlsx`;
       res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
       res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
       res.send(buffer);
