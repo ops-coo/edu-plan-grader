@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import type { Server } from "http";
 import { storage } from "./storage";
-import { evaluateBusinessUnit } from "./evaluator";
+import { evaluateBusinessUnit, evaluateWithContext } from "./evaluator";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -155,6 +155,59 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     const succeeded = results.filter((r) => r.success).length;
     const failed = results.filter((r) => !r.success).length;
     res.json({ total: targets.length, succeeded, failed, results });
+  });
+
+  // === Synthesized Evaluation Endpoint (multi-source, no plan doc) ===
+  app.post("/api/evaluate-synthesized/:id", async (req, res) => {
+    const buId = parseInt(req.params.id);
+    const bu = storage.getBusinessUnit(buId);
+    if (!bu) return res.status(404).json({ error: "Business unit not found" });
+
+    const { contextSections, dataSources } = req.body;
+    if (!contextSections || !Array.isArray(contextSections) || contextSections.length === 0) {
+      return res.status(400).json({ error: "contextSections array is required" });
+    }
+    if (!dataSources || !Array.isArray(dataSources)) {
+      return res.status(400).json({ error: "dataSources array is required" });
+    }
+
+    try {
+      const result = await evaluateWithContext(buId, contextSections, dataSources);
+      if (result.success) {
+        res.json(result);
+      } else {
+        res.status(400).json(result);
+      }
+    } catch (err: any) {
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // Batch synthesized evaluations — accepts array of {buId, contextSections, dataSources}
+  app.post("/api/evaluate-synthesized-batch", async (req, res) => {
+    const { evaluations } = req.body;
+    if (!evaluations || !Array.isArray(evaluations)) {
+      return res.status(400).json({ error: "evaluations array is required" });
+    }
+
+    const results: any[] = [];
+    for (const item of evaluations) {
+      const bu = storage.getBusinessUnit(item.buId);
+      if (!bu) {
+        results.push({ buId: item.buId, success: false, error: "BU not found" });
+        continue;
+      }
+      try {
+        const result = await evaluateWithContext(item.buId, item.contextSections, item.dataSources);
+        results.push({ buId: item.buId, name: bu.name, ...result });
+      } catch (err: any) {
+        results.push({ buId: item.buId, name: bu.name, success: false, error: err.message });
+      }
+    }
+
+    const succeeded = results.filter((r) => r.success).length;
+    const failed = results.filter((r) => !r.success).length;
+    res.json({ total: evaluations.length, succeeded, failed, results });
   });
 
   // Budget document creation
