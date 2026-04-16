@@ -2,8 +2,17 @@ import type { Express } from "express";
 import type { Server } from "http";
 import { storage } from "./storage";
 import { evaluateBusinessUnit } from "./evaluator";
+import {
+  buildSingleEvaluationWorkbook,
+  buildAllBudgetsWorkbook,
+  slugifyBuName,
+  isoDateStamp,
+} from "./exporters/joeAnalysisXlsx";
 import * as fs from "fs";
 import * as path from "path";
+
+const XLSX_CONTENT_TYPE =
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
 export async function registerRoutes(httpServer: Server, app: Express) {
   // Business Units
@@ -42,6 +51,21 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     res.json(reports);
   });
 
+  // Portfolio-wide XLSX export. Registered BEFORE /api/evaluations/:id so the
+  // literal "export-all.xlsx" segment isn't captured as :id.
+  app.get("/api/evaluations/export-all.xlsx", async (_req, res) => {
+    try {
+      const workbook = await buildAllBudgetsWorkbook();
+      const filename = `joe-analysis-all-budgets-${isoDateStamp()}.xlsx`;
+      res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
+      res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+      await workbook.xlsx.write(res);
+      res.end();
+    } catch (err: any) {
+      res.status(500).json({ error: err.message || "Failed to build workbook" });
+    }
+  });
+
   app.get("/api/evaluations/:id", (req, res) => {
     const report = storage.getEvaluationReport(parseInt(req.params.id));
     if (!report) return res.status(404).json({ error: "Not found" });
@@ -68,6 +92,47 @@ export async function registerRoutes(httpServer: Server, app: Express) {
   app.post("/api/rubric-criteria", (req, res) => {
     const criteria = storage.createRubricCriteria(req.body);
     res.status(201).json(criteria);
+  });
+
+  // === Joe Analysis XLSX Exports ===
+
+  // Download a single evaluation's full Joe analysis as XLSX
+  app.get("/api/evaluations/:id/export.xlsx", async (req, res) => {
+    const evaluationId = parseInt(req.params.id);
+    const evaluation = storage.getEvaluationReport(evaluationId);
+    if (!evaluation) return res.status(404).json({ error: "Evaluation not found" });
+    const bu = storage.getBusinessUnit(evaluation.businessUnitId);
+
+    try {
+      const workbook = await buildSingleEvaluationWorkbook(evaluationId);
+      const filename = `joe-analysis-${slugifyBuName(bu?.name ?? "bu")}-${isoDateStamp()}.xlsx`;
+      res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
+      res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+      await workbook.xlsx.write(res);
+      res.end();
+    } catch (err: any) {
+      res.status(500).json({ error: err.message || "Failed to build workbook" });
+    }
+  });
+
+  // Convenience: download the latest Joe analysis for a BU
+  app.get("/api/business-units/:id/export.xlsx", async (req, res) => {
+    const buId = parseInt(req.params.id);
+    const bu = storage.getBusinessUnit(buId);
+    if (!bu) return res.status(404).json({ error: "Business unit not found" });
+    const latest = storage.getLatestEvaluation(buId);
+    if (!latest) return res.status(404).json({ error: "No evaluation yet for this business unit" });
+
+    try {
+      const workbook = await buildSingleEvaluationWorkbook(latest.id);
+      const filename = `joe-analysis-${slugifyBuName(bu.name)}-${isoDateStamp()}.xlsx`;
+      res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
+      res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+      await workbook.xlsx.write(res);
+      res.end();
+    } catch (err: any) {
+      res.status(500).json({ error: err.message || "Failed to build workbook" });
+    }
   });
 
   // Dashboard summary endpoint

@@ -24,6 +24,7 @@ import {
   FolderOpen,
   Play,
   RefreshCw,
+  Download,
 } from "lucide-react";
 import type { BusinessUnit, EvaluationReport, RubricCriteria, BudgetDocument } from "@shared/schema";
 
@@ -196,6 +197,18 @@ export default function BusinessUnitDetail() {
             {bu.gm && <p className="text-xs text-muted-foreground">GM: {bu.gm}</p>}
           </div>
           {evaluation && <RecommendationBadge rec={evaluation.recommendation} />}
+          {evaluation && (
+            <a
+              href={`/api/evaluations/${evaluation.id}/export.xlsx`}
+              download
+              data-testid="link-export-xlsx"
+            >
+              <Button variant="outline" size="sm">
+                <Download className="h-4 w-4 mr-1" />
+                Export XLSX
+              </Button>
+            </a>
+          )}
           {evaluation && (
             <Button
               variant="outline"

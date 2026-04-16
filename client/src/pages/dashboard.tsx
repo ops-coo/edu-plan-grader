@@ -19,6 +19,7 @@ import {
   Star,
   Target,
   Zap,
+  Download,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { queryClient } from "@/lib/queryClient";
@@ -230,6 +231,16 @@ export default function Dashboard() {
             <Badge variant="outline" className="text-xs">
               {summary?.evaluated || 0} / {summary?.totalUnits || 0} rated
             </Badge>
+            <a
+              href="/api/evaluations/export-all.xlsx"
+              download
+              data-testid="link-export-all-xlsx"
+            >
+              <Button variant="outline" size="sm">
+                <Download className="h-4 w-4 mr-1" />
+                Export All (XLSX)
+              </Button>
+            </a>
             <Button
               variant="default"
               size="sm"
