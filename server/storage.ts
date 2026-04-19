@@ -177,7 +177,7 @@ export class DatabaseStorage implements IStorage {
       .select()
       .from(evaluationReports)
       .where(eq(evaluationReports.businessUnitId, businessUnitId))
-      .orderBy(desc(evaluationReports.id))
+      .orderBy(desc(evaluationReports.createdAt), desc(evaluationReports.id))
       .limit(1)
       .get();
   }

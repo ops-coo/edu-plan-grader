@@ -37,7 +37,14 @@ function parseScoreMap(json: string | null | undefined): Record<string, number> 
   if (!json) return {};
   try {
     const parsed = JSON.parse(json);
-    return parsed && typeof parsed === "object" ? parsed : {};
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+    const scoreMap: Record<string, number> = {};
+    for (const [key, value] of Object.entries(parsed)) {
+      if (typeof value === "number" && Number.isFinite(value)) {
+        scoreMap[key] = value;
+      }
+    }
+    return scoreMap;
   } catch {
     return {};
   }
