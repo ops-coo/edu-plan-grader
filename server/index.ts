@@ -61,6 +61,12 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Health check endpoint — registered before all other routes so Cloud Run
+  // can verify the container is alive even if other middleware has issues.
+  app.get("/healthz", (_req, res) => {
+    res.status(200).json({ status: "ok" });
+  });
+
   await registerRoutes(httpServer, app);
 
   app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
@@ -95,10 +101,12 @@ app.use((req, res, next) => {
     {
       port,
       host: "0.0.0.0",
-      reusePort: true,
     },
     () => {
       log(`serving on port ${port}`);
     },
   );
-})();
+})().catch((err) => {
+  console.error("Fatal startup error:", err);
+  process.exit(1);
+});
