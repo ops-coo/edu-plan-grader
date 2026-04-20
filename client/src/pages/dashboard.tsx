@@ -20,6 +20,9 @@ import {
   Target,
   Zap,
   Download,
+  ShieldCheck,
+  ShieldAlert,
+  ShieldX,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { queryClient } from "@/lib/queryClient";
