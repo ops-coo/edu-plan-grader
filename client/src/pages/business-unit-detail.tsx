@@ -98,6 +98,33 @@ function BrainliftBadge({ rating }: { rating: string | null }) {
   );
 }
 
+function SynthesizedBadge({ summary }: { summary: string }) {
+  if (!summary.startsWith("[Synthesized from:")) return null;
+  const match = summary.match(/\[Synthesized from: ([^\]]+)\]/);
+  const sources = match ? match[1].split(", ") : [];
+  const sourceIcons: Record<string, string> = {
+    "P&L Spreadsheet": "\uD83D\uDCCA",
+    "Workflowy Brainlift": "\uD83E\uDDE0",
+    "Budget Documents": "\uD83D\uDCC4",
+    "Ephor Insights": "\uD83D\uDD0D",
+  };
+  return (
+    <div className="flex items-center gap-2 flex-wrap" data-testid="badge-synthesized">
+      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-200">
+        Synthesized Evaluation
+      </span>
+      {sources.map((src) => (
+        <span
+          key={src}
+          className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs bg-muted text-muted-foreground"
+        >
+          {sourceIcons[src] || "\uD83D\uDCCE"} {src}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function BusinessUnitDetail() {
   const [, params] = useRoute("/bu/:id");
   const buId = params?.id ? parseInt(params.id) : 0;
@@ -349,6 +376,7 @@ export default function BusinessUnitDetail() {
               <Card className="lg:col-span-2">
                 <CardHeader>
                   <CardTitle className="text-base">AI QC Report — Executive Summary</CardTitle>
+                  {evaluation.executiveSummary && <SynthesizedBadge summary={evaluation.executiveSummary} />}
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-4 mb-4">
@@ -367,7 +395,7 @@ export default function BusinessUnitDetail() {
                     </div>
                   </div>
                   <p className="text-sm leading-relaxed" data-testid="text-executive-summary">
-                    {evaluation.executiveSummary}
+                    {evaluation.executiveSummary.replace(/^\[Synthesized from: [^\]]+\]\s*/, "")}
                   </p>
                   {evaluation.financialSummary && (
                     <div className="bg-muted/50 rounded-lg p-3">

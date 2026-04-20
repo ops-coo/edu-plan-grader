@@ -15,16 +15,35 @@ const XLSX_CONTENT_TYPE =
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
 export async function registerRoutes(httpServer: Server, app: Express) {
-  // Business Units
+  // Business Units — enrich with latest evaluation data
   app.get("/api/business-units", (_req, res) => {
     const units = storage.getBusinessUnits();
-    res.json(units);
+    const enriched = units.map((bu) => {
+      const evaluation = storage.getLatestEvaluation(bu.id);
+      return {
+        ...bu,
+        evaluation: evaluation ? {
+          id: evaluation.id,
+          recommendation: evaluation.recommendation,
+          overallScore: evaluation.overallScore,
+          confidenceScore: evaluation.confidenceScore,
+          executiveSummary: evaluation.executiveSummary,
+        } : null,
+      };
+    });
+    res.json(enriched);
   });
 
   app.get("/api/business-units/:id", (req, res) => {
     const unit = storage.getBusinessUnit(parseInt(req.params.id));
     if (!unit) return res.status(404).json({ error: "Not found" });
-    res.json(unit);
+    const evaluation = storage.getLatestEvaluation(unit.id);
+    const documents = storage.getBudgetDocuments(unit.id);
+    res.json({
+      ...unit,
+      evaluation: evaluation || null,
+      documents,
+    });
   });
 
   app.post("/api/business-units", (req, res) => {
@@ -142,42 +161,45 @@ export async function registerRoutes(httpServer: Server, app: Express) {
   // Dashboard summary endpoint
   app.get("/api/dashboard-summary", (_req, res) => {
     const units = storage.getBusinessUnits();
+    const allEvals = storage.getEvaluationReports();
+    const latestByBu = new Map<number, typeof allEvals[0]>();
+    for (const ev of allEvals) {
+      const existing = latestByBu.get(ev.businessUnitId);
+      if (!existing || (ev.id > existing.id)) {
+        latestByBu.set(ev.businessUnitId, ev);
+      }
+    }
 
     const totalUnits = units.length;
-    const pendingReview = units.filter((u) => u.status === "pending_review").length;
-    const evaluated = units.filter((u) => u.brainliftRating != null).length;
-    const inProgress = units.filter((u) => u.status === "in_progress").length;
-    const onHold = units.filter((u) => u.status === "on_hold").length;
-    const approved = units.filter((u) => u.status === "approved").length;
-    const rejected = units.filter((u) => u.status === "rejected").length;
-    const fixRequired = units.filter((u) => u.status === "fix_required").length;
-
-    const scored = units.filter((u) => u.overallScore != null);
-    const avgScore = scored.length > 0
-      ? scored.reduce((sum, u) => sum + (u.overallScore || 0), 0) / scored.length
+    const evaluatedCount = latestByBu.size;
+    const pendingReview = totalUnits - evaluatedCount;
+    const evalScores = Array.from(latestByBu.values());
+    const avgScore = evalScores.length > 0
+      ? evalScores.reduce((sum, e) => sum + (e.overallScore || 0), 0) / evalScores.length
       : 0;
 
-    const exemplary = units.filter((u) => u.brainliftRating === "Exemplary").length;
-    const promising = units.filter((u) => u.brainliftRating === "Promising").length;
-    const developing = units.filter((u) => u.brainliftRating === "Developing").length;
-    const criticallyFlawed = units.filter((u) => u.brainliftRating === "Critically Flawed").length;
-    const notRated = units.filter((u) => u.brainliftRating == null).length;
+    const approveCount = evalScores.filter((e) => e.recommendation === "APPROVE").length;
+    const approveWithFixCount = evalScores.filter((e) => e.recommendation === "APPROVE_WITH_FIX").length;
+    const rejectCount = evalScores.filter((e) => e.recommendation === "REJECT").length;
 
     res.json({
       totalUnits,
       pendingReview,
-      evaluated,
-      inProgress,
-      onHold,
-      approved,
-      rejected,
-      fixRequired,
+      evaluated: evaluatedCount,
       avgScore,
-      exemplary,
-      promising,
-      developing,
-      criticallyFlawed,
-      notRated,
+      approveCount,
+      approveWithFixCount,
+      rejectCount,
+      inProgress: 0,
+      onHold: 0,
+      approved: approveCount,
+      rejected: rejectCount,
+      fixRequired: approveWithFixCount,
+      exemplary: 0,
+      promising: 0,
+      developing: 0,
+      criticallyFlawed: 0,
+      notRated: pendingReview,
     });
   });
 
@@ -224,6 +246,59 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     const succeeded = results.filter((r) => r.success).length;
     const failed = results.filter((r) => !r.success).length;
     res.json({ total: targets.length, succeeded, failed, results });
+  });
+
+  // === Synthesized Evaluation Endpoint (multi-source, no plan doc) ===
+  app.post("/api/evaluate-synthesized/:id", async (req, res) => {
+    const buId = parseInt(req.params.id);
+    const bu = storage.getBusinessUnit(buId);
+    if (!bu) return res.status(404).json({ error: "Business unit not found" });
+
+    const { contextSections, dataSources } = req.body;
+    if (!contextSections || !Array.isArray(contextSections) || contextSections.length === 0) {
+      return res.status(400).json({ error: "contextSections array is required" });
+    }
+    if (!dataSources || !Array.isArray(dataSources)) {
+      return res.status(400).json({ error: "dataSources array is required" });
+    }
+
+    try {
+      const result = await evaluateWithContext(buId, contextSections, dataSources);
+      if (result.success) {
+        res.json(result);
+      } else {
+        res.status(400).json(result);
+      }
+    } catch (err: any) {
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // Batch synthesized evaluations — accepts array of {buId, contextSections, dataSources}
+  app.post("/api/evaluate-synthesized-batch", async (req, res) => {
+    const { evaluations } = req.body;
+    if (!evaluations || !Array.isArray(evaluations)) {
+      return res.status(400).json({ error: "evaluations array is required" });
+    }
+
+    const results: any[] = [];
+    for (const item of evaluations) {
+      const bu = storage.getBusinessUnit(item.buId);
+      if (!bu) {
+        results.push({ buId: item.buId, success: false, error: "BU not found" });
+        continue;
+      }
+      try {
+        const result = await evaluateWithContext(item.buId, item.contextSections, item.dataSources);
+        results.push({ buId: item.buId, name: bu.name, ...result });
+      } catch (err: any) {
+        results.push({ buId: item.buId, name: bu.name, success: false, error: err.message });
+      }
+    }
+
+    const succeeded = results.filter((r) => r.success).length;
+    const failed = results.filter((r) => !r.success).length;
+    res.json({ total: evaluations.length, succeeded, failed, results });
   });
 
   // Budget document creation
