@@ -2,8 +2,17 @@ import type { Express } from "express";
 import type { Server } from "http";
 import { storage } from "./storage";
 import { evaluateBusinessUnit, evaluateWithContext } from "./evaluator";
+import {
+  buildSingleEvaluationWorkbook,
+  buildAllBudgetsWorkbook,
+  slugifyBuName,
+  isoDateStamp,
+} from "./exporters/joeAnalysisXlsx";
 import * as fs from "fs";
 import * as path from "path";
+
+const XLSX_CONTENT_TYPE =
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
 export async function registerRoutes(httpServer: Server, app: Express) {
   // Business Units — enrich with latest evaluation data
@@ -61,6 +70,22 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     res.json(reports);
   });
 
+  // Portfolio-wide XLSX export. Registered BEFORE /api/evaluations/:id so the
+  // literal "export-all.xlsx" segment isn't captured as :id.
+  app.get("/api/evaluations/export-all.xlsx", async (_req, res) => {
+    try {
+      const workbook = await buildAllBudgetsWorkbook();
+      const buffer = await workbook.xlsx.writeBuffer();
+      const filename = `joe-analysis-all-budgets-${isoDateStamp()}.xlsx`;
+      res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
+      res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+      res.send(buffer);
+    } catch (err: any) {
+      console.error("Failed to build workbook:", err);
+      res.status(500).json({ error: "Failed to build workbook" });
+    }
+  });
+
   app.get("/api/evaluations/:id", (req, res) => {
     const report = storage.getEvaluationReport(parseInt(req.params.id));
     if (!report) return res.status(404).json({ error: "Not found" });
@@ -89,7 +114,51 @@ export async function registerRoutes(httpServer: Server, app: Express) {
     res.status(201).json(criteria);
   });
 
-  // Dashboard summary endpoint — uses AI evaluation data
+  // === Joe Analysis XLSX Exports ===
+
+  // Download a single evaluation's full Joe analysis as XLSX
+  app.get("/api/evaluations/:id/export.xlsx", async (req, res) => {
+    const evaluationId = parseInt(req.params.id);
+    const evaluation = storage.getEvaluationReport(evaluationId);
+    if (!evaluation) return res.status(404).json({ error: "Evaluation not found" });
+    const bu = storage.getBusinessUnit(evaluation.businessUnitId);
+    if (!bu) return res.status(404).json({ error: "Business unit not found" });
+
+    try {
+      const workbook = await buildSingleEvaluationWorkbook(evaluationId);
+      const buffer = await workbook.xlsx.writeBuffer();
+      const filename = `joe-analysis-${slugifyBuName(bu.name)}-${isoDateStamp()}.xlsx`;
+      res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
+      res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+      res.send(buffer);
+    } catch (err: any) {
+      console.error("Failed to build workbook:", err);
+      res.status(500).json({ error: "Failed to build workbook" });
+    }
+  });
+
+  // Convenience: download the latest Joe analysis for a BU
+  app.get("/api/business-units/:id/export.xlsx", async (req, res) => {
+    const buId = parseInt(req.params.id);
+    const bu = storage.getBusinessUnit(buId);
+    if (!bu) return res.status(404).json({ error: "Business unit not found" });
+    const latest = storage.getLatestEvaluation(buId);
+    if (!latest) return res.status(404).json({ error: "No evaluation yet for this business unit" });
+
+    try {
+      const workbook = await buildSingleEvaluationWorkbook(latest.id);
+      const buffer = await workbook.xlsx.writeBuffer();
+      const filename = `joe-analysis-${slugifyBuName(bu.name)}-${isoDateStamp()}.xlsx`;
+      res.setHeader("Content-Type", XLSX_CONTENT_TYPE);
+      res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+      res.send(buffer);
+    } catch (err: any) {
+      console.error("Failed to build workbook:", err);
+      res.status(500).json({ error: "Failed to build workbook" });
+    }
+  });
+
+  // Dashboard summary endpoint
   app.get("/api/dashboard-summary", (_req, res) => {
     const units = storage.getBusinessUnits();
     const allEvals = storage.getEvaluationReports();
