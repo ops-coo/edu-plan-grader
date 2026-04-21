@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 import { readFileSync, existsSync } from "fs";
 import { resolve } from "path";
 import {
@@ -8,6 +8,11 @@ import {
   budgetDocuments,
   evaluationReports,
   rubricCriteria,
+  dataSourceConfigs,
+  ingestionEvents,
+  normalizedDataRecords,
+  dataRecordBuLinks,
+  changeTracking,
   type BusinessUnit,
   type InsertBusinessUnit,
   type BudgetDocument,
@@ -16,6 +21,16 @@ import {
   type InsertEvaluationReport,
   type RubricCriteria,
   type InsertRubricCriteria,
+  type DataSourceConfig,
+  type InsertDataSourceConfig,
+  type IngestionEvent,
+  type InsertIngestionEvent,
+  type NormalizedDataRecord,
+  type InsertNormalizedDataRecord,
+  type DataRecordBuLink,
+  type InsertDataRecordBuLink,
+  type ChangeTracking,
+  type InsertChangeTracking,
 } from "@shared/schema";
 
 const sqlite = new Database("data.db");
@@ -69,6 +84,74 @@ sqlite.exec(`
     justification TEXT NOT NULL,
     evidence TEXT
   );
+
+  CREATE TABLE IF NOT EXISTS data_source_configs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    type TEXT NOT NULL,
+    name TEXT NOT NULL,
+    auth_method TEXT NOT NULL DEFAULT 'service_account',
+    credentials_enc TEXT,
+    poll_interval_min INTEGER DEFAULT 15,
+    enabled INTEGER DEFAULT 1,
+    config TEXT,
+    last_polled_at TEXT,
+    created_at TEXT,
+    updated_at TEXT
+  );
+
+  CREATE TABLE IF NOT EXISTS ingestion_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_config_id INTEGER NOT NULL,
+    external_id TEXT NOT NULL,
+    external_url TEXT,
+    content_hash TEXT,
+    status TEXT NOT NULL,
+    error_message TEXT,
+    raw_content_size INTEGER,
+    fetched_at TEXT NOT NULL,
+    processing_ms INTEGER
+  );
+
+  CREATE TABLE IF NOT EXISTS normalized_data_records (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ingestion_event_id INTEGER NOT NULL,
+    source_config_id INTEGER NOT NULL,
+    external_id TEXT NOT NULL,
+    external_url TEXT,
+    canonical_title TEXT NOT NULL,
+    content_type TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    raw_content TEXT NOT NULL,
+    normalized_content TEXT,
+    structured_metadata TEXT NOT NULL,
+    data_quality_score INTEGER,
+    context_confidence INTEGER,
+    tags TEXT,
+    quarter TEXT,
+    is_latest INTEGER DEFAULT 1,
+    created_at TEXT NOT NULL,
+    superseded_at TEXT
+  );
+
+  CREATE TABLE IF NOT EXISTS data_record_bu_links (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    data_record_id INTEGER NOT NULL,
+    business_unit_id INTEGER NOT NULL,
+    link_confidence INTEGER,
+    link_method TEXT,
+    created_at TEXT
+  );
+
+  CREATE TABLE IF NOT EXISTS change_tracking (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    data_record_id INTEGER NOT NULL,
+    previous_record_id INTEGER,
+    change_type TEXT NOT NULL,
+    change_summary TEXT,
+    changed_fields TEXT,
+    detected_at TEXT NOT NULL,
+    triggered_reeval INTEGER DEFAULT 0
+  );
 `);
 
 // Auto-seed from bundled JSON if the database is empty (fresh Cloud Run container)
@@ -114,6 +197,15 @@ function seedIfEmpty() {
 
 seedIfEmpty();
 
+export interface DataRecordFilters {
+  businessUnitId?: number;
+  contentType?: string;
+  sourceConfigId?: number;
+  isLatest?: boolean;
+  limit?: number;
+  offset?: number;
+}
+
 export interface IStorage {
   // Business Units
   getBusinessUnits(): BusinessUnit[];
@@ -134,6 +226,35 @@ export interface IStorage {
   // Rubric Criteria
   getRubricCriteria(evaluationId: number): RubricCriteria[];
   createRubricCriteria(criteria: InsertRubricCriteria): RubricCriteria;
+
+  // Data Source Configs
+  getDataSourceConfigs(): DataSourceConfig[];
+  getEnabledDataSourceConfigs(): DataSourceConfig[];
+  getDataSourceConfig(id: number): DataSourceConfig | undefined;
+  createDataSourceConfig(config: InsertDataSourceConfig): DataSourceConfig;
+  updateDataSourceConfig(id: number, config: Partial<InsertDataSourceConfig>): DataSourceConfig | undefined;
+  deleteDataSourceConfig(id: number): boolean;
+
+  // Ingestion Events
+  getIngestionEvents(sourceConfigId?: number, limit?: number): IngestionEvent[];
+  getLastIngestionEvent(sourceConfigId: number, externalId?: string): IngestionEvent | undefined;
+  createIngestionEvent(event: InsertIngestionEvent): IngestionEvent;
+
+  // Normalized Data Records
+  getNormalizedDataRecords(filters: DataRecordFilters): NormalizedDataRecord[];
+  getNormalizedDataRecord(id: number): NormalizedDataRecord | undefined;
+  createNormalizedDataRecord(record: InsertNormalizedDataRecord): NormalizedDataRecord;
+  getDataRecordsForBusinessUnit(buId: number): NormalizedDataRecord[];
+  supersedDataRecord(id: number): void;
+
+  // Data Record ↔ BU Links
+  getDataRecordBuLinks(dataRecordId: number): DataRecordBuLink[];
+  createDataRecordBuLink(link: InsertDataRecordBuLink): DataRecordBuLink;
+  deleteDataRecordBuLink(dataRecordId: number, buId: number): boolean;
+
+  // Change Tracking
+  getRecentChanges(limit?: number): ChangeTracking[];
+  createChangeTracking(change: InsertChangeTracking): ChangeTracking;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -192,6 +313,148 @@ export class DatabaseStorage implements IStorage {
 
   createRubricCriteria(criteria: InsertRubricCriteria): RubricCriteria {
     return db.insert(rubricCriteria).values(criteria).returning().get();
+  }
+
+  // --- Data Source Configs ---
+
+  getDataSourceConfigs(): DataSourceConfig[] {
+    return db.select().from(dataSourceConfigs).all();
+  }
+
+  getEnabledDataSourceConfigs(): DataSourceConfig[] {
+    return db.select().from(dataSourceConfigs).where(eq(dataSourceConfigs.enabled, 1)).all();
+  }
+
+  getDataSourceConfig(id: number): DataSourceConfig | undefined {
+    return db.select().from(dataSourceConfigs).where(eq(dataSourceConfigs.id, id)).get();
+  }
+
+  createDataSourceConfig(config: InsertDataSourceConfig): DataSourceConfig {
+    return db.insert(dataSourceConfigs).values(config).returning().get();
+  }
+
+  updateDataSourceConfig(id: number, config: Partial<InsertDataSourceConfig>): DataSourceConfig | undefined {
+    return db.update(dataSourceConfigs).set(config).where(eq(dataSourceConfigs.id, id)).returning().get();
+  }
+
+  deleteDataSourceConfig(id: number): boolean {
+    const result = db.delete(dataSourceConfigs).where(eq(dataSourceConfigs.id, id)).returning().get();
+    return !!result;
+  }
+
+  // --- Ingestion Events ---
+
+  getIngestionEvents(sourceConfigId?: number, limit: number = 100): IngestionEvent[] {
+    if (sourceConfigId) {
+      return db.select().from(ingestionEvents)
+        .where(eq(ingestionEvents.sourceConfigId, sourceConfigId))
+        .orderBy(desc(ingestionEvents.fetchedAt))
+        .limit(limit)
+        .all();
+    }
+    return db.select().from(ingestionEvents)
+      .orderBy(desc(ingestionEvents.fetchedAt))
+      .limit(limit)
+      .all();
+  }
+
+  getLastIngestionEvent(sourceConfigId: number, externalId?: string): IngestionEvent | undefined {
+    const condition = externalId
+      ? and(eq(ingestionEvents.sourceConfigId, sourceConfigId), eq(ingestionEvents.externalId, externalId))
+      : eq(ingestionEvents.sourceConfigId, sourceConfigId);
+
+    return db.select().from(ingestionEvents)
+      .where(condition)
+      .orderBy(desc(ingestionEvents.fetchedAt))
+      .limit(1)
+      .get();
+  }
+
+  createIngestionEvent(event: InsertIngestionEvent): IngestionEvent {
+    return db.insert(ingestionEvents).values(event).returning().get();
+  }
+
+  // --- Normalized Data Records ---
+
+  getNormalizedDataRecords(filters: DataRecordFilters): NormalizedDataRecord[] {
+    let query = db.select().from(normalizedDataRecords).$dynamic();
+    const conditions = [];
+    if (filters.isLatest !== undefined) {
+      conditions.push(eq(normalizedDataRecords.isLatest, filters.isLatest ? 1 : 0));
+    }
+    if (filters.contentType) {
+      conditions.push(eq(normalizedDataRecords.contentType, filters.contentType));
+    }
+    if (filters.sourceConfigId) {
+      conditions.push(eq(normalizedDataRecords.sourceConfigId, filters.sourceConfigId));
+    }
+    if (conditions.length > 0) {
+      query = query.where(and(...conditions)) as typeof query;
+    }
+    return query
+      .orderBy(desc(normalizedDataRecords.createdAt))
+      .limit(filters.limit || 100)
+      .all();
+  }
+
+  getNormalizedDataRecord(id: number): NormalizedDataRecord | undefined {
+    return db.select().from(normalizedDataRecords).where(eq(normalizedDataRecords.id, id)).get();
+  }
+
+  createNormalizedDataRecord(record: InsertNormalizedDataRecord): NormalizedDataRecord {
+    return db.insert(normalizedDataRecords).values(record).returning().get();
+  }
+
+  getDataRecordsForBusinessUnit(buId: number): NormalizedDataRecord[] {
+    return db.select({ record: normalizedDataRecords })
+      .from(normalizedDataRecords)
+      .innerJoin(dataRecordBuLinks, eq(normalizedDataRecords.id, dataRecordBuLinks.dataRecordId))
+      .where(and(eq(dataRecordBuLinks.businessUnitId, buId), eq(normalizedDataRecords.isLatest, 1)))
+      .all()
+      .map(r => r.record);
+  }
+
+  supersedDataRecord(id: number): void {
+    db.update(normalizedDataRecords)
+      .set({ isLatest: 0, supersededAt: new Date().toISOString() })
+      .where(eq(normalizedDataRecords.id, id))
+      .run();
+  }
+
+  // --- Data Record ↔ BU Links ---
+
+  getDataRecordBuLinks(dataRecordId: number): DataRecordBuLink[] {
+    return db.select().from(dataRecordBuLinks)
+      .where(eq(dataRecordBuLinks.dataRecordId, dataRecordId))
+      .all();
+  }
+
+  createDataRecordBuLink(link: InsertDataRecordBuLink): DataRecordBuLink {
+    return db.insert(dataRecordBuLinks).values(link).returning().get();
+  }
+
+  deleteDataRecordBuLink(dataRecordId: number, buId: number): boolean {
+    const result = db.delete(dataRecordBuLinks)
+      .where(and(
+        eq(dataRecordBuLinks.dataRecordId, dataRecordId),
+        eq(dataRecordBuLinks.businessUnitId, buId),
+      ))
+      .returning()
+      .get();
+    return !!result;
+  }
+
+  // --- Change Tracking ---
+
+  getRecentChanges(limit: number = 50): ChangeTracking[] {
+    return db.select().from(changeTracking)
+      .orderBy(desc(changeTracking.detectedAt))
+      .limit(limit)
+      .all();
+  }
+
+  createChangeTracking(change: InsertChangeTracking): ChangeTracking {
+    return db.insert(changeTracking).values(change).returning().get();
   }
 }
 
