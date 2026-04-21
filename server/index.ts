@@ -67,7 +67,21 @@ app.use((req, res, next) => {
     res.status(200).json({ status: "ok" });
   });
 
+  app.set("trust proxy", 1);
+
   await registerRoutes(httpServer, app);
+
+  // Initialize pipeline WebSocket (always available, even if runner is disabled)
+  const { pipelineWs } = await import("./pipeline/websocket");
+  pipelineWs.init(httpServer);
+
+  if (process.env.PIPELINE_ENABLED === "true") {
+    const { pipelineRunner } = await import("./pipeline/runner");
+    const rawInterval = parseInt(process.env.PIPELINE_INTERVAL_MIN || "5", 10);
+    const intervalMin = Number.isFinite(rawInterval) && rawInterval > 0 ? Math.min(rawInterval, 1440) : 5;
+    pipelineRunner.start(intervalMin * 60 * 1000);
+    log(`Pipeline runner started (interval: ${intervalMin}min)`, "pipeline");
+  }
 
   app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
