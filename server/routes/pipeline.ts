@@ -1,7 +1,8 @@
 import type { Express } from "express";
 import { storage } from "../storage";
 import { createConnector, getAvailableConnectorTypes } from "../connectors";
-import type { ConnectorConfig } from "../connectors/types";
+import type { ConnectorConfig, FetchResult } from "../connectors/types";
+import { contextualizeData } from "../pipeline/contextualizer";
 
 function toConnectorConfig(row: any): ConnectorConfig {
   return {
@@ -128,7 +129,10 @@ export function registerPipelineRoutes(app: Express) {
         results = await connector.fetchAll(config);
       }
 
+      const contextualize = req.body.contextualize !== false;
       const events = [];
+      const records = [];
+
       for (const result of results) {
         const lastEvent = storage.getLastIngestionEvent(source.id, result.externalId);
         const unchanged = lastEvent?.contentHash === result.contentHash;
@@ -145,6 +149,45 @@ export function registerPipelineRoutes(app: Express) {
           processingMs: Date.now() - startTime,
         });
         events.push({ ...event, unchanged });
+
+        if (!unchanged && contextualize) {
+          try {
+            const ctx = await contextualizeData(result, config);
+            const record = storage.createNormalizedDataRecord({
+              ingestionEventId: event.id,
+              sourceConfigId: source.id,
+              externalId: result.externalId,
+              externalUrl: result.externalUrl,
+              canonicalTitle: ctx.canonicalTitle,
+              contentType: ctx.contentType,
+              summary: ctx.summary,
+              rawContent: result.rawContent,
+              normalizedContent: ctx.normalizedContent,
+              structuredMetadata: JSON.stringify(ctx.structuredMetadata),
+              dataQualityScore: ctx.dataQualityScore,
+              contextConfidence: ctx.contextConfidence,
+              tags: JSON.stringify(ctx.tags),
+              quarter: ctx.structuredMetadata.quarter || null,
+              isLatest: 1,
+              createdAt: new Date().toISOString(),
+              supersededAt: null,
+            });
+
+            for (const buId of ctx.relatedBusinessUnitIds) {
+              storage.createDataRecordBuLink({
+                dataRecordId: record.id,
+                businessUnitId: buId,
+                linkConfidence: ctx.contextConfidence,
+                linkMethod: "ai_inferred",
+                createdAt: new Date().toISOString(),
+              });
+            }
+
+            records.push(record);
+          } catch (ctxErr: any) {
+            console.error(`Contextualization failed for ${result.externalId}:`, ctxErr.message);
+          }
+        }
       }
 
       storage.updateDataSourceConfig(source.id, {
@@ -153,13 +196,15 @@ export function registerPipelineRoutes(app: Express) {
       });
 
       const changed = events.filter((e) => !e.unchanged).length;
-      const unchanged = events.filter((e) => e.unchanged).length;
+      const unchangedCount = events.filter((e) => e.unchanged).length;
       res.json({
         success: true,
         total: events.length,
         changed,
-        unchanged,
+        unchanged: unchangedCount,
+        contextualized: records.length,
         events,
+        records,
       });
     } catch (err: any) {
       storage.createIngestionEvent({
@@ -246,10 +291,18 @@ export function registerPipelineRoutes(app: Express) {
 
   // --- Pipeline Status ---
 
-  app.get("/api/pipeline/status", (_req, res) => {
+  app.get("/api/pipeline/status", async (_req, res) => {
     const sources = storage.getDataSourceConfigs();
     const enabledSources = sources.filter((s) => s.enabled);
     const recentEvents = storage.getIngestionEvents(undefined, 10);
+
+    let runnerStatus = { running: false, lastCycleAt: null as string | null, cycleCount: 0 };
+    if (process.env.PIPELINE_ENABLED === "true") {
+      try {
+        const { pipelineRunner } = await import("../pipeline/runner");
+        runnerStatus = pipelineRunner.status;
+      } catch { /* runner not loaded */ }
+    }
 
     res.json({
       enabled: process.env.PIPELINE_ENABLED === "true",
@@ -257,6 +310,18 @@ export function registerPipelineRoutes(app: Express) {
       enabledSources: enabledSources.length,
       recentEvents: recentEvents.length,
       lastActivity: recentEvents[0]?.fetchedAt || null,
+      runner: runnerStatus,
     });
+  });
+
+  // Manual trigger for a full pipeline cycle
+  app.post("/api/pipeline/run-cycle", async (_req, res) => {
+    try {
+      const { pipelineRunner } = await import("../pipeline/runner");
+      await pipelineRunner.runCycle();
+      res.json({ success: true, status: pipelineRunner.status });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
   });
 }

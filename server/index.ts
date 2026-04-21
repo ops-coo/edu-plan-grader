@@ -69,6 +69,13 @@ app.use((req, res, next) => {
 
   await registerRoutes(httpServer, app);
 
+  if (process.env.PIPELINE_ENABLED === "true") {
+    const { pipelineRunner } = await import("./pipeline/runner");
+    const intervalMin = parseInt(process.env.PIPELINE_INTERVAL_MIN || "5", 10);
+    pipelineRunner.start(intervalMin * 60 * 1000);
+    log(`Pipeline runner started (interval: ${intervalMin}min)`, "pipeline");
+  }
+
   app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
