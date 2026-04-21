@@ -3,6 +3,7 @@ import { storage } from "../storage";
 import { createConnector, getAvailableConnectorTypes } from "../connectors";
 import type { ConnectorConfig, FetchResult } from "../connectors/types";
 import { contextualizeData } from "../pipeline/contextualizer";
+import { pipelineWs } from "../pipeline/websocket";
 
 function toConnectorConfig(row: any): ConnectorConfig {
   return {
@@ -197,6 +198,20 @@ export function registerPipelineRoutes(app: Express) {
 
       const changed = events.filter((e) => !e.unchanged).length;
       const unchangedCount = events.filter((e) => e.unchanged).length;
+
+      if (changed > 0) {
+        pipelineWs.broadcast({
+          type: "ingestion_complete",
+          timestamp: new Date().toISOString(),
+          data: {
+            sourceId: source.id,
+            sourceName: source.name,
+            changed,
+            contextualized: records.length,
+          },
+        });
+      }
+
       res.json({
         success: true,
         total: events.length,

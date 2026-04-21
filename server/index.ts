@@ -69,6 +69,10 @@ app.use((req, res, next) => {
 
   await registerRoutes(httpServer, app);
 
+  // Initialize pipeline WebSocket (always available, even if runner is disabled)
+  const { pipelineWs } = await import("./pipeline/websocket");
+  pipelineWs.init(httpServer);
+
   if (process.env.PIPELINE_ENABLED === "true") {
     const { pipelineRunner } = await import("./pipeline/runner");
     const intervalMin = parseInt(process.env.PIPELINE_INTERVAL_MIN || "5", 10);
