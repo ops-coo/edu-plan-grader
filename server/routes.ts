@@ -8,6 +8,7 @@ import {
   slugifyBuName,
   isoDateStamp,
 } from "./exporters/joeAnalysisXlsx";
+import { registerPipelineRoutes } from "./routes/pipeline";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -15,6 +16,9 @@ const XLSX_CONTENT_TYPE =
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
 export async function registerRoutes(httpServer: Server, app: Express) {
+  // Register pipeline data source routes
+  registerPipelineRoutes(app);
+
   // Business Units — enrich with latest evaluation data
   app.get("/api/business-units", (_req, res) => {
     const units = storage.getBusinessUnits();
